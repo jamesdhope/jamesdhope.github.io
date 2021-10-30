@@ -46,10 +46,13 @@ var store = [{
         "tags": [],
         "url": "/medium,/towardsdatascience,/peopleanalytics,/graphs,/neo4j/a-new-era-for-people-analytics/",
         "teaser": null
+<<<<<<< HEAD
       },{
         "title": "Top 10 Architectural Trade-offs in Digital Ocean Kubernetes",
         "excerpt":"Recently I’ve been developing a solution architecture for a boostrapped startup in Digital Ocean’s Self-Managed Kubernetes. Developing an understanding the context, discovering the domain and taking initial ideas through critical design thinking has been key to a foundational architecture that should serve this product well throughout its lifecycle. As envisioning...","categories": ["Kubernetes,","Digital","Ocean,","Solution","Architecture"],
         "tags": [],
         "url": "/kubernetes,/digital/ocean,/solution/architecture/kubernetes-digital-ocean/",
         "teaser": null
+=======
+>>>>>>> f5ff74987b9e92d66c08fa1281d9cab5a461aeee
       }]

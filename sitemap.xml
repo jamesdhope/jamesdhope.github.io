@@ -33,10 +33,13 @@
 <lastmod>2019-08-21T20:46:34+01:00</lastmod>
 </url>
 <url>
+<<<<<<< HEAD
 <loc>http://localhost:4000/kubernetes,/digital/ocean,/solution/architecture/kubernetes-digital-ocean/</loc>
 <lastmod>2021-10-27T20:46:34+01:00</lastmod>
 </url>
 <url>
+=======
+>>>>>>> f5ff74987b9e92d66c08fa1281d9cab5a461aeee
 <loc>http://localhost:4000/</loc>
 </url>
 </urlset>
