@@ -260,11 +260,11 @@
 <p><img src="/assets/images/containers.jpg" alt="GitHub Logo" />
 Source: https://www.pexels.com/</p>
 
-<h3 id="10-utilise-external-infrastructure-if-necessary">10. Utilise external infrastructure if necessary</h3>
+<h3 id="10-utilise-external-infrastructure-for-completeness-when-necessary">10. Utilise external infrastructure for completeness when necessary</h3>
 
 <p>The absence of key architectural components to deploy in front of the cluster is a limitation to be aware with Digital Ocean. If you are building for production route traffic via services you can route traffic through CloudFlare, for example, for a layer 7 firewall, OWASP compliance and global server load balancing.</p>
 
-<h3 id="9-work-from-the-application-specifications-to-determine-the-minimum-viable-infrastructure">9. Work from the application specifications to determine the minimum viable infrastructure</h3>
+<h3 id="9-work-from-the-application-resource-requirements-to-determine-the-minimum-viable-infrastructure">9. Work from the application resource requirements to determine the minimum viable infrastructure</h3>
 
 <p>If like most you have specific virtual machine specifications to work with (AWS Fargate the notable exception) then it makes sense to understand what resources your applications need and then work down the stack. One technique is to group applications into logical planes - Control, User, Data plane - to help determine what resources are needed in each plane to run a typical application workload. Also look to vendors and application specifications for guidance on resource requirements.</p>
 
@@ -276,11 +276,11 @@ Source: https://www.pexels.com/</p>
 
 <p>For a production and staging deployment I like to follow the rule of three. Three nodes in three availability zones with three pod replicas in each zone. For stateful applications being deployed into a cluster configuration it is recommended to have three cores or leader-eligible instances to avoid split brain.</p>
 
-<h3 id="6-build-with-open-source-multi-vendor-or-community-developed-applications">6. Build with open-source, multi-vendor or community-developed applications</h3>
+<h3 id="6-build-with-open-source-multi-vendor-or-community-developed-applications-for-portability">6. Build with open-source, multi-vendor or community-developed applications for portability</h3>
 
 <p>If you can build with open-source, multi-vendor and community-developed applications you can avoid vendor lock-in and keep the door open to other clouds as needs evolve over time. For example, in my case, building with Hasura GraphQL rather than AWS AppSync as a graph QL gateway, and Neo4J rather than AWS Neptune as a graph data engine.</p>
 
-<h3 id="5-avoid-constraints-and-design-with-soft-intent">5. Avoid constraints and design with soft intent</h3>
+<h3 id="5-avoid-constraints-and-design-with-soft-intent-for-scheduling-flexibility">5. Avoid constraints and design with soft intent for scheduling flexibility</h3>
 
 <p>Imposing hard constraints such as anti-affinity rules, taints and tolerations could result in a pod being unschedulable. Unless you need to import hard constraints use soft requirements such as topology keys to describe scheduling intent and best effort across nodes.</p>
 
