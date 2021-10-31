@@ -48,7 +48,7 @@ var store = [{
         "teaser": null
       },{
         "title": "Top 10 Architectural Considerations for Digital Ocean Kubernetes",
-        "excerpt":"Recently I’ve been developing a solution architecture for a boostrapped startup in Digital Ocean’s Self-Managed Kubernetes. Developing an understanding the context, discovering the domain and taking initial ideas through critical design thinking has been key to a foundational architecture that should serve this product well throughout its lifecycle. As envisioning...","categories": ["Kubernetes,","Digital","Ocean,","Solution","Architecture"],
+        "excerpt":"Format: Recently I’ve been developing a solution architecture for a boostrapped startup in Digital Ocean’s Self-Managed Kubernetes. Developing an understanding the context, discovering the domain and taking initial ideas through critical design thinking has been key to a foundational architecture that should serve this product well throughout its lifecycle. As...","categories": ["Kubernetes,","Digital","Ocean,","Solution","Architecture"],
         "tags": [],
         "url": "/kubernetes,/digital/ocean,/solution/architecture/kubernetes-digital-ocean/",
         "teaser": null
