@@ -365,11 +365,10 @@ spec:
 <h3 id="step-2-1">Step 2:</h3>
 <p>Once the neo core has started to perform the recovery:</p>
 
-<ol>
-  <li>In CYPHER-SHELL OR NEO4j BROWSER run: STOP DATABASE {name}</li>
-  <li>On Pod run: bin/neo4j-admin restore –from /plugins/tmp/neo4j –database neo4j –force;</li>
-  <li>In CYPHER-SHELL or NEO4J BROWSER run: START DATABASE {name}</li>
-</ol>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. In CYPHER-SHELL OR NEO4j BROWSER run: STOP DATABASE {name}
+2. On Pod run: bin/neo4j-admin restore --from /plugins/tmp/neo4j --database neo4j --force;
+3. In CYPHER-SHELL or NEO4J BROWSER run: START DATABASE {name}
+</code></pre></div></div>
 
 
 
