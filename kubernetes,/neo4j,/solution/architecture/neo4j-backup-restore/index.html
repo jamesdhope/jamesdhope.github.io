@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>Backup and Restore Neo4j in a Casual Cluster - James Hope</title>
-<meta name="description" content="A few months ago I developed a solution architecture deploying Neo4j into Kubernetes as a casual cluster. There is a Medium post by David Allen to explain what that configuration looks like here. Unfortunately Neo4j doesn’t officially support deployments of its database into casual clusters but there are community maintained helm charts (endorsed by Neo4j) that make this achieveable. However, one aspect of this that remains challenging is backup and restore, which is what I want to focus on here.">
+<meta name="description" content="A few months ago I developed a solution architecture deploying Neo4j into Kubernetes as a casual cluster. There is a Medium post by Neo4j’s David Allen to explain what that configuration looks like here. Unfortunately Neo4j doesn’t officially support a casual cluster deployment, but there are community maintained helm charts endorsed by Neo4j that make this achieveable. However, one aspect of these deployments which remains challenging is backup and restore, which is what I want to focus on here.">
 
 
   <meta name="author" content="James Hope">
@@ -26,7 +26,7 @@
 <meta property="og:url" content="http://localhost:4000/kubernetes,/neo4j,/solution/architecture/neo4j-backup-restore/">
 
 
-  <meta property="og:description" content="A few months ago I developed a solution architecture deploying Neo4j into Kubernetes as a casual cluster. There is a Medium post by David Allen to explain what that configuration looks like here. Unfortunately Neo4j doesn’t officially support deployments of its database into casual clusters but there are community maintained helm charts (endorsed by Neo4j) that make this achieveable. However, one aspect of this that remains challenging is backup and restore, which is what I want to focus on here.">
+  <meta property="og:description" content="A few months ago I developed a solution architecture deploying Neo4j into Kubernetes as a casual cluster. There is a Medium post by Neo4j’s David Allen to explain what that configuration looks like here. Unfortunately Neo4j doesn’t officially support a casual cluster deployment, but there are community maintained helm charts endorsed by Neo4j that make this achieveable. However, one aspect of these deployments which remains challenging is backup and restore, which is what I want to focus on here.">
 
 
 
@@ -255,24 +255,26 @@
     
       <h1 id="page-title" class="page__title">Backup and Restore Neo4j in a Casual Cluster</h1>
     
-    <p>A few months ago I developed a solution architecture deploying Neo4j into Kubernetes as a casual cluster. There is a Medium post by David Allen to explain what that configuration looks like <a target="_new" href="https://medium.com/neo4j/querying-neo4j-clusters-7d6fde75b5b4">here</a>. Unfortunately Neo4j doesn’t officially support deployments of its database into casual clusters but there are community maintained helm charts (endorsed by Neo4j) that make this achieveable. However, one aspect of this that remains challenging is backup and restore, which is what I want to focus on here.</p>
+    <p>A few months ago I developed a solution architecture deploying Neo4j into Kubernetes as a casual cluster. There is a Medium post by Neo4j’s David Allen to explain what that configuration looks like <a target="_new" href="https://medium.com/neo4j/querying-neo4j-clusters-7d6fde75b5b4">here</a>. Unfortunately Neo4j doesn’t officially support a casual cluster deployment, but there are community maintained helm charts endorsed by Neo4j that make this achieveable. However, one aspect of these deployments which remains challenging is backup and restore, which is what I want to focus on here.</p>
 
 <p><img src="/assets/images/containers.jpg" alt="GitHub Logo" />
 Source: https://www.pexels.com/</p>
 
-<p>Snapshotting Neo4j volumes in a casual cluster seems to be challenging to recover to a consistent state from. Although Neo4j shoudl replay the transaction logs I ran into consistency issues when testing this approach. Implementing a backup and restore using the officially supported, native database tools that is the neo4j-backup utility would be my first priority.</p>
+<h2 id="technology-native-versus-snapshots">Technology-native versus Snapshots</h2>
 
-<p>The community helm chart includes a child helm chart that supports backup to AWS, GCP or Azure. It uses the neo4j-admin backup image provided by Neo4j inside a sidecar and then writes the backup to S3. That works well if you want to backup to these providers but if you are backing up to S3 elsewhere it might make more sense to start over and work towards an implementation that is customised to your environment that has less bloat and is easier to maintain.</p>
+<p>For a transactional database in a casual cluster, the general approach of snapshotting persistent volumes could lead to a situation where the database is being restored from an inconsistent state. In this situation Neo4j (like other transactional databases) should replay the transaction logs but I ran into consistency issues when testing this approach and was unable to complete the restore. Implementing a primary backup and restore mechanism using the officially supported, native database tools that is the neo4j-backup utility is my recommended approach.</p>
 
-<h2 id="backup">Backup</h2>
+<p>In the community helm chart you will find a child helm chart for backup to AWS, GCP or Azure. This helm chart utilises the neo4j-admin backup image provided by Neo4j which runs in a sidecar, runs the neo4j-admin utility and writes the backup to S3. That works well if you want to backup to these providers but if you are backing up to S3 with another provider it might make more sense to start over and work towards an implementation that is customised to your environment, has less bloat and is easier to maintain. Here’s how I did it.</p>
 
-<p>I ran a backup as a Kubernetes CronJob. The backup happens in two steps.</p>
+<h2 id="kubernetes-cronjob-to-backup">Kubernetes CronJob to Backup</h2>
+
+<p>For backup, I created a Kubernetes CronJob. The backup happens in two steps.</p>
 
 <h3 id="step-1">Step 1:</h3>
-<p>The neo4j-backup utility is run as an initialisation container. This produces an online backup which is written to a mounted volume. There is no downtime involved here but be aware that this will have performance implications on your running database. There are various workarounds for this.</p>
+<p>The neo4j-backup utility is run as an initialisation container. This produces an online backup which is written to a mounted volume. There is no downtime involved here but be aware that this will have performance implications on your running database. The schedule is set to meet the recovery point objective.</p>
 
 <h3 id="step-2">Step 2:</h3>
-<p>A custom container runs which copies the backup (from the mounted volume) to Digital Ocean S3 using s3cmd. The reason for the custom container here is that at the time of writing there was no easy way to set the s3cmd configuration values at runtime using the CLI so I did this in the dockerfile and baked it into the image.</p>
+<p>A custom container runs which copies the backup (from the mounted volume) to Digital Ocean S3 using s3cmd. The reason for the custom container here is that at the time of writing there was no easy way to set the s3cmd configuration values at runtime using the CLI so this is configured at the application layer and baked into the image.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kind: PersistentVolumeClaim
 apiVersion: v1
@@ -438,7 +440,7 @@ spec:
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">A few months ago I developed a solution architecture deploying Neo4j into Kubernetes as a casual cluster. There is a Medium post by David Allen to explain wh...</p>
+    <p class="archive__item-excerpt" itemprop="description">A few months ago I developed a solution architecture deploying Neo4j into Kubernetes as a casual cluster. There is a Medium post by Neo4j’s David Allen to ex...</p>
   </article>
 </div>
   
