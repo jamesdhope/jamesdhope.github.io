@@ -54,7 +54,7 @@ var store = [{
         "teaser": null
       },{
         "title": "Backup and Restore Neo4j in a Casual Cluster",
-        "excerpt":"Backup and restore might not be the most exhilarating topic to be reading (or writing) about but if you’re managing data engines inside a cluster then there are some interesting challenges. A few months ago I developed a solution architecture deploying Neo4j into Kubernetes as a casual cluster. There’s a...","categories": ["Kubernetes,","Neo4j,","Solution","Architecture"],
+        "excerpt":"Backup and restore might not be the most exhilarating topic to be reading (or writing) about but if you’re managing a data engine inside a kubernetes cluster then it can be a challenge. A few months ago I developed a solution architecture deploying Neo4j into Kubernetes as a casual cluster....","categories": ["Kubernetes,","Neo4j,","Solution","Architecture"],
         "tags": [],
         "url": "/kubernetes,/neo4j,/solution/architecture/neo4j-backup-restore/",
         "teaser": null
