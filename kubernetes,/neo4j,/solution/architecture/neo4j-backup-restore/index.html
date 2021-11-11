@@ -260,7 +260,7 @@
 <p><img src="/assets/images/containers.jpg" alt="GitHub Logo" />
 Source: https://www.pexels.com/</p>
 
-<p>Snapshotting transactional databases has its own issues and certainly Neo4j doesn’t seem to be particularly resilient when it is restored from transactional logs into a casual cluster. Implementing a backup and restore with the native database tools would be my first priority.</p>
+<p>Snapshotting Neo4j volumes in a casual cluster seems to be challenging to recover to a consistent state from. Although Neo4j shoudl replay the transaction logs I ran into consistency issues when testing this approach. Implementing a backup and restore using the officially supported, native database tools that is the neo4j-backup utility would be my first priority.</p>
 
 <p>The community helm chart includes a child helm chart that supports backup to AWS, GCP or Azure. It uses the neo4j-admin backup image provided by Neo4j inside a sidecar and then writes the backup to S3. That works well if you want to backup to these providers but if you are backing up to S3 elsewhere it might make more sense to start over and work towards an implementation that is customised to your environment that has less bloat and is easier to maintain.</p>
 
