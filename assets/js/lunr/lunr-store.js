@@ -54,7 +54,7 @@ var store = [{
         "teaser": null
       },{
         "title": "Backup and Restore Neo4j in a Casual Cluster",
-        "excerpt":"A few months ago I developed a solution architecture deploying Neo4j into Kubernetes as a casual cluster. There is a Medium post by Neo4j’s David Allen to explain what that configuration looks like here. Unfortunately Neo4j doesn’t officially support a casual cluster deployment, but there are community maintained helm charts...","categories": ["Kubernetes,","Neo4j,","Solution","Architecture"],
+        "excerpt":"A few months ago I developed a solution architecture deploying Neo4j into Kubernetes as a casual cluster. There’s a Medium post by Neo4j’s David Allen to explain what that configuration looks like here. Unfortunately Neo4j doesn’t officially support a casual cluster deployment, but there are community maintained helm charts endorsed...","categories": ["Kubernetes,","Neo4j,","Solution","Architecture"],
         "tags": [],
         "url": "/kubernetes,/neo4j,/solution/architecture/neo4j-backup-restore/",
         "teaser": null
