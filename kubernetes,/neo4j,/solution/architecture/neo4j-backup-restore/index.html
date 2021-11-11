@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>Backup and Restore Neo4j in a Casual Cluster - James Hope</title>
-<meta name="description" content="A few months ago I developed a solution architecture deploying Neo4j into Kubernetes as a casual cluster. There’s a Medium post by Neo4j’s David Allen to explain what that configuration looks like here. Unfortunately Neo4j doesn’t officially support a casual cluster deployment, but there are community maintained helm charts endorsed by Neo4j that make this achieveable. However, one aspect of these deployments which remains challenging in the casual cluster configuration is backup and restore, which is what I want to focus on here. Backup and restore might not be the most exhilarating topic to be reading about but if you are managing data engines inside your cluster then the broader learning points here will be relevant.">
+<meta name="description" content="Backup and restore might not be the most exhilarating topic to be reading (or writing) about but if you’re managing data engines inside a cluster then there are some interesting challenges. A few months ago I developed a solution architecture deploying Neo4j into Kubernetes as a casual cluster. There’s a Medium post by Neo4j’s David Allen to explain what that configuration looks like here. Unfortunately Neo4j doesn’t officially support a casual cluster deployment, but there are community maintained helm charts endorsed by Neo4j that make this achieveable. For this solution I needed a simple backup and restore (nothing more) which is what I wanted to focus on here.">
 
 
   <meta name="author" content="James Hope">
@@ -26,7 +26,7 @@
 <meta property="og:url" content="/kubernetes,/neo4j,/solution/architecture/neo4j-backup-restore/">
 
 
-  <meta property="og:description" content="A few months ago I developed a solution architecture deploying Neo4j into Kubernetes as a casual cluster. There’s a Medium post by Neo4j’s David Allen to explain what that configuration looks like here. Unfortunately Neo4j doesn’t officially support a casual cluster deployment, but there are community maintained helm charts endorsed by Neo4j that make this achieveable. However, one aspect of these deployments which remains challenging in the casual cluster configuration is backup and restore, which is what I want to focus on here. Backup and restore might not be the most exhilarating topic to be reading about but if you are managing data engines inside your cluster then the broader learning points here will be relevant.">
+  <meta property="og:description" content="Backup and restore might not be the most exhilarating topic to be reading (or writing) about but if you’re managing data engines inside a cluster then there are some interesting challenges. A few months ago I developed a solution architecture deploying Neo4j into Kubernetes as a casual cluster. There’s a Medium post by Neo4j’s David Allen to explain what that configuration looks like here. Unfortunately Neo4j doesn’t officially support a casual cluster deployment, but there are community maintained helm charts endorsed by Neo4j that make this achieveable. For this solution I needed a simple backup and restore (nothing more) which is what I wanted to focus on here.">
 
 
 
@@ -255,14 +255,14 @@
     
       <h1 id="page-title" class="page__title">Backup and Restore Neo4j in a Casual Cluster</h1>
     
-    <p>A few months ago I developed a solution architecture deploying Neo4j into Kubernetes as a casual cluster. There’s a Medium post by Neo4j’s David Allen to explain what that configuration looks like <a target="_new" href="https://medium.com/neo4j/querying-neo4j-clusters-7d6fde75b5b4">here</a>. Unfortunately Neo4j doesn’t officially support a casual cluster deployment, but there are community maintained helm charts endorsed by Neo4j that make this achieveable. However, one aspect of these deployments which remains challenging in the casual cluster configuration is backup and restore, which is what I want to focus on here. Backup and restore might not be the most exhilarating topic to be reading about but if you are managing data engines inside your cluster then the broader learning points here will be relevant.</p>
+    <p>Backup and restore might not be the most exhilarating topic to be reading (or writing) about but if you’re managing data engines inside a cluster then there are some interesting challenges. A few months ago I developed a solution architecture deploying Neo4j into Kubernetes as a casual cluster. There’s a Medium post by Neo4j’s David Allen to explain what that configuration looks like <a target="_new" href="https://medium.com/neo4j/querying-neo4j-clusters-7d6fde75b5b4">here</a>. Unfortunately Neo4j doesn’t officially support a casual cluster deployment, but there are community maintained helm charts endorsed by Neo4j that make this achieveable. For this solution I needed a simple backup and restore (nothing more) which is what I wanted to focus on here.</p>
 
 <p><img src="/assets/images/containers.jpg" alt="GitHub Logo" />
 Source: https://www.pexels.com/</p>
 
 <h2 id="technology-native-versus-snapshots">Technology-native versus Snapshots</h2>
 
-<p>For a transactional database in a casual cluster, the general approach of snapshotting persistent volumes could lead to a situation where the database is being restored from an inconsistent state. In this situation Neo4j (like other transactional databases) should replay the transaction logs but I ran into consistency issues when testing this approach and was unable to complete the restore. Implementing a primary backup and restore mechanism using the officially supported, native database tools that is the neo4j-backup utility is my recommended approach.</p>
+<p>For a transactional database in a casual cluster, the general approach of snapshotting persistent volumes can and does lead to situations where the database is being restored from an inconsistent state. In this situation the database should run the transactions from the write-ahead logs but I ran into consistency issues when testing this approach with Neo4j in a casual cluster and was unable to complete the restore. Implementing a primary backup and restore mechanism using the officially supported, native database tools that is the neo4j-backup utility is my recommended approach.</p>
 
 <p>In the community helm chart you will find a child helm chart for backup to AWS, GCP or Azure. This helm chart utilises the neo4j-admin backup image provided by Neo4j which runs in a sidecar, runs the neo4j-admin utility and writes the backup to S3. That works well if you want to backup to these providers but if you are backing up to S3 with another provider it might make more sense to start over and work towards an implementation that is customised to your environment, has less bloat and is easier to maintain. Here’s how I did it.</p>
 
@@ -440,7 +440,7 @@ spec:
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">A few months ago I developed a solution architecture deploying Neo4j into Kubernetes as a casual cluster. There’s a Medium post by Neo4j’s David Allen to exp...</p>
+    <p class="archive__item-excerpt" itemprop="description">Backup and restore might not be the most exhilarating topic to be reading (or writing) about but if you’re managing data engines inside a cluster then there ...</p>
   </article>
 </div>
   
