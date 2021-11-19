@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Backup and Restore Neo4j in a Casual Cluster - James Hope</title>
-<meta name="description" content="If you’re managing a data engine inside a kubernetes cluster then implementing a backup and restore process can be challenging. A few months ago I developed a solution architecture deploying Neo4j into Kubernetes as a casual cluster. There’s a Medium post by Neo4j’s David Allen to explain what that configuration looks like here. Unfortunately Neo4j doesn’t officially support a casual cluster deployment, but there are community maintained helm charts endorsed by Neo4j that make this achieveable. For this solution I needed a simple backup and restore (nothing more) which is what I wanted to focus on here.">
+<!-- begin _includes/seo.html --><title>Injecting Secrets as Environment Variables from Hasicorp Vault - James Hope</title>
+<meta name="description" content="Continuing on the theme of Kubernetes, I have recently built out a solution to inject environment variables into containerised applications from Hasicorp Consult and Vault. Installing both Consul and Vault via helm with the KV Engine is fairly straightforward. Supplying these KV’s as environment variables to the containerised applications in Kubernetes requires a bit more thought and work, and requires a different approach to lifting values from Hashicorp Consul to add to the confusion. Both approaches write KV’s to file before they are realised into the environment and this is one main downside, not so much for Consul but for secrets held in Vault.">
 
 
   <meta name="author" content="James Hope">
@@ -22,11 +22,11 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="James Hope">
-<meta property="og:title" content="Backup and Restore Neo4j in a Casual Cluster">
-<meta property="og:url" content="/kubernetes,/neo4j,/solution/architecture/neo4j-backup-restore/">
+<meta property="og:title" content="Injecting Secrets as Environment Variables from Hasicorp Vault">
+<meta property="og:url" content="/kubernetes,/neo4j,/solution/architecture,/hasicorp,/vault/vault-template/">
 
 
-  <meta property="og:description" content="If you’re managing a data engine inside a kubernetes cluster then implementing a backup and restore process can be challenging. A few months ago I developed a solution architecture deploying Neo4j into Kubernetes as a casual cluster. There’s a Medium post by Neo4j’s David Allen to explain what that configuration looks like here. Unfortunately Neo4j doesn’t officially support a casual cluster deployment, but there are community maintained helm charts endorsed by Neo4j that make this achieveable. For this solution I needed a simple backup and restore (nothing more) which is what I wanted to focus on here.">
+  <meta property="og:description" content="Continuing on the theme of Kubernetes, I have recently built out a solution to inject environment variables into containerised applications from Hasicorp Consult and Vault. Installing both Consul and Vault via helm with the KV Engine is fairly straightforward. Supplying these KV’s as environment variables to the containerised applications in Kubernetes requires a bit more thought and work, and requires a different approach to lifting values from Hashicorp Consul to add to the confusion. Both approaches write KV’s to file before they are realised into the environment and this is one main downside, not so much for Consul but for secrets held in Vault.">
 
 
 
@@ -45,7 +45,7 @@
   
 
 
-<link rel="canonical" href="/kubernetes,/neo4j,/solution/architecture/neo4j-backup-restore/">
+<link rel="canonical" href="/kubernetes,/neo4j,/solution/architecture,/hasicorp,/vault/vault-template/">
 
 
 
@@ -253,124 +253,57 @@
 
   <div class="archive">
     
-      <h1 id="page-title" class="page__title">Backup and Restore Neo4j in a Casual Cluster</h1>
+      <h1 id="page-title" class="page__title">Injecting Secrets as Environment Variables from Hasicorp Vault</h1>
     
-    <p>If you’re managing a data engine inside a kubernetes cluster then implementing a backup and restore process can be challenging. A few months ago I developed a solution architecture deploying Neo4j into Kubernetes as a casual cluster. There’s a Medium post by Neo4j’s David Allen to explain what that configuration looks like <a target="_new" href="https://medium.com/neo4j/querying-neo4j-clusters-7d6fde75b5b4">here</a>. Unfortunately Neo4j doesn’t officially support a casual cluster deployment, but there are community maintained helm charts endorsed by Neo4j that make this achieveable. For this solution I needed a simple backup and restore (nothing more) which is what I wanted to focus on here.</p>
+    <p>Continuing on the theme of Kubernetes, I have recently built out a solution to inject environment variables into containerised applications from Hasicorp Consult and Vault. Installing both Consul and Vault via helm with the KV Engine is fairly straightforward. Supplying these KV’s as environment variables to the containerised applications in Kubernetes requires a bit more thought and work, and requires a different approach to lifting values from Hashicorp Consul to add to the confusion. Both approaches write KV’s to file before they are realised into the environment and this is one main downside, not so much for Consul but for secrets held in Vault.</p>
+
+<p>For the purposes of this explanation I’m supplying environment variables to an application called Hasura - a graphQL API. These are all held in Consul and Vault as Key Value pairs.</p>
 
 <p><img src="/assets/images/containers.jpg" alt="GitHub Logo" />
 Source: https://www.pexels.com/</p>
 
-<h2 id="technology-native-versus-snapshots">Technology-native versus Snapshots</h2>
+<h2 id="fetching-kvs-from-consul-using-envconsul">Fetching KV’s from Consul using envconsul</h2>
 
-<p>The approach of snapshotting persistent volumes for a distributed data engine as a means to backup data can and does lead to situations where a subsequent restore will fail because of an inconsistent state. In this situation a transactional database should run the transactions from the write-ahead logs but I ran into this exact issue when testing this approach with Velero and Neo4j and was unable to complete the restore. Postgres and timescaledb also failed to restore using this approach. Implementing a primary backup and restore mechanism using the officially supported, native database tools (for neo4j the neo4j-backup utility) is my recommended approach.</p>
+<p>Hasicorp provide a application called envconsul to fetch KV’s from consul. I used that to write the KV’s to a mounted volume ready to run as a bash script to expose them in the main application container.</p>
 
-<p>For Neo4j, the community helm chart includes a child helm chart for backing up to AWS, GCP or Azure. The helm chart utilises the neo4j-admin backup image provided by Neo4j which runs as a sidecar to neo4j. That approach works well if you want to backup to these providers but if you are backing up to an alternative provider like Digital Ocean it might make more sense to start over and work towards an implementation that is customised to your environment, has less bloat and is easier to maintain. Here’s how I did it.</p>
-
-<h2 id="kubernetes-cronjob-to-backup">Kubernetes CronJob to Backup</h2>
-
-<p>For backup, I created a Kubernetes CronJob. The backup happens in two steps.</p>
-
-<h3 id="step-1">Step 1:</h3>
-<p>The neo4j-backup utility is run as an initialisation container. This produces an online backup which is written to a mounted volume. There is no downtime involved here but be aware that this will have performance implications on your running database. The schedule is set to meet the recovery point objective.</p>
-
-<h3 id="step-2">Step 2:</h3>
-<p>A custom container runs which copies the backup (from the mounted volume) to Digital Ocean S3 using s3cmd. The reason for the custom container here is that at the time of writing there was no easy way to set the s3cmd configuration values at runtime using the CLI so this is configured at the application layer and baked into the image.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kind: PersistentVolumeClaim
-apiVersion: v1
-metadata:
-  name: backupdir-neo4j
-  labels:
-    app: neo4j-backup
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 10Gi
----
-apiVersion: batch/v1beta1
-kind: CronJob
-metadata:
-  name: neo4j-backup
-  namespace: neo4j
-spec:
-  schedule: "0 * * * *"
-  jobTemplate:
-    spec:
-      template:
-        spec:
-          volumes:
-            - name: backupdir-neo4j
-              persistentVolumeClaim:
-                claimName: backupdir-neo4j
-          initContainers:
-            - name: neo4j-backup
-              image: neo4j:4.2.8-enterprise
-              env:
-                - name: NEO4J_ACCEPT_LICENSE_AGREEMENT
-                  value: "yes"
-              volumeMounts:
-              - name: backupdir-neo4j
-                mountPath: /tmp
-              command: ["/bin/sh", "-c"]
-              args:
-                - echo cleaning /tmp from PV;
-                  rm -rf /tmp/*;
-                  bin/neo4j-admin backup --backup-dir /tmp --database neo4j --from neo-neo4j.neo4j.svc.cluster.local:6362 --verbose;
-                  echo backup completed
-          containers:
-            - name: copy-to-spaces
-              image: registry.gitlab.com/custom-neo-backup-tool:latest
-              imagePullPolicy: Always
-              command: ["/bin/sh", "-c"]
-              args:
-                - yum install python36 -y;
-                  pip3 install s3cmd;
-                  cp /usr/app/s3cfg /root/.s3cfg;
-                  s3cmd --config=/usr/app/s3cfg;
-                  s3cmd put /tmp s3://path/to/backup/`date +%d%b%Y-%H:%M:%S`/ --recursive;
-              volumeMounts:
-              - name: backupdir-neo4j
-                mountPath: /tmp
-          imagePullSecrets: 
-          - name: gitlab-registry-credentials  
-          restartPolicy: OnFailure
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>initContainers:
+- name: envconsul
+        image: hashicorp/envconsul:alpine
+        
+        command: ['sh','-c','envconsul -consul-addr=consul-consul-server.consul.svc.cluster.local:8500 -pristine -prefix staging/hasura env | sed "s/.*/export &amp;/" &gt; /consul/config/staging-hasura']
+- mountPath: /consul/config/
+        name: consul
 </code></pre></div></div>
 
-<h2 id="restore">Restore</h2>
+<h2 id="fetching-kvs-from-vault-using-vault-annotations">Fetching KV’s from Vault using Vault Annotations</h2>
 
-<p>The restore process happens in two parts:</p>
-<ol>
-  <li>A initContainer runs in the helm chart to copy the data from S3.</li>
-  <li>A command is run inside the POD to restore the backup</li>
-</ol>
+<p>To fetch secrets from Vault I used the annotations shown in the snippet below which are patched to the deployment for Hasura. Note the <code class="language-plaintext highlighter-rouge">vault.hashicorp.com/agent-inject: "true"</code> label in the code snippet below which activates the Envoy sidecar although there is more going on here including an initContainer for Vault to initiate the mTLS mechanism so I’d recommend reading the docs. See https://www.vaultproject.io/docs/platform/k8s/injector/annotations.</p>
 
-<h3 id="step-1-1">Step 1:</h3>
-<p>The initContainer is a custom built image with the S3cmd config that copies the backup specified into the plugins mount. Note that the path to the backup in the s3cmd get command needs to be specified.</p>
+<p>The label I wanted to give special mention to is <code class="language-plaintext highlighter-rouge">vault.hashicorp.com/agent-inject-template-staging-hasura:</code> which utilises a GO template. The template shown in the code snippet below writes the key value pairs in vault (prefixed with the word export) to file, ready to run as a bash script. This writes the same file output as the command for envconsul above.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- name: custom-neo-recovery-tool
-    image: registry.gitlab.com/custom-neo-backup-tool
-    imagePullPolicy: Always
-    volumeMounts:
-    - name: plugins
-      mountPath: /plugins
-    command: ["/bin/sh", "-c"]
-    args:
-      - yum install python36 -y;
-        pip3 install s3cmd;
-        cp /usr/app/s3cfg /root/.s3cfg;
-        s3cmd --config=/usr/app/s3cfg;
-        s3cmd get --recursive --force s3://path/to/backup/timestamp/ /plugins;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`kubectl patch deployment hasura --patch "$(cat staging-vault-patch.yaml)" -n hasura`
 </code></pre></div></div>
 
-<h3 id="step-2-1">Step 2:</h3>
-<p>Once the neo core has started to perform the recovery:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. In CYPHER-SHELL OR NEO4j BROWSER run: STOP DATABASE {name}
-2. On Pod run: bin/neo4j-admin restore --from /plugins/tmp/neo4j --database neo4j --force;
-3. In CYPHER-SHELL or NEO4J BROWSER run: START DATABASE {name}
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>spec:
+  template:
+    metadata:
+      annotations:
+        vault.hashicorp.com/agent-inject: "true"
+        vault.hashicorp.com/agent-inject-status: "update"
+        vault.hashicorp.com/agent-inject-secret-staging-hasura: "staging/hasura"
+        vault.hashicorp.com/agent-inject-template-staging-hasura: |
+          
+              export =
+            
+        vault.hashicorp.com/role: "vault-hasura-service-account"
+        vault.hashicorp.com/log-level: "debug"
 </code></pre></div></div>
+
+<p>Note that Vault also requires you to set up a Kubernetes Service Account <code class="language-plaintext highlighter-rouge">serviceAccountName: vault-service</code>. Refer to the Hashicorp docs for more information on this.</p>
+
+<h2 id="exposing-the-kvs-into-the-main-application-container">Exposing the KV’s into the main application container</h2>
+
+<p>Hasura deployment spec can be updated with a command statement: <code class="language-plaintext highlighter-rouge">command: ['sh', '-c', '. vault/secrets/staging-hasura &amp;&amp; . consul/config/staging-hasura &amp;&amp; graphql-engine serve']</code>. Using sh with the dot command to execute the bash scripts exposing the KV’s as environment variables in the main application container, and then launching into the application itself. If you take this approach, be aware that the Kubernetes command statement will take precedence over any entrypoint command used in the dockerfile. If you are utilising a third party image that utilises an entrypoint statement you may need to create a custom dockerfile to make this approach work.</p>
 
 
 
