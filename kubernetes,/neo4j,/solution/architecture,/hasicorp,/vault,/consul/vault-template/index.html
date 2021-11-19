@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Injecting Secrets as Environment Variables from Hasicorp Vault - James Hope</title>
-<meta name="description" content="Continuing on the theme of Kubernetes, I have recently built out a solution to inject environment variables into containerised applications from Hasicorp Consult and Vault. Installing both Consul and Vault via helm with the KV Engine is fairly straightforward. Supplying these KV’s as environment variables to the containerised applications in Kubernetes requires a bit more thought and work, and requires a different approach to lifting values from Hashicorp Consul to add to the confusion. Both approaches write KV’s to file before they are realised into the environment and this is one main downside, not so much for Consul but for secrets held in Vault.">
+<!-- begin _includes/seo.html --><title>Injecting Config as Environment Variables from Hasicorp Consult &amp; Vault - James Hope</title>
+<meta name="description" content="Continuing on the theme of Kubernetes, I have recently built out a solution to inject environment variables into containerised applications from Hasicorp Consult and Vault Key Value (KV) engine, which might be considered as a first step in realising Hashicorp’s Service Mesh. Installing both Consul and Vault via helm with the KV Engine is fairly straightforward. Supplying these KV’s as environment variables to the containerised applications in Kubernetes, however, requires a bit more thought. Two different approaches are required to lift in values from Consul and Vault which makes things even more interesting. The approach I took was to write the KV’s to file before they are exposed as ENVs in the container, which is less than ideal. As a side note, without a workaround to this that avoids persisting secrets to disk, my recommendation is to manage config at the application layer by calling Consul and Vault’s HTTP API.">
 
 
   <meta name="author" content="James Hope">
@@ -22,11 +22,11 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="James Hope">
-<meta property="og:title" content="Injecting Secrets as Environment Variables from Hasicorp Vault">
-<meta property="og:url" content="/kubernetes,/neo4j,/solution/architecture,/hasicorp,/vault/vault-template/">
+<meta property="og:title" content="Injecting Config as Environment Variables from Hasicorp Consult &amp; Vault">
+<meta property="og:url" content="http://localhost:4000/kubernetes,/neo4j,/solution/architecture,/hasicorp,/vault,/consul/vault-template/">
 
 
-  <meta property="og:description" content="Continuing on the theme of Kubernetes, I have recently built out a solution to inject environment variables into containerised applications from Hasicorp Consult and Vault. Installing both Consul and Vault via helm with the KV Engine is fairly straightforward. Supplying these KV’s as environment variables to the containerised applications in Kubernetes requires a bit more thought and work, and requires a different approach to lifting values from Hashicorp Consul to add to the confusion. Both approaches write KV’s to file before they are realised into the environment and this is one main downside, not so much for Consul but for secrets held in Vault.">
+  <meta property="og:description" content="Continuing on the theme of Kubernetes, I have recently built out a solution to inject environment variables into containerised applications from Hasicorp Consult and Vault Key Value (KV) engine, which might be considered as a first step in realising Hashicorp’s Service Mesh. Installing both Consul and Vault via helm with the KV Engine is fairly straightforward. Supplying these KV’s as environment variables to the containerised applications in Kubernetes, however, requires a bit more thought. Two different approaches are required to lift in values from Consul and Vault which makes things even more interesting. The approach I took was to write the KV’s to file before they are exposed as ENVs in the container, which is less than ideal. As a side note, without a workaround to this that avoids persisting secrets to disk, my recommendation is to manage config at the application layer by calling Consul and Vault’s HTTP API.">
 
 
 
@@ -45,7 +45,7 @@
   
 
 
-<link rel="canonical" href="/kubernetes,/neo4j,/solution/architecture,/hasicorp,/vault/vault-template/">
+<link rel="canonical" href="http://localhost:4000/kubernetes,/neo4j,/solution/architecture,/hasicorp,/vault,/consul/vault-template/">
 
 
 
@@ -56,7 +56,7 @@
     
       "@type": "Person",
       "name": "James Hope",
-      "url": "/",
+      "url": "http://localhost:4000/",
       "sameAs": ["https://twitter.com/","https://github.com/"]
     
   }
@@ -149,7 +149,7 @@
 
   
     <div class="author__avatar">
-      <a href="/">
+      <a href="http://localhost:4000/">
         <img src="/assets/images/bio-photo.jpg" alt="James Hope" itemprop="image" class="u-photo">
       </a>
     </div>
@@ -157,7 +157,7 @@
 
   <div class="author__content">
     <h3 class="author__name p-name" itemprop="name">
-      <a class="u-url" rel="me" href="/" itemprop="url">James Hope</a>
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">James Hope</a>
     </h3>
     
       <div class="author__bio p-note" itemprop="description">
@@ -253,9 +253,9 @@
 
   <div class="archive">
     
-      <h1 id="page-title" class="page__title">Injecting Secrets as Environment Variables from Hasicorp Vault</h1>
+      <h1 id="page-title" class="page__title">Injecting Config as Environment Variables from Hasicorp Consult & Vault</h1>
     
-    <p>Continuing on the theme of Kubernetes, I have recently built out a solution to inject environment variables into containerised applications from Hasicorp Consult and Vault. Installing both Consul and Vault via helm with the KV Engine is fairly straightforward. Supplying these KV’s as environment variables to the containerised applications in Kubernetes requires a bit more thought and work, and requires a different approach to lifting values from Hashicorp Consul to add to the confusion. Both approaches write KV’s to file before they are realised into the environment and this is one main downside, not so much for Consul but for secrets held in Vault.</p>
+    <p>Continuing on the theme of Kubernetes, I have recently built out a solution to inject environment variables into containerised applications from Hasicorp Consult and Vault Key Value (KV) engine, which might be considered as a first step in realising Hashicorp’s Service Mesh. Installing both Consul and Vault via helm with the KV Engine is fairly straightforward. Supplying these KV’s as environment variables to the containerised applications in Kubernetes, however, requires a bit more thought. Two different approaches are required to lift in values from Consul and Vault which makes things even more interesting. The approach I took was to write the KV’s to file before they are exposed as ENVs in the container, which is less than ideal. As a side note, without a workaround to this that avoids persisting secrets to disk, my recommendation is to manage config at the application layer by calling Consul and Vault’s HTTP API.</p>
 
 <p>For the purposes of this explanation I’m supplying environment variables to an application called Hasura - a graphQL API. These are all held in Consul and Vault as Key Value pairs.</p>
 
@@ -264,7 +264,7 @@ Source: https://www.pexels.com/</p>
 
 <h2 id="fetching-kvs-from-consul-using-envconsul">Fetching KV’s from Consul using envconsul</h2>
 
-<p>Hasicorp provide a application called envconsul to fetch KV’s from consul. I used that to write the KV’s to a mounted volume ready to run as a bash script to expose them in the main application container.</p>
+<p>Hasicorp provide a application called envconsul to fetch KV’s from consul. I used that to write the KV’s to a mounted volume ready to run as a bash script to expose them in the main application container. Note the use of the sed command to substitue the export statement. This achieves a file with lines that read <code class="language-plaintext highlighter-rouge">export key value</code> which can be run as a bash script to expose those KV’s as ENVs in the main application container.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>initContainers:
 - name: envconsul
@@ -348,7 +348,7 @@ Source: https://www.pexels.com/</p>
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/kubernetes,/neo4j,/solution/architecture,/hasicorp,/vault/vault-template/" rel="permalink">Injecting Secrets as Environment Variables from Hasicorp Vault
+        <a href="/kubernetes,/neo4j,/solution/architecture,/hasicorp,/vault,/consul/vault-template/" rel="permalink">Injecting Config as Environment Variables from Hasicorp Consult &amp; Vault
 </a>
       
     </h2>

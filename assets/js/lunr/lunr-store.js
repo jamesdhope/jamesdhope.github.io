@@ -59,9 +59,9 @@ var store = [{
         "url": "/kubernetes,/neo4j,/solution/architecture/neo4j-backup-restore/",
         "teaser": null
       },{
-        "title": "Injecting Secrets as Environment Variables from Hasicorp Vault",
-        "excerpt":"Continuing on the theme of Kubernetes, I have recently built out a solution to inject environment variables into containerised applications from Hasicorp Consult and Vault. Installing both Consul and Vault via helm with the KV Engine is fairly straightforward. Supplying these KV’s as environment variables to the containerised applications in...","categories": ["Kubernetes,","Neo4j,","Solution","Architecture,","Hasicorp,","Vault"],
+        "title": "Injecting Config as Environment Variables from Hasicorp Consult & Vault",
+        "excerpt":"Continuing on the theme of Kubernetes, I have recently built out a solution to inject environment variables into containerised applications from Hasicorp Consult and Vault Key Value (KV) engine, which might be considered as a first step in realising Hashicorp’s Service Mesh. Installing both Consul and Vault via helm with...","categories": ["Kubernetes,","Neo4j,","Solution","Architecture,","Hasicorp,","Vault,","Consul"],
         "tags": [],
-        "url": "/kubernetes,/neo4j,/solution/architecture,/hasicorp,/vault/vault-template/",
+        "url": "/kubernetes,/neo4j,/solution/architecture,/hasicorp,/vault,/consul/vault-template/",
         "teaser": null
       }]
