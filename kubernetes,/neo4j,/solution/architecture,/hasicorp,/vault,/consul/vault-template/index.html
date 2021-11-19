@@ -23,7 +23,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="James Hope">
 <meta property="og:title" content="Injecting Config as Environment Variables from Hasicorp Consult &amp; Vault">
-<meta property="og:url" content="http://localhost:4000/kubernetes,/neo4j,/solution/architecture,/hasicorp,/vault,/consul/vault-template/">
+<meta property="og:url" content="/kubernetes,/neo4j,/solution/architecture,/hasicorp,/vault,/consul/vault-template/">
 
 
   <meta property="og:description" content="Continuing on the theme of Kubernetes, I have recently built out a solution to inject environment variables into containerised applications from Hasicorp Consult and Vault Key Value (KV) engine, which might be considered as a first step in realising Hashicorp’s Service Mesh. Installing both Consul and Vault via helm with the KV Engine is fairly straightforward. Supplying these KV’s as environment variables to the containerised applications in Kubernetes, however, requires a bit more thought. Two different approaches are required to lift in values from Consul and Vault which makes things even more interesting. The approach I took was to write the KV’s to file before they are exposed as ENVs in the container, which is less than ideal. As a side note, without a workaround to this that avoids persisting secrets to disk, my recommendation is to manage config at the application layer by calling Consul and Vault’s HTTP API.">
@@ -45,7 +45,7 @@
   
 
 
-<link rel="canonical" href="http://localhost:4000/kubernetes,/neo4j,/solution/architecture,/hasicorp,/vault,/consul/vault-template/">
+<link rel="canonical" href="/kubernetes,/neo4j,/solution/architecture,/hasicorp,/vault,/consul/vault-template/">
 
 
 
@@ -56,7 +56,7 @@
     
       "@type": "Person",
       "name": "James Hope",
-      "url": "http://localhost:4000/",
+      "url": "/",
       "sameAs": ["https://twitter.com/","https://github.com/"]
     
   }
@@ -149,7 +149,7 @@
 
   
     <div class="author__avatar">
-      <a href="http://localhost:4000/">
+      <a href="/">
         <img src="/assets/images/bio-photo.jpg" alt="James Hope" itemprop="image" class="u-photo">
       </a>
     </div>
@@ -157,11 +157,11 @@
 
   <div class="author__content">
     <h3 class="author__name p-name" itemprop="name">
-      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">James Hope</a>
+      <a class="u-url" rel="me" href="/" itemprop="url">James Hope</a>
     </h3>
     
       <div class="author__bio p-note" itemprop="description">
-        <p>Enabling organisations and teams to realise the value of data, cloud and technology innovation through modern cloud-native architectures. IBM Garage Solution Architect. Certified Data Scientist. Views and opinions are my own.</p>
+        <p>Enabling organisations and teams to realise the value of data, cloud and technology innovation through modern cloud-native architectures. Solution Architect. Certified Data Scientist. Views and opinions are my own.</p>
 
       </div>
     
