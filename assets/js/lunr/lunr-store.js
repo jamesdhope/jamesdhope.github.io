@@ -64,4 +64,10 @@ var store = [{
         "tags": [],
         "url": "/kubernetes,/neo4j,/solution/architecture,/hasicorp,/vault,/consul/vault-template/",
         "teaser": null
+      },{
+        "title": "Gas System of the Future, Digital Twin",
+        "excerpt":"This article was published on Medium. Please click here to access the article.  ","categories": ["IBM","E&U"],
+        "tags": ["E&U","Energy","IBM"],
+        "url": "/ibm/e&u/gas-system-of-the-future/",
+        "teaser": null
       }]
