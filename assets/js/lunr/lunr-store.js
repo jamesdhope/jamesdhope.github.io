@@ -70,4 +70,10 @@ var store = [{
         "tags": ["E&U","Energy","IBM"],
         "url": "/ibm/e&u/gas-system-of-the-future/",
         "teaser": null
+      },{
+        "title": "Graph-Driven, LLM-Assisted Virtual Assistant Architecture",
+        "excerpt":"View the post here: https://jamesdhope.medium.com/graph-driven-llm-assisted-virtual-assistant-architecture-c1e4857a7040.  ","categories": ["GenAI","AI","LLMs"],
+        "tags": ["data science","GenAI","LLMs"],
+        "url": "/genai/ai/llms/graph-driven-llm-assistant-virtual-assistant/",
+        "teaser": null
       }]
