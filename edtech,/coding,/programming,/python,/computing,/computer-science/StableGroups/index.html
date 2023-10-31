@@ -34,7 +34,7 @@
 
 
 
-  <meta property="article:published_time" content="2018-05-05T20:46:34+01:00">
+  <meta property="article:published_time" content="2018-05-18T00:00:00+01:00">
 
 
 
@@ -56,8 +56,7 @@
     
       "@type": "Person",
       "name": "James Hope",
-      "url": "http://localhost:4000/",
-      "sameAs": ["https://twitter.com/","https://github.com/"]
+      "url": "http://localhost:4000/"
     
   }
 </script>
@@ -97,7 +96,7 @@
 
   </head>
 
-  <body class="layout--posts">
+  <body class="layout--single">
     <nav class="skip-links">
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
@@ -105,10 +104,6 @@
     <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
   </ul>
 </nav>
-
-    <!--[if lt IE 9]>
-<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
-<![endif]-->
 
     
 
@@ -121,7 +116,9 @@
           James Hope
           
         </a>
-        <ul class="visible-links"></ul>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/">Quick-Start Guide</a>
+            </li></ul>
         
         <button class="greedy-nav__toggle hidden" type="button">
           <span class="visually-hidden">Toggle menu</span>
@@ -136,6 +133,8 @@
 
     <div class="initial-content">
       
+
+
 
 
 
@@ -161,7 +160,7 @@
     </h3>
     
       <div class="author__bio p-note" itemprop="description">
-        <p>Solutions Architect, IBM Client Engineering, AI Engineer, GCP Professional Cloud Architect, GCP Professional Machine Learning Engineer. Views and opinions are my own.</p>
+        <p>Senior Solutions Architect @ IBM Client Engineering, AI Engineer, GCP Professional Cloud Architect, GCP Professional Machine Learning Engineer. Views and opinions are my own.</p>
 
       </div>
     
@@ -179,15 +178,15 @@
       
         
           
-            <li><a href="https://github.com/jamesdhope" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+            <li><a href="https://github.com/jamesdhope" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
           
         
           
-            <li><a href="https://linkedin.com/in/jamesdometthope" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+            <li><a href="https://linkedin.com/in/jamesdometthope" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
           
         
           
-            <li><a href="https://twitter.com/jamesdhope" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+            <li><a href="https://twitter.com/jamesdhope" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
           
         
       
@@ -250,16 +249,52 @@
     </ul>
   </div>
 </div>
+
   
   </div>
 
 
 
-  <div class="archive">
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Implementation of the Stable Marriage Algorithm to find ‘Stable Groups’">
+    <meta itemprop="description" content="In my previous post, I explained my implementation of the Stable Marriage Algorithm to find stable pairs. Taking this implementation one step further, I wanted to use the Stable Marriage Algorithm iteratively, to join stable pairs to other stable pairs to forms groups (or sets). This post explains my implementation of how I have used the Stable Marriage Algorithm to form groups of stable pairs.">
+    <meta itemprop="datePublished" content="2018-05-18T00:00:00+01:00">
     
-      <h1 id="page-title" class="page__title">Implementation of the Stable Marriage Algorithm to find 'Stable Groups'</h1>
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/edtech,/coding,/programming,/python,/computing,/computer-science/StableGroups/" class="u-url" itemprop="url">Implementation of the Stable Marriage Algorithm to find ‘Stable Groups’
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
     
-    <p>In my previous post, I explained my implementation of the Stable Marriage Algorithm to find stable pairs. Taking this implementation one step further, I wanted to use the Stable Marriage Algorithm iteratively, to join stable pairs to other stable pairs to forms groups (or sets). This post explains my implementation of how I have used the Stable Marriage Algorithm to form groups of stable pairs.</p>
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          13 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+        <p>In my previous post, I explained my implementation of the Stable Marriage Algorithm to find stable pairs. Taking this implementation one step further, I wanted to use the Stable Marriage Algorithm iteratively, to join stable pairs to other stable pairs to forms groups (or sets). This post explains my implementation of how I have used the Stable Marriage Algorithm to form groups of stable pairs.</p>
 
 <h1>Basic Software Architecture</h1>
 
@@ -394,70 +429,70 @@
 
 <p>Now let’s dive into the python. First we will need to make use of some libraries.</p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">import</span> <span class="nn">csv</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
-<span class="kn">import</span> <span class="nn">sets</span>
-<span class="kn">import</span> <span class="nn">copy</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="n">sys</span>
+<span class="kn">import</span> <span class="n">csv</span>
+<span class="kn">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="n">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="n">sets</span>
+<span class="kn">import</span> <span class="n">copy</span></code></pre></figure>
 
 <p>The Pool Class Object will hold all of the Stable Paris that are found for each run of the Stable Pairs Algorithm. The methods for this class object will manage and update the pairings.</p>
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># Pool Class :: holds engagements
 </span><span class="k">class</span> <span class="nc">Pool</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">acceptors</span><span class="p">):</span>
-        <span class="s">"""
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">acceptors</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
         Construct an array which will hold the engagements. Instatiate each maximum preference number that 
-        """</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">engagements</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">empty</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">acceptors</span><span class="p">))</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">engagements</span><span class="p">.</span><span class="n">fill</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">nan</span><span class="p">)</span> 
+        </span><span class="sh">"""</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">engagements</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">empty</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="nf">len</span><span class="p">(</span><span class="n">acceptors</span><span class="p">))</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">engagements</span><span class="p">.</span><span class="nf">fill</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">nan</span><span class="p">)</span> 
 
-    <span class="k">def</span> <span class="nf">new_engagement</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">acceptor</span><span class="p">,</span><span class="n">proposer</span><span class="p">):</span>
-        <span class="s">"""
+    <span class="k">def</span> <span class="nf">new_engagement</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="n">acceptor</span><span class="p">,</span><span class="n">proposer</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
         Update (replace) the engagement in the pool 
-        """</span>
+        </span><span class="sh">"""</span>
         <span class="c1">#print("entering new engagement")
-</span>        <span class="k">if</span> <span class="n">proposer</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">.</span><span class="n">engagements</span><span class="p">:</span>
+</span>        <span class="k">if</span> <span class="n">proposer</span> <span class="ow">in</span> <span class="n">self</span><span class="p">.</span><span class="n">engagements</span><span class="p">:</span>
             <span class="c1">#print("new engagement1")
-</span>            <span class="bp">self</span><span class="p">.</span><span class="n">engagements</span><span class="p">[</span><span class="bp">self</span><span class="p">.</span><span class="n">engagements</span><span class="p">.</span><span class="n">tolist</span><span class="p">().</span><span class="n">index</span><span class="p">(</span><span class="n">proposer</span><span class="p">)]</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">nan</span>
+</span>            <span class="n">self</span><span class="p">.</span><span class="n">engagements</span><span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">engagements</span><span class="p">.</span><span class="nf">tolist</span><span class="p">().</span><span class="nf">index</span><span class="p">(</span><span class="n">proposer</span><span class="p">)]</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">nan</span>
 
-        <span class="k">if</span> <span class="n">acceptor</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">.</span><span class="n">engagements</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">acceptor</span> <span class="ow">in</span> <span class="n">self</span><span class="p">.</span><span class="n">engagements</span><span class="p">:</span>
             <span class="c1">#print("new engagement2")
-</span>            <span class="bp">self</span><span class="p">.</span><span class="n">engagements</span><span class="p">[</span><span class="bp">self</span><span class="p">.</span><span class="n">engagements</span><span class="p">.</span><span class="n">tolist</span><span class="p">().</span><span class="n">index</span><span class="p">(</span><span class="n">acceptor</span><span class="p">)]</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">nan</span>
+</span>            <span class="n">self</span><span class="p">.</span><span class="n">engagements</span><span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">engagements</span><span class="p">.</span><span class="nf">tolist</span><span class="p">().</span><span class="nf">index</span><span class="p">(</span><span class="n">acceptor</span><span class="p">)]</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">nan</span>
 
-        <span class="bp">self</span><span class="p">.</span><span class="n">engagements</span><span class="p">[</span><span class="n">acceptor</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">proposer</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">engagements</span><span class="p">[</span><span class="n">proposer</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">acceptor</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">engagements</span><span class="p">[</span><span class="n">acceptor</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">proposer</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">engagements</span><span class="p">[</span><span class="n">proposer</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">acceptor</span>
         <span class="c1">#print("new engagement made")
 </span>
-    <span class="k">def</span> <span class="nf">is_complete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="s">"""
+    <span class="k">def</span> <span class="nf">is_complete</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
         Return True if complete
-        """</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">isnan</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">engagements</span><span class="p">).</span><span class="nb">any</span><span class="p">()):</span>
+        </span><span class="sh">"""</span>
+        <span class="nf">if </span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">isnan</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">engagements</span><span class="p">).</span><span class="nf">any</span><span class="p">()):</span>
             <span class="k">return</span> <span class="bp">False</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">True</span>
 
-    <span class="k">def</span> <span class="nf">not_engaged</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">proposer</span><span class="p">):</span>
-        <span class="s">"""
+    <span class="k">def</span> <span class="nf">not_engaged</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="n">proposer</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
         Return True if engaged otherwise False
-        """</span>
-        <span class="k">if</span> <span class="n">proposer</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">.</span><span class="n">engagements</span><span class="p">:</span>
+        </span><span class="sh">"""</span>
+        <span class="k">if</span> <span class="n">proposer</span> <span class="ow">in</span> <span class="n">self</span><span class="p">.</span><span class="n">engagements</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">False</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">True</span>
 
-    <span class="k">def</span> <span class="nf">get_current_engagement</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">acceptor</span><span class="p">):</span> 
-        <span class="s">"""
+    <span class="k">def</span> <span class="nf">get_current_engagement</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="n">acceptor</span><span class="p">):</span> 
+        <span class="sh">"""</span><span class="s">
         Return the current engagement for a acceptor
-        """</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">engagements</span><span class="p">[</span><span class="n">acceptor</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        </span><span class="sh">"""</span>
+        <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="n">engagements</span><span class="p">[</span><span class="n">acceptor</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">get_all_engagements</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="s">"""
+    <span class="k">def</span> <span class="nf">get_all_engagements</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
         Return all the current engagements
-        """</span>        
-        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">engagements</span></code></pre></figure>
+        </span><span class="sh">"""</span>        
+        <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="n">engagements</span></code></pre></figure>
 
 <h1>A Data Structure for holding Preferences</h1>
 
@@ -471,49 +506,49 @@
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># Acceptor Class :: holds the acceptor preferences
 </span><span class="k">class</span> <span class="nc">Acceptor</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">values</span><span class="p">):</span>
-        <span class="s">"""
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="n">values</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
         Construct the acceptor preferences
-        """</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">values</span> <span class="o">=</span> <span class="n">values</span>
+        </span><span class="sh">"""</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">values</span> <span class="o">=</span> <span class="n">values</span>
 
-    <span class="k">def</span> <span class="nf">get_preference_number</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">acceptor</span><span class="p">,</span><span class="n">proposer</span><span class="p">,</span><span class="n">null_position</span><span class="p">):</span>
-        <span class="s">"""
+    <span class="k">def</span> <span class="nf">get_preference_number</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="n">acceptor</span><span class="p">,</span><span class="n">proposer</span><span class="p">,</span><span class="n">null_position</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
         Return the preference of the acceptor for the proposer passed. Return 0 if value is null or if the preference is not in the list.
-        """</span>
+        </span><span class="sh">"""</span>
         <span class="c1">#if (proposer==null_position) or (acceptor==null_position): 
 </span>        <span class="c1">#    return 0
 </span>
-        <span class="k">if</span> <span class="n">proposer</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">.</span><span class="n">values</span><span class="p">[</span><span class="n">acceptor</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">values</span><span class="p">[</span><span class="n">acceptor</span><span class="o">-</span><span class="mi">1</span><span class="p">].</span><span class="n">index</span><span class="p">(</span><span class="n">proposer</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>
+        <span class="k">if</span> <span class="n">proposer</span> <span class="ow">in</span> <span class="n">self</span><span class="p">.</span><span class="n">values</span><span class="p">[</span><span class="n">acceptor</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="n">values</span><span class="p">[</span><span class="n">acceptor</span><span class="o">-</span><span class="mi">1</span><span class="p">].</span><span class="nf">index</span><span class="p">(</span><span class="n">proposer</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>
         <span class="k">else</span><span class="p">:</span> 
             <span class="k">return</span> <span class="mi">0</span>
 
-    <span class="k">def</span> <span class="nf">is_proposal_accepted</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">acceptor</span><span class="p">,</span><span class="n">proposer</span><span class="p">,</span><span class="n">pool_object</span><span class="p">,</span><span class="n">pools_object</span><span class="p">,</span><span class="n">null_position</span><span class="p">,</span><span class="n">orphan_round</span><span class="p">,</span><span class="n">max_set_size</span><span class="p">,</span><span class="n">names</span><span class="p">,</span><span class="n">preference</span><span class="p">,</span><span class="n">acceptors_table</span><span class="p">,</span><span class="n">proposer_object</span><span class="p">):</span>
-        <span class="s">"""
+    <span class="k">def</span> <span class="nf">is_proposal_accepted</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="n">acceptor</span><span class="p">,</span><span class="n">proposer</span><span class="p">,</span><span class="n">pool_object</span><span class="p">,</span><span class="n">pools_object</span><span class="p">,</span><span class="n">null_position</span><span class="p">,</span><span class="n">orphan_round</span><span class="p">,</span><span class="n">max_set_size</span><span class="p">,</span><span class="n">names</span><span class="p">,</span><span class="n">preference</span><span class="p">,</span><span class="n">acceptors_table</span><span class="p">,</span><span class="n">proposer_object</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
         If proposer is in accepter preferences return true else return false
-        """</span>
-        <span class="k">if</span> <span class="n">debug</span><span class="p">:</span> <span class="k">print</span><span class="p">(</span><span class="s">"position of preference in acceptor table (for proposal):"</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">get_preference_number</span><span class="p">(</span><span class="n">acceptor</span><span class="p">,</span><span class="n">proposer</span><span class="p">))</span>
-        <span class="k">if</span> <span class="n">debug</span><span class="p">:</span> <span class="k">print</span><span class="p">(</span><span class="s">"acceptor is currently engaged to:"</span><span class="p">,</span> <span class="n">pool_object</span><span class="p">.</span><span class="n">get_current_engagement</span><span class="p">(</span><span class="n">acceptor</span><span class="p">))</span>
-        <span class="k">if</span> <span class="n">debug</span><span class="p">:</span> <span class="k">print</span><span class="p">(</span><span class="s">"position of preference in acceptor table (for current engagement):"</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">get_preference_number</span><span class="p">(</span><span class="n">acceptor</span><span class="p">,</span><span class="n">pool_object</span><span class="p">.</span><span class="n">get_current_engagement</span><span class="p">(</span><span class="n">acceptor</span><span class="p">)))</span>
+        </span><span class="sh">"""</span>
+        <span class="k">if</span> <span class="n">debug</span><span class="p">:</span> <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">position of preference in acceptor table (for proposal):</span><span class="sh">"</span><span class="p">,</span> <span class="n">self</span><span class="p">.</span><span class="nf">get_preference_number</span><span class="p">(</span><span class="n">acceptor</span><span class="p">,</span><span class="n">proposer</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">debug</span><span class="p">:</span> <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">acceptor is currently engaged to:</span><span class="sh">"</span><span class="p">,</span> <span class="n">pool_object</span><span class="p">.</span><span class="nf">get_current_engagement</span><span class="p">(</span><span class="n">acceptor</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">debug</span><span class="p">:</span> <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">position of preference in acceptor table (for current engagement):</span><span class="sh">"</span><span class="p">,</span> <span class="n">self</span><span class="p">.</span><span class="nf">get_preference_number</span><span class="p">(</span><span class="n">acceptor</span><span class="p">,</span><span class="n">pool_object</span><span class="p">.</span><span class="nf">get_current_engagement</span><span class="p">(</span><span class="n">acceptor</span><span class="p">)))</span>
 
         <span class="c1">#check if the proposal would create a set size that exceeds the maximum set size and if so return false
-</span>        <span class="k">if</span> <span class="n">is_set_size_allowed</span><span class="p">(</span><span class="n">acceptors_table</span><span class="p">,</span><span class="n">pool_object</span><span class="p">,</span><span class="n">names</span><span class="p">,</span><span class="n">preference</span><span class="p">,</span><span class="n">proposer</span><span class="p">,</span><span class="n">proposer_object</span><span class="p">,</span><span class="n">pools_object</span><span class="p">,</span><span class="n">max_set_size</span><span class="p">)</span><span class="o">==</span><span class="bp">False</span><span class="p">:</span>
+</span>        <span class="k">if</span> <span class="nf">is_set_size_allowed</span><span class="p">(</span><span class="n">acceptors_table</span><span class="p">,</span><span class="n">pool_object</span><span class="p">,</span><span class="n">names</span><span class="p">,</span><span class="n">preference</span><span class="p">,</span><span class="n">proposer</span><span class="p">,</span><span class="n">proposer_object</span><span class="p">,</span><span class="n">pools_object</span><span class="p">,</span><span class="n">max_set_size</span><span class="p">)</span><span class="o">==</span><span class="bp">False</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">False</span>
 
         <span class="k">if</span> <span class="n">orphan_round</span><span class="p">:</span> 
             <span class="c1"># If Orphan then If Engagements empty accept, Elseif better than current engagement accept; Else reject (i.e. not listed)
-</span>            <span class="k">if</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">pool_object</span><span class="p">.</span><span class="n">get_current_engagement</span><span class="p">(</span><span class="n">acceptor</span><span class="p">))</span> <span class="ow">and</span> <span class="n">np</span><span class="p">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">pool_object</span><span class="p">.</span><span class="n">get_current_engagement</span><span class="p">(</span><span class="n">proposer</span><span class="p">))</span> <span class="ow">and</span> <span class="n">pools_object</span><span class="p">.</span><span class="n">is_orphan</span><span class="p">(</span><span class="n">proposer</span><span class="p">)</span> <span class="ow">and</span> <span class="n">pools_object</span><span class="p">.</span><span class="n">is_valid_engagement</span><span class="p">(</span><span class="n">acceptor</span><span class="p">,</span><span class="n">proposer</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">get_preference_number</span><span class="p">(</span><span class="n">acceptor</span><span class="p">,</span><span class="n">proposer</span><span class="p">,</span><span class="n">null_position</span><span class="p">)</span><span class="o">!=</span><span class="mi">0</span><span class="p">)):</span>
+</span>            <span class="nf">if </span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">isnan</span><span class="p">(</span><span class="n">pool_object</span><span class="p">.</span><span class="nf">get_current_engagement</span><span class="p">(</span><span class="n">acceptor</span><span class="p">))</span> <span class="ow">and</span> <span class="n">np</span><span class="p">.</span><span class="nf">isnan</span><span class="p">(</span><span class="n">pool_object</span><span class="p">.</span><span class="nf">get_current_engagement</span><span class="p">(</span><span class="n">proposer</span><span class="p">))</span> <span class="ow">and</span> <span class="n">pools_object</span><span class="p">.</span><span class="nf">is_orphan</span><span class="p">(</span><span class="n">proposer</span><span class="p">)</span> <span class="ow">and</span> <span class="n">pools_object</span><span class="p">.</span><span class="nf">is_valid_engagement</span><span class="p">(</span><span class="n">acceptor</span><span class="p">,</span><span class="n">proposer</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="nf">get_preference_number</span><span class="p">(</span><span class="n">acceptor</span><span class="p">,</span><span class="n">proposer</span><span class="p">,</span><span class="n">null_position</span><span class="p">)</span><span class="o">!=</span><span class="mi">0</span><span class="p">)):</span>
                 <span class="k">return</span> <span class="bp">True</span>
-            <span class="k">elif</span> <span class="p">((</span><span class="n">pools_object</span><span class="p">.</span><span class="n">is_orphan</span><span class="p">(</span><span class="n">proposer</span><span class="p">)</span> <span class="ow">and</span> <span class="n">pools_object</span><span class="p">.</span><span class="n">is_valid_engagement</span><span class="p">(</span><span class="n">acceptor</span><span class="p">,</span><span class="n">proposer</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">get_preference_number</span><span class="p">(</span><span class="n">acceptor</span><span class="p">,</span><span class="n">proposer</span><span class="p">,</span><span class="n">null_position</span><span class="p">)</span><span class="o">!=</span><span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">get_preference_number</span><span class="p">(</span><span class="n">acceptor</span><span class="p">,</span><span class="n">proposer</span><span class="p">,</span><span class="n">null_position</span><span class="p">)</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="p">.</span><span class="n">get_preference_number</span><span class="p">(</span><span class="n">acceptor</span><span class="p">,</span><span class="n">pool_object</span><span class="p">.</span><span class="n">get_current_engagement</span><span class="p">(</span><span class="n">acceptor</span><span class="p">),</span><span class="n">null_position</span><span class="p">)))):</span> 
+            <span class="nf">elif </span><span class="p">((</span><span class="n">pools_object</span><span class="p">.</span><span class="nf">is_orphan</span><span class="p">(</span><span class="n">proposer</span><span class="p">)</span> <span class="ow">and</span> <span class="n">pools_object</span><span class="p">.</span><span class="nf">is_valid_engagement</span><span class="p">(</span><span class="n">acceptor</span><span class="p">,</span><span class="n">proposer</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="nf">get_preference_number</span><span class="p">(</span><span class="n">acceptor</span><span class="p">,</span><span class="n">proposer</span><span class="p">,</span><span class="n">null_position</span><span class="p">)</span><span class="o">!=</span><span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="nf">get_preference_number</span><span class="p">(</span><span class="n">acceptor</span><span class="p">,</span><span class="n">proposer</span><span class="p">,</span><span class="n">null_position</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">self</span><span class="p">.</span><span class="nf">get_preference_number</span><span class="p">(</span><span class="n">acceptor</span><span class="p">,</span><span class="n">pool_object</span><span class="p">.</span><span class="nf">get_current_engagement</span><span class="p">(</span><span class="n">acceptor</span><span class="p">),</span><span class="n">null_position</span><span class="p">)))):</span> 
                 <span class="k">return</span> <span class="bp">True</span> 
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">return</span> <span class="bp">False</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="c1"># Same logic as above but do not restrict to orphans
-</span>            <span class="k">if</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">pool_object</span><span class="p">.</span><span class="n">get_current_engagement</span><span class="p">(</span><span class="n">acceptor</span><span class="p">))</span> <span class="ow">and</span> <span class="n">np</span><span class="p">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">pool_object</span><span class="p">.</span><span class="n">get_current_engagement</span><span class="p">(</span><span class="n">proposer</span><span class="p">))</span> <span class="ow">and</span> <span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">get_preference_number</span><span class="p">(</span><span class="n">acceptor</span><span class="p">,</span><span class="n">proposer</span><span class="p">,</span><span class="n">null_position</span><span class="p">)</span><span class="o">!=</span><span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="n">pools_object</span><span class="p">.</span><span class="n">is_valid_engagement</span><span class="p">(</span><span class="n">acceptor</span><span class="p">,</span><span class="n">proposer</span><span class="p">)):</span>
+</span>            <span class="nf">if </span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">isnan</span><span class="p">(</span><span class="n">pool_object</span><span class="p">.</span><span class="nf">get_current_engagement</span><span class="p">(</span><span class="n">acceptor</span><span class="p">))</span> <span class="ow">and</span> <span class="n">np</span><span class="p">.</span><span class="nf">isnan</span><span class="p">(</span><span class="n">pool_object</span><span class="p">.</span><span class="nf">get_current_engagement</span><span class="p">(</span><span class="n">proposer</span><span class="p">))</span> <span class="ow">and</span> <span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="nf">get_preference_number</span><span class="p">(</span><span class="n">acceptor</span><span class="p">,</span><span class="n">proposer</span><span class="p">,</span><span class="n">null_position</span><span class="p">)</span><span class="o">!=</span><span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="n">pools_object</span><span class="p">.</span><span class="nf">is_valid_engagement</span><span class="p">(</span><span class="n">acceptor</span><span class="p">,</span><span class="n">proposer</span><span class="p">)):</span>
                 <span class="k">return</span> <span class="bp">True</span>
-            <span class="k">elif</span> <span class="p">((</span><span class="n">pools_object</span><span class="p">.</span><span class="n">is_valid_engagement</span><span class="p">(</span><span class="n">acceptor</span><span class="p">,</span><span class="n">proposer</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">get_preference_number</span><span class="p">(</span><span class="n">acceptor</span><span class="p">,</span><span class="n">proposer</span><span class="p">,</span><span class="n">null_position</span><span class="p">)</span><span class="o">!=</span><span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">get_preference_number</span><span class="p">(</span><span class="n">acceptor</span><span class="p">,</span><span class="n">proposer</span><span class="p">,</span><span class="n">null_position</span><span class="p">)</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="p">.</span><span class="n">get_preference_number</span><span class="p">(</span><span class="n">acceptor</span><span class="p">,</span><span class="n">pool_object</span><span class="p">.</span><span class="n">get_current_engagement</span><span class="p">(</span><span class="n">acceptor</span><span class="p">),</span><span class="n">null_position</span><span class="p">)))):</span> 
+            <span class="nf">elif </span><span class="p">((</span><span class="n">pools_object</span><span class="p">.</span><span class="nf">is_valid_engagement</span><span class="p">(</span><span class="n">acceptor</span><span class="p">,</span><span class="n">proposer</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="nf">get_preference_number</span><span class="p">(</span><span class="n">acceptor</span><span class="p">,</span><span class="n">proposer</span><span class="p">,</span><span class="n">null_position</span><span class="p">)</span><span class="o">!=</span><span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="nf">get_preference_number</span><span class="p">(</span><span class="n">acceptor</span><span class="p">,</span><span class="n">proposer</span><span class="p">,</span><span class="n">null_position</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">self</span><span class="p">.</span><span class="nf">get_preference_number</span><span class="p">(</span><span class="n">acceptor</span><span class="p">,</span><span class="n">pool_object</span><span class="p">.</span><span class="nf">get_current_engagement</span><span class="p">(</span><span class="n">acceptor</span><span class="p">),</span><span class="n">null_position</span><span class="p">)))):</span> 
                 <span class="k">return</span> <span class="bp">True</span> 
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">return</span> <span class="bp">False</span></code></pre></figure>
@@ -522,18 +557,18 @@
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># Proposer Class :: holds the proposer preferences
 </span><span class="k">class</span> <span class="nc">Proposer</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
-        <span class="s">"""
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
         Construct the proposer preferences
-        """</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">values</span> <span class="o">=</span> <span class="n">values</span>
+        </span><span class="sh">"""</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">values</span> <span class="o">=</span> <span class="n">values</span>
 
-    <span class="k">def</span> <span class="nf">get_proposal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">proposer</span><span class="p">,</span><span class="n">iteration</span><span class="p">):</span>
-        <span class="s">"""
+    <span class="k">def</span> <span class="nf">get_proposal</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="n">proposer</span><span class="p">,</span><span class="n">iteration</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
         Return the acceptor value (proposal to try) for the proposer and iteration passed
-        """</span>
+        </span><span class="sh">"""</span>
         <span class="c1">#print("proposer",proposer,"iteration",iteration,"result",self.values[proposer][iteration])
-</span>        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">values</span><span class="p">[</span><span class="n">proposer</span><span class="p">][</span><span class="n">iteration</span><span class="p">]</span></code></pre></figure>
+</span>        <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="n">values</span><span class="p">[</span><span class="n">proposer</span><span class="p">][</span><span class="n">iteration</span><span class="p">]</span></code></pre></figure>
 
 <h1>A Data Structure for holding previously found Stable Pairs</h1>
 
@@ -541,198 +576,198 @@
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># Pools Class :: holds pool (engagement) objects  
 </span><span class="k">class</span> <span class="nc">Pools</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="s">"""
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
         Construct the proposer preferences
-        """</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">values</span> <span class="o">=</span> <span class="p">[]</span>
+        </span><span class="sh">"""</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">values</span> <span class="o">=</span> <span class="p">[]</span>
 
-    <span class="k">def</span> <span class="nf">length</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="s">"""
+    <span class="k">def</span> <span class="nf">length</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
         Return the length of the pools set
-        """</span>
-        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">values</span><span class="p">)</span>
+        </span><span class="sh">"""</span>
+        <span class="k">return</span> <span class="nf">len</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">values</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">add_pool</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">pool_object</span><span class="p">):</span>
-        <span class="s">"""
+    <span class="k">def</span> <span class="nf">add_pool</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="n">pool_object</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
         Add pool objects to the Pools object class
-        """</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">values</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">pool_object</span><span class="p">)</span>
+        </span><span class="sh">"""</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">values</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">pool_object</span><span class="p">)</span>
         
-    <span class="k">def</span> <span class="nf">remove_pool</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="s">"""
+    <span class="k">def</span> <span class="nf">remove_pool</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
         Remove last object added to values
-        """</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">values</span><span class="p">.</span><span class="n">pop</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">values</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        </span><span class="sh">"""</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">values</span><span class="p">.</span><span class="nf">pop</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">values</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">is_valid_engagement</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">acceptor</span><span class="p">,</span><span class="n">proposer</span><span class="p">):</span>
-        <span class="s">"""
+    <span class="k">def</span> <span class="nf">is_valid_engagement</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="n">acceptor</span><span class="p">,</span><span class="n">proposer</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
         If already engaged to proposer in previous iteration; otherwise return True
-        """</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">values</span><span class="p">)):</span>   
-            <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">get_current_engagement</span><span class="p">(</span><span class="n">acceptor</span><span class="p">)</span><span class="o">==</span><span class="n">proposer</span><span class="p">:</span> 
+        </span><span class="sh">"""</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">values</span><span class="p">)):</span>   
+            <span class="k">if</span> <span class="n">self</span><span class="p">.</span><span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="nf">get_current_engagement</span><span class="p">(</span><span class="n">acceptor</span><span class="p">)</span><span class="o">==</span><span class="n">proposer</span><span class="p">:</span> 
                 <span class="k">return</span> <span class="bp">False</span> <span class="c1">#if found don't allow engagement
 </span>        
         <span class="k">return</span> <span class="bp">True</span> 
         
-    <span class="k">def</span> <span class="nf">is_orphan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">proposer</span><span class="p">):</span>
-        <span class="s">"""
+    <span class="k">def</span> <span class="nf">is_orphan</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="n">proposer</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
         Check if the proposer appears on any previous set of engagements (pool) and if so return True to indicate orphan
-        """</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">values</span><span class="p">)):</span>   
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="p">.</span><span class="n">isnan</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">get_current_engagement</span><span class="p">(</span><span class="n">proposer</span><span class="p">)):</span> 
+        </span><span class="sh">"""</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">values</span><span class="p">)):</span>   
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="p">.</span><span class="nf">isnan</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="nf">get_current_engagement</span><span class="p">(</span><span class="n">proposer</span><span class="p">)):</span> 
                 <span class="k">return</span> <span class="bp">False</span>  <span class="c1">#if found don't allow engagement
 </span>        <span class="k">return</span> <span class="bp">True</span> 
 
-    <span class="k">def</span> <span class="nf">get_pool_object</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">pool_object_number</span><span class="p">):</span>
-        <span class="s">"""
+    <span class="k">def</span> <span class="nf">get_pool_object</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="n">pool_object_number</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">
         Return the pool object from the pools class
-        """</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">values</span><span class="p">[</span><span class="n">pool_object_number</span><span class="p">]</span></code></pre></figure>
+        </span><span class="sh">"""</span>
+        <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="n">values</span><span class="p">[</span><span class="n">pool_object_number</span><span class="p">]</span></code></pre></figure>
 
 <h1>Routines for importing &amp; encoding the preference data</h1>
 
 <p>Next, we have a few functions that import the preferences from file, encode and decode the input data as strings to integer values.</p>
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">import_preferences</span><span class="p">(</span><span class="n">input_file</span><span class="p">):</span>
-    <span class="s">"""
+    <span class="sh">"""</span><span class="s">
         Read the data from file and return the names and preferences
-    """</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">input_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
+    </span><span class="sh">"""</span>
+    <span class="k">with</span> <span class="nf">open</span><span class="p">(</span><span class="n">input_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
         <span class="n">preferences</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">names</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="p">.</span><span class="n">reader</span><span class="p">(</span><span class="n">csvfile</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s"> Input file read from file </span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+        <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="p">.</span><span class="nf">reader</span><span class="p">(</span><span class="n">csvfile</span><span class="p">)</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="se">\n</span><span class="s"> Input file read from file </span><span class="se">\n</span><span class="sh">"</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
-            <span class="n">data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
-            <span class="k">print</span><span class="p">(</span><span class="s">"{}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
-            <span class="n">preferences</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>    
-            <span class="n">names</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-        <span class="k">return</span><span class="p">(</span><span class="n">preferences</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">names</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+            <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">{}</span><span class="sh">"</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+            <span class="n">preferences</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>    
+            <span class="n">names</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="nf">return</span><span class="p">(</span><span class="n">preferences</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">names</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
 
 <span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="n">names</span><span class="p">,</span><span class="n">name</span><span class="p">):</span>
-    <span class="s">"""
+    <span class="sh">"""</span><span class="s">
     Return the index of the name in the list of names
-    """</span>
-    <span class="k">return</span> <span class="n">names</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>
+    </span><span class="sh">"""</span>
+    <span class="k">return</span> <span class="n">names</span><span class="p">.</span><span class="nf">index</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>
 
 <span class="k">def</span> <span class="nf">return_null_position</span><span class="p">(</span><span class="n">names</span><span class="p">):</span>
-    <span class="s">"""
+    <span class="sh">"""</span><span class="s">
     Return tye position of the null value
-    """</span>
-    <span class="k">return</span> <span class="n">names</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="s">"null"</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>
+    </span><span class="sh">"""</span>
+    <span class="k">return</span> <span class="n">names</span><span class="p">.</span><span class="nf">index</span><span class="p">(</span><span class="sh">"</span><span class="s">null</span><span class="sh">"</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>
 
 <span class="k">def</span> <span class="nf">encode_preferences</span><span class="p">(</span><span class="n">preferences</span><span class="p">,</span><span class="n">names</span><span class="p">,</span><span class="n">no_of_preferences</span><span class="p">):</span>
-    <span class="s">"""
+    <span class="sh">"""</span><span class="s">
     Encode the preferences 
-    """</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">preferences</span><span class="p">)</span>
+    </span><span class="sh">"""</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="nc">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">preferences</span><span class="p">)</span>
     
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">no_of_preferences</span><span class="p">):</span>
-        <span class="n">df</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="nb">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">encode</span><span class="p">(</span><span class="n">names</span><span class="p">,</span><span class="n">x</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">no_of_preferences</span><span class="p">):</span>
+        <span class="n">df</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="nf">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nf">encode</span><span class="p">(</span><span class="n">names</span><span class="p">,</span><span class="n">x</span><span class="p">))</span>
 
-    <span class="k">return</span><span class="p">(</span><span class="n">df</span><span class="p">.</span><span class="n">values</span><span class="p">.</span><span class="n">tolist</span><span class="p">())</span>
+    <span class="nf">return</span><span class="p">(</span><span class="n">df</span><span class="p">.</span><span class="n">values</span><span class="p">.</span><span class="nf">tolist</span><span class="p">())</span>
 
 <span class="k">def</span> <span class="nf">dec</span><span class="p">(</span><span class="n">names</span><span class="p">,</span><span class="n">index</span><span class="p">):</span>
-    <span class="s">"""
+    <span class="sh">"""</span><span class="s">
     Return the index of the name in the list of names
-    """</span>
+    </span><span class="sh">"""</span>
     <span class="k">return</span> <span class="n">names</span><span class="p">[</span><span class="n">index</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
 <span class="k">def</span> <span class="nf">decode</span><span class="p">(</span><span class="n">pairs</span><span class="p">,</span><span class="n">names</span><span class="p">):</span>
-    <span class="s">"""
+    <span class="sh">"""</span><span class="s">
     Decode the engagements
-    """</span>  
-    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">pairs</span><span class="p">)</span>
-    <span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">fillna</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>  
-    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">pairs</span><span class="p">).</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>    
-    <span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nb">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">dec</span><span class="p">(</span><span class="n">names</span><span class="p">,</span><span class="n">x</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span><span class="o">&gt;</span><span class="mi">0</span> <span class="k">else</span> <span class="bp">None</span><span class="p">)</span> <span class="c1">#decode engagements (ignore negative values)
-</span>    <span class="k">return</span><span class="p">(</span><span class="n">df</span><span class="p">.</span><span class="n">values</span><span class="p">.</span><span class="n">tolist</span><span class="p">())</span></code></pre></figure>
+    </span><span class="sh">"""</span>  
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="nc">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">pairs</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nf">fillna</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>  
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="nc">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">pairs</span><span class="p">).</span><span class="nf">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>    
+    <span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nf">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nf">dec</span><span class="p">(</span><span class="n">names</span><span class="p">,</span><span class="n">x</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span><span class="o">&gt;</span><span class="mi">0</span> <span class="k">else</span> <span class="bp">None</span><span class="p">)</span> <span class="c1">#decode engagements (ignore negative values)
+</span>    <span class="nf">return</span><span class="p">(</span><span class="n">df</span><span class="p">.</span><span class="n">values</span><span class="p">.</span><span class="nf">tolist</span><span class="p">())</span></code></pre></figure>
 
 <h1>Routines for forming sets from stable pairs</h1>
 
 <p>We will some functions to build the Stable Pairs found at each iteration of the Stable Marriage Algorithm into sets. The function build_pairs returns a dataframe with the stable pairs found at each iteration. The function build_groups then loops through all of the pairs and joins these to previously joined pairs. The Python sets library is ideal for this as the union of two sets implicitly removes any duplication.</p>
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">build_pairs</span><span class="p">(</span><span class="n">names</span><span class="p">,</span><span class="n">pools_object</span><span class="p">):</span>
-    <span class="s">"""
+    <span class="sh">"""</span><span class="s">
     Build a list of all stable pairs by fetching pairs from each pool_object in the pools_object
-    """</span>
-    <span class="n">pairs</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">()</span>
+    </span><span class="sh">"""</span>
+    <span class="n">pairs</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="nc">DataFrame</span><span class="p">()</span>
     <span class="n">pairs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">names</span>
 
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">pools_object</span><span class="p">.</span><span class="n">length</span><span class="p">()):</span>
-        <span class="n">pairs</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">decode</span><span class="p">(</span><span class="n">pools_object</span><span class="p">.</span><span class="n">get_pool_object</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="n">get_all_engagements</span><span class="p">(),</span> <span class="n">names</span><span class="p">)).</span><span class="n">flatten</span><span class="p">()</span> <span class="c1">#pd.DataFrame(data=engagements)  
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">pools_object</span><span class="p">.</span><span class="nf">length</span><span class="p">()):</span>
+        <span class="n">pairs</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="nf">decode</span><span class="p">(</span><span class="n">pools_object</span><span class="p">.</span><span class="nf">get_pool_object</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="nf">get_all_engagements</span><span class="p">(),</span> <span class="n">names</span><span class="p">)).</span><span class="nf">flatten</span><span class="p">()</span> <span class="c1">#pd.DataFrame(data=engagements)  
 </span>
-    <span class="k">return</span><span class="p">(</span><span class="n">pairs</span><span class="p">)</span>
+    <span class="nf">return</span><span class="p">(</span><span class="n">pairs</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">check_if_intersection</span><span class="p">(</span><span class="n">set_1</span><span class="p">,</span><span class="n">set_2</span><span class="p">):</span>
-    <span class="s">"""
+    <span class="sh">"""</span><span class="s">
     Returns true if an intersection between two lists is found, otherwise false
-    """</span>
-    <span class="n">set1</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">set_1</span><span class="p">)</span>
-    <span class="n">set2</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">set_2</span><span class="p">)</span>
+    </span><span class="sh">"""</span>
+    <span class="n">set1</span> <span class="o">=</span> <span class="nf">set</span><span class="p">(</span><span class="n">set_1</span><span class="p">)</span>
+    <span class="n">set2</span> <span class="o">=</span> <span class="nf">set</span><span class="p">(</span><span class="n">set_2</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="p">((</span><span class="n">set1</span><span class="p">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">set2</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">set</span><span class="p">())</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span> <span class="s">"null"</span> <span class="ow">in</span> <span class="n">set1</span><span class="p">)</span> <span class="ow">and</span><span class="p">(</span><span class="ow">not</span> <span class="s">"null"</span> <span class="ow">in</span> <span class="n">set2</span><span class="p">)):</span>
+    <span class="nf">if </span><span class="p">((</span><span class="n">set1</span><span class="p">.</span><span class="nf">intersection</span><span class="p">(</span><span class="n">set2</span><span class="p">)</span> <span class="o">!=</span> <span class="nf">set</span><span class="p">())</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span> <span class="sh">"</span><span class="s">null</span><span class="sh">"</span> <span class="ow">in</span> <span class="n">set1</span><span class="p">)</span> <span class="ow">and</span><span class="p">(</span><span class="ow">not</span> <span class="sh">"</span><span class="s">null</span><span class="sh">"</span> <span class="ow">in</span> <span class="n">set2</span><span class="p">)):</span>
         <span class="k">return</span> <span class="bp">True</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">False</span>
 
 <span class="k">def</span> <span class="nf">get_union</span><span class="p">(</span><span class="n">set_1</span><span class="p">,</span><span class="n">set_2</span><span class="p">):</span>
-    <span class="s">"""
+    <span class="sh">"""</span><span class="s">
     Returns the union of two lists
-    """</span>
-    <span class="n">set1</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">set_1</span><span class="p">)</span>
-    <span class="n">set2</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">set_2</span><span class="p">)</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="n">set1</span><span class="p">.</span><span class="n">union</span><span class="p">(</span><span class="n">set2</span><span class="p">)</span>
+    </span><span class="sh">"""</span>
+    <span class="n">set1</span> <span class="o">=</span> <span class="nf">set</span><span class="p">(</span><span class="n">set_1</span><span class="p">)</span>
+    <span class="n">set2</span> <span class="o">=</span> <span class="nf">set</span><span class="p">(</span><span class="n">set_2</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">set1</span><span class="p">.</span><span class="nf">union</span><span class="p">(</span><span class="n">set2</span><span class="p">)</span>
     
-    <span class="k">if</span> <span class="s">"null"</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
-        <span class="n">result</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="s">"null"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="sh">"</span><span class="s">null</span><span class="sh">"</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+        <span class="n">result</span><span class="p">.</span><span class="nf">remove</span><span class="p">(</span><span class="sh">"</span><span class="s">null</span><span class="sh">"</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">result</span>
 
 <span class="k">def</span> <span class="nf">build_groups</span><span class="p">(</span><span class="n">names</span><span class="p">,</span><span class="n">pairs</span><span class="p">,</span><span class="n">pools_object</span><span class="p">):</span>
-    <span class="s">"""
+    <span class="sh">"""</span><span class="s">
     From the pairs data, build lists of sets and return the set lists (provided there are more than 2 columns)
-    """</span>
+    </span><span class="sh">"""</span>
     <span class="n">sets</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">pairs</span> <span class="o">=</span> <span class="n">pairs</span><span class="p">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s">"null"</span><span class="p">)</span>
+    <span class="n">pairs</span> <span class="o">=</span> <span class="n">pairs</span><span class="p">.</span><span class="nf">fillna</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="sh">"</span><span class="s">null</span><span class="sh">"</span><span class="p">)</span>
     
     <span class="c1">#only perform traverse if we have a minimum of two columns
 </span>    <span class="k">if</span> <span class="n">pairs</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>
         
         <span class="c1">#create sets for members at first level
-</span>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">)):</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">get_union</span><span class="p">(</span><span class="nb">list</span><span class="p">([</span><span class="n">pairs</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">]]),</span><span class="nb">list</span><span class="p">([</span><span class="n">pairs</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">]])))</span>
+</span>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">names</span><span class="p">)):</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="nf">get_union</span><span class="p">(</span><span class="nf">list</span><span class="p">([</span><span class="n">pairs</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">]]),</span><span class="nf">list</span><span class="p">([</span><span class="n">pairs</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">]])))</span>
             <span class="k">if</span> <span class="n">result</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sets</span><span class="p">:</span>
-                <span class="n">sets</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+                <span class="n">sets</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
         <span class="c1">#print("output of level1 join", sets)
 </span>    
         <span class="c1"># Now join level2, level3 etc members and maintain the trees
-</span>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">pools_object</span><span class="p">.</span><span class="n">length</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span> <span class="c1">#or   #pairs.shape[1]
-</span>            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">)):</span>
+</span>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">pools_object</span><span class="p">.</span><span class="nf">length</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span> <span class="c1">#or   #pairs.shape[1]
+</span>            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">names</span><span class="p">)):</span>
                 <span class="n">index_to_join</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
                 <span class="n">index_to_remove</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
     
                 <span class="c1">#check if the student is already in a set somewhere else and if so get the index of that set
-</span>                <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sets</span><span class="p">)):</span>
+</span>                <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">sets</span><span class="p">)):</span>
                     <span class="k">if</span> <span class="n">pairs</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="ow">in</span> <span class="n">sets</span><span class="p">[</span><span class="n">k</span><span class="p">]:</span>
                         <span class="n">index_to_remove</span> <span class="o">=</span> <span class="n">k</span>
-                        <span class="k">if</span> <span class="n">debug</span><span class="p">:</span> <span class="k">print</span><span class="p">(</span><span class="s">"index to remove"</span><span class="p">,</span> <span class="n">index_to_remove</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">debug</span><span class="p">:</span> <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">index to remove</span><span class="sh">"</span><span class="p">,</span> <span class="n">index_to_remove</span><span class="p">)</span>
     
                 <span class="c1">#get the index of the set the student is already in 
-</span>                <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sets</span><span class="p">)):</span>
+</span>                <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">sets</span><span class="p">)):</span>
                     <span class="k">if</span> <span class="n">pairs</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="ow">in</span> <span class="n">sets</span><span class="p">[</span><span class="n">k</span><span class="p">]:</span>
                         <span class="n">index_to_join</span> <span class="o">=</span> <span class="n">k</span>
-                        <span class="k">if</span> <span class="n">debug</span><span class="p">:</span> <span class="k">print</span><span class="p">(</span><span class="s">"index to join"</span><span class="p">,</span><span class="n">index_to_join</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">debug</span><span class="p">:</span> <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">index to join</span><span class="sh">"</span><span class="p">,</span><span class="n">index_to_join</span><span class="p">)</span>
     
-                <span class="k">if</span> <span class="p">(</span><span class="n">index_to_join</span><span class="o">==</span><span class="n">index_to_remove</span><span class="p">):</span>
+                <span class="nf">if </span><span class="p">(</span><span class="n">index_to_join</span><span class="o">==</span><span class="n">index_to_remove</span><span class="p">):</span>
                     <span class="c1">#print("idex to join = index to remove")
 </span>                    <span class="k">pass</span>
-                <span class="k">elif</span> <span class="p">((</span><span class="n">index_to_remove</span><span class="o">!=-</span><span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">index_to_join</span><span class="o">!=-</span><span class="mi">1</span><span class="p">)):</span>
-                    <span class="n">sets</span><span class="p">[</span><span class="n">index_to_join</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">get_union</span><span class="p">(</span><span class="n">sets</span><span class="p">[</span><span class="n">index_to_join</span><span class="p">],</span><span class="n">sets</span><span class="p">[</span><span class="n">index_to_remove</span><span class="p">]))</span>
-                    <span class="n">sets</span><span class="p">.</span><span class="n">pop</span><span class="p">(</span><span class="n">index_to_remove</span><span class="p">)</span> 
+                <span class="nf">elif </span><span class="p">((</span><span class="n">index_to_remove</span><span class="o">!=-</span><span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">index_to_join</span><span class="o">!=-</span><span class="mi">1</span><span class="p">)):</span>
+                    <span class="n">sets</span><span class="p">[</span><span class="n">index_to_join</span><span class="p">]</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="nf">get_union</span><span class="p">(</span><span class="n">sets</span><span class="p">[</span><span class="n">index_to_join</span><span class="p">],</span><span class="n">sets</span><span class="p">[</span><span class="n">index_to_remove</span><span class="p">]))</span>
+                    <span class="n">sets</span><span class="p">.</span><span class="nf">pop</span><span class="p">(</span><span class="n">index_to_remove</span><span class="p">)</span> 
     
-    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">sets</span><span class="p">)</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">transpose</span><span class="p">()</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="nc">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">sets</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="nf">transpose</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">df</span> </code></pre></figure>
 
 <h1>The Stable Pairs Algorithm</h1>
@@ -740,63 +775,63 @@
 <p>The stable_marriage function will call the stable_pairs function over and over again according to the number of iterations defined. For each iteration, the stable_pairs function is called twice. The first time, we attempt for find stable pairs for each member in the dataset. The second time, we attempt to find stable pairs for members in the dataset that have not yet been paired (at any level).</p>
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">stable_pairs</span><span class="p">(</span><span class="n">pool_object</span><span class="p">,</span><span class="n">pools_object</span><span class="p">,</span><span class="n">proposer_object</span><span class="p">,</span><span class="n">proposers_table</span><span class="p">,</span><span class="n">accepter_object</span><span class="p">,</span><span class="n">acceptors_table</span><span class="p">,</span><span class="n">no_of_preferences</span><span class="p">,</span><span class="n">null_position</span><span class="p">,</span><span class="n">orphan_round</span><span class="p">,</span><span class="n">max_set_size</span><span class="p">,</span><span class="n">names</span><span class="p">):</span>
-    <span class="s">"""
+    <span class="sh">"""</span><span class="s">
     Create stable engagements and return the list
-    """</span>
-    <span class="k">for</span> <span class="n">preference</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">no_of_preferences</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">debug</span><span class="p">:</span> <span class="k">print</span><span class="p">(</span><span class="s">"/n PREFERENCE:"</span><span class="p">,</span> <span class="n">preference</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    </span><span class="sh">"""</span>
+    <span class="k">for</span> <span class="n">preference</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">no_of_preferences</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">debug</span><span class="p">:</span> <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">/n PREFERENCE:</span><span class="sh">"</span><span class="p">,</span> <span class="n">preference</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
         <span class="c1">#print("width",range(len(proposers_table[preference])))
-</span>        <span class="k">for</span> <span class="n">proposer</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">proposers_table</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+</span>        <span class="k">for</span> <span class="n">proposer</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">proposers_table</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
 
-            <span class="k">if</span> <span class="n">pool_object</span><span class="p">.</span><span class="n">not_engaged</span><span class="p">(</span><span class="n">proposer</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
-                <span class="k">if</span> <span class="n">debug</span><span class="p">:</span> <span class="k">print</span><span class="p">(</span><span class="s">"PROPOSAL:"</span><span class="p">,</span> <span class="n">proposer</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="s">"----&gt;"</span><span class="p">,</span> <span class="n">proposers_table</span><span class="p">[</span><span class="n">proposer</span><span class="p">][</span><span class="n">preference</span><span class="p">])</span>        
+            <span class="k">if</span> <span class="n">pool_object</span><span class="p">.</span><span class="nf">not_engaged</span><span class="p">(</span><span class="n">proposer</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">debug</span><span class="p">:</span> <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">PROPOSAL:</span><span class="sh">"</span><span class="p">,</span> <span class="n">proposer</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="sh">"</span><span class="s">----&gt;</span><span class="sh">"</span><span class="p">,</span> <span class="n">proposers_table</span><span class="p">[</span><span class="n">proposer</span><span class="p">][</span><span class="n">preference</span><span class="p">])</span>        
                 
-                <span class="k">if</span> <span class="n">accepter_object</span><span class="p">.</span><span class="n">is_proposal_accepted</span><span class="p">(</span><span class="n">proposer_object</span><span class="p">.</span><span class="n">get_proposal</span><span class="p">(</span><span class="n">proposer</span><span class="p">,</span><span class="n">preference</span><span class="p">),</span><span class="n">proposer</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">pool_object</span><span class="p">,</span><span class="n">pools_object</span><span class="p">,</span><span class="n">null_position</span><span class="p">,</span><span class="n">orphan_round</span><span class="p">,</span><span class="n">max_set_size</span><span class="p">,</span><span class="n">names</span><span class="p">,</span><span class="n">preference</span><span class="p">,</span><span class="n">acceptors_table</span><span class="p">,</span><span class="n">proposer_object</span><span class="p">):</span> <span class="c1">#if proposal is accepter
-</span>                    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span> <span class="k">print</span><span class="p">(</span><span class="s">"PROPOSAL ACCEPTED"</span><span class="p">)</span>
-                    <span class="n">pool_object</span><span class="p">.</span><span class="n">new_engagement</span><span class="p">(</span><span class="n">proposer_object</span><span class="p">.</span><span class="n">get_proposal</span><span class="p">(</span><span class="n">proposer</span><span class="p">,</span><span class="n">preference</span><span class="p">),</span><span class="n">proposer</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">accepter_object</span><span class="p">.</span><span class="nf">is_proposal_accepted</span><span class="p">(</span><span class="n">proposer_object</span><span class="p">.</span><span class="nf">get_proposal</span><span class="p">(</span><span class="n">proposer</span><span class="p">,</span><span class="n">preference</span><span class="p">),</span><span class="n">proposer</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">pool_object</span><span class="p">,</span><span class="n">pools_object</span><span class="p">,</span><span class="n">null_position</span><span class="p">,</span><span class="n">orphan_round</span><span class="p">,</span><span class="n">max_set_size</span><span class="p">,</span><span class="n">names</span><span class="p">,</span><span class="n">preference</span><span class="p">,</span><span class="n">acceptors_table</span><span class="p">,</span><span class="n">proposer_object</span><span class="p">):</span> <span class="c1">#if proposal is accepter
+</span>                    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span> <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">PROPOSAL ACCEPTED</span><span class="sh">"</span><span class="p">)</span>
+                    <span class="n">pool_object</span><span class="p">.</span><span class="nf">new_engagement</span><span class="p">(</span><span class="n">proposer_object</span><span class="p">.</span><span class="nf">get_proposal</span><span class="p">(</span><span class="n">proposer</span><span class="p">,</span><span class="n">preference</span><span class="p">),</span><span class="n">proposer</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span> <span class="k">print</span><span class="p">(</span><span class="s">"PROPOSAL FAILED"</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span> <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">PROPOSAL FAILED</span><span class="sh">"</span><span class="p">)</span>
 
                 <span class="c1">#print(pool_object.get_all_engagements())
 </span>
-            <span class="k">if</span> <span class="n">pool_object</span><span class="p">.</span><span class="n">is_complete</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">pool_object</span><span class="p">.</span><span class="nf">is_complete</span><span class="p">():</span>
                 <span class="k">return</span> <span class="n">pool_object</span>
 
     <span class="k">return</span> <span class="n">pool_object</span>
 
 <span class="k">def</span> <span class="nf">stable_marriage</span><span class="p">(</span><span class="n">pools_object</span><span class="p">,</span><span class="n">proposer_object</span><span class="p">,</span><span class="n">proposers_table</span><span class="p">,</span><span class="n">accepter_object</span><span class="p">,</span><span class="n">acceptors_table</span><span class="p">,</span><span class="n">iteration</span><span class="p">,</span><span class="n">no_of_preferences</span><span class="p">,</span><span class="n">null_position</span><span class="p">,</span><span class="n">max_set_size</span><span class="p">,</span><span class="n">names</span><span class="p">):</span>
-    <span class="s">"""
+    <span class="sh">"""</span><span class="s">
     Call the stable_pairs function iteratively and update the Pools object
-    """</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">iteration</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">debug</span><span class="p">:</span> <span class="k">print</span><span class="p">(</span><span class="s">"ITERATION:"</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    </span><span class="sh">"""</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">iteration</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">debug</span><span class="p">:</span> <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">ITERATION:</span><span class="sh">"</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
         
         <span class="c1"># add pool object with stable pairs
-</span>        <span class="n">pool_object</span> <span class="o">=</span> <span class="n">Pool</span><span class="p">(</span><span class="n">acceptors_table</span><span class="p">)</span> <span class="c1">#create a pool object
-</span>        <span class="n">pools_object</span><span class="p">.</span><span class="n">add_pool</span><span class="p">(</span><span class="n">stable_pairs</span><span class="p">(</span><span class="n">pool_object</span><span class="p">,</span><span class="n">pools_object</span><span class="p">,</span><span class="n">proposer_object</span><span class="p">,</span><span class="n">proposers_table</span><span class="p">,</span><span class="n">accepter_object</span><span class="p">,</span><span class="n">acceptors_table</span><span class="p">,</span><span class="n">no_of_preferences</span><span class="p">,</span><span class="n">null_position</span><span class="p">,</span><span class="bp">False</span><span class="p">,</span><span class="n">max_set_size</span><span class="p">,</span><span class="n">names</span><span class="p">))</span> <span class="c1">#call stable pairs
-</span>        <span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s"> Engagements (all members) found at iteration {} </span><span class="se">\n</span><span class="s"> {}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">pool_object</span><span class="p">.</span><span class="n">get_all_engagements</span><span class="p">()))</span>
+</span>        <span class="n">pool_object</span> <span class="o">=</span> <span class="nc">Pool</span><span class="p">(</span><span class="n">acceptors_table</span><span class="p">)</span> <span class="c1">#create a pool object
+</span>        <span class="n">pools_object</span><span class="p">.</span><span class="nf">add_pool</span><span class="p">(</span><span class="nf">stable_pairs</span><span class="p">(</span><span class="n">pool_object</span><span class="p">,</span><span class="n">pools_object</span><span class="p">,</span><span class="n">proposer_object</span><span class="p">,</span><span class="n">proposers_table</span><span class="p">,</span><span class="n">accepter_object</span><span class="p">,</span><span class="n">acceptors_table</span><span class="p">,</span><span class="n">no_of_preferences</span><span class="p">,</span><span class="n">null_position</span><span class="p">,</span><span class="bp">False</span><span class="p">,</span><span class="n">max_set_size</span><span class="p">,</span><span class="n">names</span><span class="p">))</span> <span class="c1">#call stable pairs
+</span>        <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="se">\n</span><span class="s"> Engagements (all members) found at iteration {} </span><span class="se">\n</span><span class="s"> {}</span><span class="sh">"</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">pool_object</span><span class="p">.</span><span class="nf">get_all_engagements</span><span class="p">()))</span>
         
         <span class="c1"># add pool object with orphans
-</span>        <span class="n">pool_object</span> <span class="o">=</span> <span class="n">Pool</span><span class="p">(</span><span class="n">acceptors_table</span><span class="p">)</span> <span class="c1">#create a pool object
-</span>        <span class="n">pools_object</span><span class="p">.</span><span class="n">add_pool</span><span class="p">(</span><span class="n">stable_pairs</span><span class="p">(</span><span class="n">pool_object</span><span class="p">,</span><span class="n">pools_object</span><span class="p">,</span><span class="n">proposer_object</span><span class="p">,</span><span class="n">proposers_table</span><span class="p">,</span><span class="n">accepter_object</span><span class="p">,</span><span class="n">acceptors_table</span><span class="p">,</span><span class="n">no_of_preferences</span><span class="p">,</span><span class="n">null_position</span><span class="p">,</span><span class="bp">True</span><span class="p">,</span><span class="n">max_set_size</span><span class="p">,</span><span class="n">names</span><span class="p">))</span> <span class="c1">#call stable pairs
-</span>        <span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s"> Engagements (Orpans) found at iteration {} </span><span class="se">\n</span><span class="s"> {}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">pool_object</span><span class="p">.</span><span class="n">get_all_engagements</span><span class="p">()))</span></code></pre></figure>
+</span>        <span class="n">pool_object</span> <span class="o">=</span> <span class="nc">Pool</span><span class="p">(</span><span class="n">acceptors_table</span><span class="p">)</span> <span class="c1">#create a pool object
+</span>        <span class="n">pools_object</span><span class="p">.</span><span class="nf">add_pool</span><span class="p">(</span><span class="nf">stable_pairs</span><span class="p">(</span><span class="n">pool_object</span><span class="p">,</span><span class="n">pools_object</span><span class="p">,</span><span class="n">proposer_object</span><span class="p">,</span><span class="n">proposers_table</span><span class="p">,</span><span class="n">accepter_object</span><span class="p">,</span><span class="n">acceptors_table</span><span class="p">,</span><span class="n">no_of_preferences</span><span class="p">,</span><span class="n">null_position</span><span class="p">,</span><span class="bp">True</span><span class="p">,</span><span class="n">max_set_size</span><span class="p">,</span><span class="n">names</span><span class="p">))</span> <span class="c1">#call stable pairs
+</span>        <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="se">\n</span><span class="s"> Engagements (Orpans) found at iteration {} </span><span class="se">\n</span><span class="s"> {}</span><span class="sh">"</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">pool_object</span><span class="p">.</span><span class="nf">get_all_engagements</span><span class="p">()))</span></code></pre></figure>
 
 <p>As we find stable_pairs and accept proposals, we must also check that a proposal would not create a set size that exceeds the max_set_size. To do this, we make a deep copy of the Pools and Pool Objects and call the build_groups and build_pairs functions to return a dataframe with the sets. Unfortunately calling this function each time we make a proposal is computationally inefficient but we will need to check.</p>
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">is_set_size_allowed</span><span class="p">(</span><span class="n">acceptors_table</span><span class="p">,</span><span class="n">pool_object</span><span class="p">,</span><span class="n">names</span><span class="p">,</span><span class="n">preference</span><span class="p">,</span><span class="n">proposer</span><span class="p">,</span><span class="n">proposer_object</span><span class="p">,</span><span class="n">pools_object</span><span class="p">,</span><span class="n">max_set_size</span><span class="p">):</span>
-    <span class="s">"""
+    <span class="sh">"""</span><span class="s">
     If engagement creates a set size that exeeds max_set_size return False; otherwise return True 
-    """</span>
+    </span><span class="sh">"""</span>
     <span class="c1"># create dummy pool and pools
-</span>    <span class="n">pool_test</span> <span class="o">=</span> <span class="n">Pool</span><span class="p">(</span><span class="n">acceptors_table</span><span class="p">)</span>
-    <span class="n">pool_test</span> <span class="o">=</span> <span class="n">copy</span><span class="p">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">pool_object</span><span class="p">)</span>     
-    <span class="n">pool_test</span><span class="p">.</span><span class="n">new_engagement</span><span class="p">(</span><span class="n">proposer_object</span><span class="p">.</span><span class="n">get_proposal</span><span class="p">(</span><span class="n">proposer</span><span class="p">,</span><span class="n">preference</span><span class="p">),</span><span class="n">proposer</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</span>    <span class="n">pool_test</span> <span class="o">=</span> <span class="nc">Pool</span><span class="p">(</span><span class="n">acceptors_table</span><span class="p">)</span>
+    <span class="n">pool_test</span> <span class="o">=</span> <span class="n">copy</span><span class="p">.</span><span class="nf">deepcopy</span><span class="p">(</span><span class="n">pool_object</span><span class="p">)</span>     
+    <span class="n">pool_test</span><span class="p">.</span><span class="nf">new_engagement</span><span class="p">(</span><span class="n">proposer_object</span><span class="p">.</span><span class="nf">get_proposal</span><span class="p">(</span><span class="n">proposer</span><span class="p">,</span><span class="n">preference</span><span class="p">),</span><span class="n">proposer</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
     
-    <span class="n">pools_test</span> <span class="o">=</span> <span class="n">Pools</span><span class="p">()</span>
-    <span class="n">pools_test</span> <span class="o">=</span> <span class="n">copy</span><span class="p">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">pools_object</span><span class="p">)</span>  
-    <span class="n">pools_test</span><span class="p">.</span><span class="n">add_pool</span><span class="p">(</span><span class="n">pool_test</span><span class="p">)</span>
+    <span class="n">pools_test</span> <span class="o">=</span> <span class="nc">Pools</span><span class="p">()</span>
+    <span class="n">pools_test</span> <span class="o">=</span> <span class="n">copy</span><span class="p">.</span><span class="nf">deepcopy</span><span class="p">(</span><span class="n">pools_object</span><span class="p">)</span>  
+    <span class="n">pools_test</span><span class="p">.</span><span class="nf">add_pool</span><span class="p">(</span><span class="n">pool_test</span><span class="p">)</span>
     
-    <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">build_groups</span><span class="p">(</span><span class="n">names</span><span class="p">,</span><span class="n">build_pairs</span><span class="p">(</span><span class="n">names</span><span class="p">,</span><span class="n">pools_test</span><span class="p">),</span><span class="n">pools_test</span><span class="p">))</span><span class="o">&gt;</span><span class="n">max_set_size</span><span class="p">):</span>        
+    <span class="nf">if </span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="nf">build_groups</span><span class="p">(</span><span class="n">names</span><span class="p">,</span><span class="nf">build_pairs</span><span class="p">(</span><span class="n">names</span><span class="p">,</span><span class="n">pools_test</span><span class="p">),</span><span class="n">pools_test</span><span class="p">))</span><span class="o">&gt;</span><span class="n">max_set_size</span><span class="p">):</span>        
         <span class="c1">#print(build_groups(names,build_pairs(names,pools_object),pools_object))        
 </span>        <span class="k">return</span> <span class="bp">False</span>
         
@@ -810,7 +845,7 @@
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
 
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">input_file</span> <span class="o">=</span> <span class="s">"Preferences4.csv"</span>
+        <span class="n">input_file</span> <span class="o">=</span> <span class="sh">"</span><span class="s">Preferences4.csv</span><span class="sh">"</span>
         <span class="c1">#input_file = sys.argv[1]
 </span>        <span class="n">iteration</span> <span class="o">=</span> <span class="mi">2</span>
         <span class="c1">#iteration = int(sys.argv[2]) # Number of runs of stable pairs algoirthm. Subsequent runs ignore stable pairs already built.
@@ -820,54 +855,54 @@
         <span class="c1">#max_set_size = int(sys.argv[4]) # Maximum number in a set
 </span>        
     <span class="k">except</span><span class="p">:</span> 
-        <span class="k">print</span><span class="p">(</span><span class="s">"stableGroups.py --[input_file] --[iteration] --[no_of_preferences] --[max_set_size]</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">"--[input_file] </span><span class="se">\n</span><span class="s"> input file in csv format </span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">"--[iteration] </span><span class="se">\n</span><span class="s"> number of runs of Stable Pairs Algorithm </span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">"--[no_of_preferences] </span><span class="se">\n</span><span class="s"> number of preferences to read from input file </span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">"--[max_set_size] </span><span class="se">\n</span><span class="s"> maximum size of a set </span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
-        <span class="n">sys</span><span class="p">.</span><span class="nb">exit</span><span class="p">()</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">stableGroups.py --[input_file] --[iteration] --[no_of_preferences] --[max_set_size]</span><span class="se">\n</span><span class="sh">"</span><span class="p">)</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">--[input_file] </span><span class="se">\n</span><span class="s"> input file in csv format </span><span class="se">\n</span><span class="sh">"</span><span class="p">)</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">--[iteration] </span><span class="se">\n</span><span class="s"> number of runs of Stable Pairs Algorithm </span><span class="se">\n</span><span class="sh">"</span><span class="p">)</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">--[no_of_preferences] </span><span class="se">\n</span><span class="s"> number of preferences to read from input file </span><span class="se">\n</span><span class="sh">"</span><span class="p">)</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">--[max_set_size] </span><span class="se">\n</span><span class="s"> maximum size of a set </span><span class="se">\n</span><span class="sh">"</span><span class="p">)</span>
+        <span class="n">sys</span><span class="p">.</span><span class="nf">exit</span><span class="p">()</span>
     <span class="k">else</span><span class="p">:</span> <span class="k">pass</span>
 
-    <span class="n">output_file_stable_pairs</span> <span class="o">=</span> <span class="s">'pools.csv'</span>
-    <span class="n">output_file_sets</span> <span class="o">=</span> <span class="s">'sets.csv'</span>
+    <span class="n">output_file_stable_pairs</span> <span class="o">=</span> <span class="sh">'</span><span class="s">pools.csv</span><span class="sh">'</span>
+    <span class="n">output_file_sets</span> <span class="o">=</span> <span class="sh">'</span><span class="s">sets.csv</span><span class="sh">'</span>
     
     <span class="c1"># Import and Encode the preferences data
-</span>    <span class="n">preferences</span><span class="p">,</span><span class="n">names</span> <span class="o">=</span> <span class="n">import_preferences</span><span class="p">(</span><span class="n">input_file</span><span class="p">)</span> 
-    <span class="n">preferences</span> <span class="o">=</span> <span class="n">encode_preferences</span><span class="p">(</span><span class="n">preferences</span><span class="p">,</span><span class="n">names</span><span class="p">,</span><span class="n">no_of_preferences</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s"> Input file with {} preferences read and encoded successfully as </span><span class="se">\n</span><span class="s"> {}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">no_of_preferences</span><span class="p">,</span> <span class="n">preferences</span><span class="p">))</span>
+</span>    <span class="n">preferences</span><span class="p">,</span><span class="n">names</span> <span class="o">=</span> <span class="nf">import_preferences</span><span class="p">(</span><span class="n">input_file</span><span class="p">)</span> 
+    <span class="n">preferences</span> <span class="o">=</span> <span class="nf">encode_preferences</span><span class="p">(</span><span class="n">preferences</span><span class="p">,</span><span class="n">names</span><span class="p">,</span><span class="n">no_of_preferences</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="se">\n</span><span class="s"> Input file with {} preferences read and encoded successfully as </span><span class="se">\n</span><span class="s"> {}</span><span class="sh">"</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="n">no_of_preferences</span><span class="p">,</span> <span class="n">preferences</span><span class="p">))</span>
 
-    <span class="n">null_position</span> <span class="o">=</span> <span class="n">return_null_position</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s"> Instantiating Acceptor and Proposer objects with input preference data... </span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+    <span class="n">null_position</span> <span class="o">=</span> <span class="nf">return_null_position</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="se">\n</span><span class="s"> Instantiating Acceptor and Proposer objects with input preference data... </span><span class="se">\n</span><span class="sh">"</span><span class="p">)</span>
     <span class="n">acceptors_table</span> <span class="o">=</span> <span class="n">preferences</span>
     <span class="c1">#acceptors_table = [[1,3,2,4],[3,4,1,2],[4,2,3,1],[3,2,1,4]]
 </span>    <span class="n">proposers_table</span> <span class="o">=</span> <span class="n">acceptors_table</span>
 
     <span class="c1"># Instantiate the Acceptor and Proposer class objects
-</span>    <span class="n">accepter_object</span> <span class="o">=</span> <span class="n">Acceptor</span><span class="p">(</span><span class="n">acceptors_table</span><span class="p">)</span>
-    <span class="n">proposer_object</span> <span class="o">=</span> <span class="n">Proposer</span><span class="p">(</span><span class="n">proposers_table</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s"> Instantiating Pool and Pools objects ready to hold engagements... </span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+</span>    <span class="n">accepter_object</span> <span class="o">=</span> <span class="nc">Acceptor</span><span class="p">(</span><span class="n">acceptors_table</span><span class="p">)</span>
+    <span class="n">proposer_object</span> <span class="o">=</span> <span class="nc">Proposer</span><span class="p">(</span><span class="n">proposers_table</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="se">\n</span><span class="s"> Instantiating Pool and Pools objects ready to hold engagements... </span><span class="se">\n</span><span class="sh">"</span><span class="p">)</span>
 
     <span class="c1"># Instantiate the Pools Class object
-</span>    <span class="n">pools_object</span> <span class="o">=</span> <span class="n">Pools</span><span class="p">()</span>
+</span>    <span class="n">pools_object</span> <span class="o">=</span> <span class="nc">Pools</span><span class="p">()</span>
 
     <span class="c1"># Run the Algorithm
-</span>    <span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s"> Finding Stable Pairs with {} iterations of the algorithm... </span><span class="se">\n</span><span class="s">"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">iteration</span><span class="p">))</span>
-    <span class="n">stable_marriage</span><span class="p">(</span><span class="n">pools_object</span><span class="p">,</span><span class="n">proposer_object</span><span class="p">,</span><span class="n">proposers_table</span><span class="p">,</span><span class="n">accepter_object</span><span class="p">,</span><span class="n">acceptors_table</span><span class="p">,</span><span class="n">iteration</span><span class="p">,</span><span class="n">no_of_preferences</span><span class="p">,</span><span class="n">null_position</span><span class="p">,</span><span class="n">max_set_size</span><span class="p">,</span><span class="n">names</span><span class="p">)</span>
+</span>    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="se">\n</span><span class="s"> Finding Stable Pairs with {} iterations of the algorithm... </span><span class="se">\n</span><span class="sh">"</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="n">iteration</span><span class="p">))</span>
+    <span class="nf">stable_marriage</span><span class="p">(</span><span class="n">pools_object</span><span class="p">,</span><span class="n">proposer_object</span><span class="p">,</span><span class="n">proposers_table</span><span class="p">,</span><span class="n">accepter_object</span><span class="p">,</span><span class="n">acceptors_table</span><span class="p">,</span><span class="n">iteration</span><span class="p">,</span><span class="n">no_of_preferences</span><span class="p">,</span><span class="n">null_position</span><span class="p">,</span><span class="n">max_set_size</span><span class="p">,</span><span class="n">names</span><span class="p">)</span>
 
     <span class="c1"># Write the engagements to file
-</span>    <span class="n">pairs</span> <span class="o">=</span> <span class="n">build_pairs</span><span class="p">(</span><span class="n">names</span><span class="p">,</span><span class="n">pools_object</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s"> Writing pairs to file (1st iteration row 1 - 2, 2nd iteration 1 - 3 etc.)</span><span class="se">\n</span><span class="s"> {}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">pairs</span><span class="p">))</span>
+</span>    <span class="n">pairs</span> <span class="o">=</span> <span class="nf">build_pairs</span><span class="p">(</span><span class="n">names</span><span class="p">,</span><span class="n">pools_object</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="se">\n</span><span class="s"> Writing pairs to file (1st iteration row 1 - 2, 2nd iteration 1 - 3 etc.)</span><span class="se">\n</span><span class="s"> {}</span><span class="sh">"</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="n">pairs</span><span class="p">))</span>
     <span class="c1">#print("\n Writing pairs to file (1st iteration row 1 - 2, 2nd iteration 1 - 3 etc.)\n")
-</span>    <span class="n">pairs</span><span class="p">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">output_file_stable_pairs</span><span class="p">)</span>
+</span>    <span class="n">pairs</span><span class="p">.</span><span class="nf">to_csv</span><span class="p">(</span><span class="n">output_file_stable_pairs</span><span class="p">)</span>
 
     <span class="c1"># Convert engagements to sets and write to file
-</span>    <span class="n">groups</span> <span class="o">=</span> <span class="n">build_groups</span><span class="p">(</span><span class="n">names</span><span class="p">,</span><span class="n">pairs</span><span class="p">,</span><span class="n">pools_object</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s"> Writing sets to file (a set is a column)</span><span class="se">\n</span><span class="s"> {}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">groups</span><span class="p">))</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"length of groups"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">groups</span><span class="p">))</span>
-    <span class="n">groups</span><span class="p">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">output_file_sets</span><span class="p">)</span>
+</span>    <span class="n">groups</span> <span class="o">=</span> <span class="nf">build_groups</span><span class="p">(</span><span class="n">names</span><span class="p">,</span><span class="n">pairs</span><span class="p">,</span><span class="n">pools_object</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="se">\n</span><span class="s"> Writing sets to file (a set is a column)</span><span class="se">\n</span><span class="s"> {}</span><span class="sh">"</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="n">groups</span><span class="p">))</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">length of groups</span><span class="sh">"</span><span class="p">,</span> <span class="nf">len</span><span class="p">(</span><span class="n">groups</span><span class="p">))</span>
+    <span class="n">groups</span><span class="p">.</span><span class="nf">to_csv</span><span class="p">(</span><span class="n">output_file_sets</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
-    <span class="n">main</span><span class="p">()</span></code></pre></figure>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">"</span><span class="s">__main__</span><span class="sh">"</span><span class="p">:</span>
+    <span class="nf">main</span><span class="p">()</span></code></pre></figure>
 
 <h1>Running the program</h1>
 
@@ -875,16 +910,16 @@
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"> <span class="n">Input</span> <span class="nb">file</span> <span class="n">read</span> <span class="k">from</span> <span class="nb">file</span> 
 
-<span class="p">[</span><span class="s">'Name'</span><span class="p">,</span> <span class="s">'Preference_1'</span><span class="p">,</span> <span class="s">'Preference_2'</span><span class="p">,</span> <span class="s">'Preference_3'</span><span class="p">,</span> <span class="s">'Preference_4'</span><span class="p">,</span> <span class="s">'Preference_5'</span><span class="p">]</span>
-<span class="p">[</span><span class="s">'Johnny'</span><span class="p">,</span> <span class="s">'Barry'</span><span class="p">,</span> <span class="s">'Charlie'</span><span class="p">,</span> <span class="s">'Gilly'</span><span class="p">,</span> <span class="s">'null'</span><span class="p">,</span> <span class="s">'null'</span><span class="p">]</span>
-<span class="p">[</span><span class="s">'Alphie'</span><span class="p">,</span> <span class="s">'null'</span><span class="p">,</span> <span class="s">'null'</span><span class="p">,</span> <span class="s">'null'</span><span class="p">,</span> <span class="s">'null'</span><span class="p">,</span> <span class="s">'null'</span><span class="p">]</span>
-<span class="p">[</span><span class="s">'Barry'</span><span class="p">,</span> <span class="s">'Alphie'</span><span class="p">,</span> <span class="s">'null'</span><span class="p">,</span> <span class="s">'null'</span><span class="p">,</span> <span class="s">'null'</span><span class="p">,</span> <span class="s">'null'</span><span class="p">]</span>
-<span class="p">[</span><span class="s">'Charlie'</span><span class="p">,</span> <span class="s">'null'</span><span class="p">,</span> <span class="s">'Alphie'</span><span class="p">,</span> <span class="s">'null'</span><span class="p">,</span> <span class="s">'null'</span><span class="p">,</span> <span class="s">'null'</span><span class="p">]</span>
-<span class="p">[</span><span class="s">'Danny'</span><span class="p">,</span> <span class="s">'Charlie'</span><span class="p">,</span> <span class="s">'Elle'</span><span class="p">,</span> <span class="s">'null'</span><span class="p">,</span> <span class="s">'null'</span><span class="p">,</span> <span class="s">'null'</span><span class="p">]</span>
-<span class="p">[</span><span class="s">'Elle'</span><span class="p">,</span> <span class="s">'Freddie'</span><span class="p">,</span> <span class="s">'Danny'</span><span class="p">,</span> <span class="s">'null'</span><span class="p">,</span> <span class="s">'null'</span><span class="p">,</span> <span class="s">'null'</span><span class="p">]</span>
-<span class="p">[</span><span class="s">'Freddie'</span><span class="p">,</span> <span class="s">'null'</span><span class="p">,</span> <span class="s">'null'</span><span class="p">,</span> <span class="s">'null'</span><span class="p">,</span> <span class="s">'Gilly'</span><span class="p">,</span> <span class="s">'Danny'</span><span class="p">]</span>
-<span class="p">[</span><span class="s">'Gilly'</span><span class="p">,</span> <span class="s">'null'</span><span class="p">,</span> <span class="s">'null'</span><span class="p">,</span> <span class="s">'Johnny'</span><span class="p">,</span> <span class="s">'Freddie'</span><span class="p">,</span> <span class="s">'null'</span><span class="p">]</span>
-<span class="p">[</span><span class="s">'null'</span><span class="p">,</span> <span class="s">'null'</span><span class="p">,</span> <span class="s">'null'</span><span class="p">,</span> <span class="s">'null'</span><span class="p">,</span> <span class="s">'null'</span><span class="p">,</span> <span class="s">'null'</span><span class="p">]</span>
+<span class="p">[</span><span class="sh">'</span><span class="s">Name</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">Preference_1</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">Preference_2</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">Preference_3</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">Preference_4</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">Preference_5</span><span class="sh">'</span><span class="p">]</span>
+<span class="p">[</span><span class="sh">'</span><span class="s">Johnny</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">Barry</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">Charlie</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">Gilly</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">null</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">null</span><span class="sh">'</span><span class="p">]</span>
+<span class="p">[</span><span class="sh">'</span><span class="s">Alphie</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">null</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">null</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">null</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">null</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">null</span><span class="sh">'</span><span class="p">]</span>
+<span class="p">[</span><span class="sh">'</span><span class="s">Barry</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">Alphie</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">null</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">null</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">null</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">null</span><span class="sh">'</span><span class="p">]</span>
+<span class="p">[</span><span class="sh">'</span><span class="s">Charlie</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">null</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">Alphie</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">null</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">null</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">null</span><span class="sh">'</span><span class="p">]</span>
+<span class="p">[</span><span class="sh">'</span><span class="s">Danny</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">Charlie</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">Elle</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">null</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">null</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">null</span><span class="sh">'</span><span class="p">]</span>
+<span class="p">[</span><span class="sh">'</span><span class="s">Elle</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">Freddie</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">Danny</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">null</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">null</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">null</span><span class="sh">'</span><span class="p">]</span>
+<span class="p">[</span><span class="sh">'</span><span class="s">Freddie</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">null</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">null</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">null</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">Gilly</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">Danny</span><span class="sh">'</span><span class="p">]</span>
+<span class="p">[</span><span class="sh">'</span><span class="s">Gilly</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">null</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">null</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">Johnny</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">Freddie</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">null</span><span class="sh">'</span><span class="p">]</span>
+<span class="p">[</span><span class="sh">'</span><span class="s">null</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">null</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">null</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">null</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">null</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">null</span><span class="sh">'</span><span class="p">]</span>
 
  <span class="n">Input</span> <span class="nb">file</span> <span class="k">with</span> <span class="mi">5</span> <span class="n">preferences</span> <span class="n">read</span> <span class="ow">and</span> <span class="n">encoded</span> <span class="n">successfully</span> <span class="k">as</span> 
  <span class="p">[[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">]]</span>
@@ -898,19 +933,19 @@
  <span class="n">Finding</span> <span class="n">Stable</span> <span class="n">Pairs</span> <span class="k">with</span> <span class="mi">2</span> <span class="n">iterations</span> <span class="n">of</span> <span class="n">the</span> <span class="n">algorithm</span><span class="p">...</span> 
 
 
- <span class="n">Engagements</span> <span class="p">(</span><span class="nb">all</span> <span class="n">members</span><span class="p">)</span> <span class="n">found</span> <span class="n">at</span> <span class="n">iteration</span> <span class="mi">1</span> 
+ <span class="nc">Engagements </span><span class="p">(</span><span class="nb">all</span> <span class="n">members</span><span class="p">)</span> <span class="n">found</span> <span class="n">at</span> <span class="n">iteration</span> <span class="mi">1</span> 
  <span class="p">[</span> <span class="mf">8.</span> <span class="n">nan</span> <span class="n">nan</span> <span class="n">nan</span>  <span class="mf">6.</span>  <span class="mf">5.</span> <span class="n">nan</span>  <span class="mf">1.</span> <span class="n">nan</span><span class="p">]</span>
 
- <span class="n">Engagements</span> <span class="p">(</span><span class="n">Orpans</span><span class="p">)</span> <span class="n">found</span> <span class="n">at</span> <span class="n">iteration</span> <span class="mi">1</span> 
+ <span class="nc">Engagements </span><span class="p">(</span><span class="n">Orpans</span><span class="p">)</span> <span class="n">found</span> <span class="n">at</span> <span class="n">iteration</span> <span class="mi">1</span> 
  <span class="p">[</span><span class="n">nan</span> <span class="n">nan</span> <span class="n">nan</span> <span class="n">nan</span> <span class="n">nan</span> <span class="n">nan</span>  <span class="mf">8.</span>  <span class="mf">7.</span> <span class="n">nan</span><span class="p">]</span>
 
- <span class="n">Engagements</span> <span class="p">(</span><span class="nb">all</span> <span class="n">members</span><span class="p">)</span> <span class="n">found</span> <span class="n">at</span> <span class="n">iteration</span> <span class="mi">2</span> 
+ <span class="nc">Engagements </span><span class="p">(</span><span class="nb">all</span> <span class="n">members</span><span class="p">)</span> <span class="n">found</span> <span class="n">at</span> <span class="n">iteration</span> <span class="mi">2</span> 
  <span class="p">[</span><span class="n">nan</span> <span class="n">nan</span> <span class="n">nan</span> <span class="n">nan</span> <span class="n">nan</span> <span class="n">nan</span> <span class="n">nan</span> <span class="n">nan</span> <span class="n">nan</span><span class="p">]</span>
 
- <span class="n">Engagements</span> <span class="p">(</span><span class="n">Orpans</span><span class="p">)</span> <span class="n">found</span> <span class="n">at</span> <span class="n">iteration</span> <span class="mi">2</span> 
+ <span class="nc">Engagements </span><span class="p">(</span><span class="n">Orpans</span><span class="p">)</span> <span class="n">found</span> <span class="n">at</span> <span class="n">iteration</span> <span class="mi">2</span> 
  <span class="p">[</span><span class="n">nan</span> <span class="n">nan</span> <span class="n">nan</span> <span class="n">nan</span> <span class="n">nan</span> <span class="n">nan</span> <span class="n">nan</span> <span class="n">nan</span> <span class="n">nan</span><span class="p">]</span>
 
- <span class="n">Writing</span> <span class="n">pairs</span> <span class="n">to</span> <span class="nb">file</span> <span class="p">(</span><span class="mi">1</span><span class="n">st</span> <span class="n">iteration</span> <span class="n">row</span> <span class="mi">1</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="n">nd</span> <span class="n">iteration</span> <span class="mi">1</span> <span class="o">-</span> <span class="mi">3</span> <span class="n">etc</span><span class="p">.)</span>
+ <span class="n">Writing</span> <span class="n">pairs</span> <span class="n">to</span> <span class="nf">file </span><span class="p">(</span><span class="mi">1</span><span class="n">st</span> <span class="n">iteration</span> <span class="n">row</span> <span class="mi">1</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="n">nd</span> <span class="n">iteration</span> <span class="mi">1</span> <span class="o">-</span> <span class="mi">3</span> <span class="n">etc</span><span class="p">.)</span>
           <span class="mi">0</span>       <span class="mi">1</span>        <span class="mi">2</span>     <span class="mi">3</span>     <span class="mi">4</span>
 <span class="mi">0</span>   <span class="n">Johnny</span>   <span class="n">Gilly</span>     <span class="bp">None</span>  <span class="bp">None</span>  <span class="bp">None</span>
 <span class="mi">1</span>   <span class="n">Alphie</span>    <span class="bp">None</span>     <span class="bp">None</span>  <span class="bp">None</span>  <span class="bp">None</span>
@@ -922,7 +957,7 @@
 <span class="mi">7</span>    <span class="n">Gilly</span>  <span class="n">Johnny</span>  <span class="n">Freddie</span>  <span class="bp">None</span>  <span class="bp">None</span>
 <span class="mi">8</span>     <span class="n">null</span>    <span class="bp">None</span>     <span class="bp">None</span>  <span class="bp">None</span>  <span class="bp">None</span>
 
- <span class="n">Writing</span> <span class="n">sets</span> <span class="n">to</span> <span class="nb">file</span> <span class="p">(</span><span class="n">a</span> <span class="nb">set</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">column</span><span class="p">)</span>
+ <span class="n">Writing</span> <span class="n">sets</span> <span class="n">to</span> <span class="nf">file </span><span class="p">(</span><span class="n">a</span> <span class="nb">set</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">column</span><span class="p">)</span>
          <span class="mi">0</span>      <span class="mi">1</span>        <span class="mi">2</span>      <span class="mi">3</span>        <span class="mi">4</span>     <span class="mi">5</span>
 <span class="mi">0</span>  <span class="n">Alphie</span>  <span class="n">Barry</span>  <span class="n">Charlie</span>  <span class="n">Danny</span>    <span class="n">Gilly</span>  <span class="bp">None</span>
 <span class="mi">1</span>    <span class="bp">None</span>   <span class="bp">None</span>     <span class="bp">None</span>   <span class="n">Elle</span>   <span class="n">Johnny</span>  <span class="bp">None</span>
@@ -975,56 +1010,86 @@
 
 <p>For more information on my implementation of the Stable Marriage Algorithm DM @jamesdhope or email <a href="mailto:"></a>.</p>
 
+        
+      </section>
 
-<ul class="taxonomy__index">
-     
-    <li>
-        <a href="#2023">
-            <strong>2023</strong> <span class="taxonomy__count">1</span>
-        </a>
-    </li>
-    
-    <li>
-        <a href="#2022">
-            <strong>2022</strong> <span class="taxonomy__count">1</span>
-        </a>
-    </li>
-    
-    <li>
-        <a href="#2021">
-            <strong>2021</strong> <span class="taxonomy__count">3</span>
-        </a>
-    </li>
-    
-    <li>
-        <a href="#2019">
-            <strong>2019</strong> <span class="taxonomy__count">4</span>
-        </a>
-    </li>
-    
-    <li>
-        <a href="#2018">
-            <strong>2018</strong> <span class="taxonomy__count">2</span>
-        </a>
-    </li>
-    
-    <li>
-        <a href="#2017">
-            <strong>2017</strong> <span class="taxonomy__count">2</span>
-        </a>
-    </li>
-    
-</ul>
+      <footer class="page__meta">
+        
+        
+
 
   
-<section id="2023" class="taxonomy__section">
-    <h2 class="archive__subtitle">2023</h2>
-    <div class="entries-list">
-         
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#coding" class="page__taxonomy-item p-category" rel="tag">coding,</a><span class="sep">, </span>
+    
+      <a href="/categories/#computer-science" class="page__taxonomy-item p-category" rel="tag">computer-science</a><span class="sep">, </span>
+    
+      <a href="/categories/#computing" class="page__taxonomy-item p-category" rel="tag">computing,</a><span class="sep">, </span>
+    
+      <a href="/categories/#edtech" class="page__taxonomy-item p-category" rel="tag">edtech,</a><span class="sep">, </span>
+    
+      <a href="/categories/#programming" class="page__taxonomy-item p-category" rel="tag">programming,</a><span class="sep">, </span>
+    
+      <a href="/categories/#python" class="page__taxonomy-item p-category" rel="tag">python,</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2018-05-18T00:00:00+01:00">May 18, 2018</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Implementation+of+the+Stable+Marriage+Algorithm+to+find+%27Stable+Groups%27%20http%3A%2F%2Flocalhost%3A4000%2Fedtech%2C%2Fcoding%2C%2Fprogramming%2C%2Fpython%2C%2Fcomputing%2C%2Fcomputer-science%2FStableGroups%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fedtech%2C%2Fcoding%2C%2Fprogramming%2C%2Fpython%2C%2Fcomputing%2C%2Fcomputer-science%2FStableGroups%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fedtech%2C%2Fcoding%2C%2Fprogramming%2C%2Fpython%2C%2Fcomputing%2C%2Fcomputer-science%2FStableGroups%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/edtech,/coding,/programming,/python,/computing,/computer-science/stable-marriage/" class="pagination--pager" title="Implementation of the Stable Marriage Algorithm.
+">Previous</a>
+    
+    
+      <a href="/medium,/towardsdatascience,/peopleanalytics,/graphs,/neo4j/build-your-own-blockchain-protocol/" class="pagination--pager" title="Build your own Blockchain Protocol
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">You may also enjoy</h2>
+      <div class="grid__wrapper">
+        
+          
 
 
 
-<div class="list__item">
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
@@ -1058,19 +1123,13 @@
 </p>
   </article>
 </div>
- 
-    </div>
-    <a href="#page-title" class="back-to-top">Back to top &uarr;</a>
-</section>
 
-<section id="2022" class="taxonomy__section">
-    <h2 class="archive__subtitle">2022</h2>
-    <div class="entries-list">
-         
+        
+          
 
 
 
-<div class="list__item">
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
@@ -1104,19 +1163,13 @@
 </p>
   </article>
 </div>
- 
-    </div>
-    <a href="#page-title" class="back-to-top">Back to top &uarr;</a>
-</section>
 
-<section id="2021" class="taxonomy__section">
-    <h2 class="archive__subtitle">2021</h2>
-    <div class="entries-list">
-         
+        
+          
 
 
 
-<div class="list__item">
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
@@ -1149,11 +1202,13 @@
     <p class="archive__item-excerpt" itemprop="description">Continuing with the theme of Kubernetes, I have recently built out a solution to inject environment variables into containerised applications from Hasicorp C...</p>
   </article>
 </div>
-  
+
+        
+          
 
 
 
-<div class="list__item">
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
@@ -1186,374 +1241,14 @@
     <p class="archive__item-excerpt" itemprop="description">If you’re managing a data engine inside a kubernetes cluster then implementing a backup and restore process can be challenging. A few months ago I developed ...</p>
   </article>
 </div>
-  
 
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/kubernetes,/digital/ocean,/solution/architecture/kubernetes-digital-ocean/" rel="permalink">Top 10 architectural highlights for Digital Ocean Kubernetes
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
         
-          5 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">Recently I’ve been developing a solution architecture for a boostrapped startup in Digital Ocean’s Kubernetes. Developing an understanding of the context, di...</p>
-  </article>
-</div>
- 
+      </div>
     </div>
-    <a href="#page-title" class="back-to-top">Back to top &uarr;</a>
-</section>
-
-<section id="2019" class="taxonomy__section">
-    <h2 class="archive__subtitle">2019</h2>
-    <div class="entries-list">
-         
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/medium,/towardsdatascience,/peopleanalytics,/graphs,/neo4j/a-new-era-for-people-analytics/" rel="permalink">A New Era for People Analytics
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">This article was published in the journal Towards Data Science. Please click here to access the article.
-</p>
-  </article>
-</div>
   
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/medium,/towardsdatascience,/people/analytics/can-your-people-analytics-do-this/" rel="permalink">Can your People Analytics do this?
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">This article was published in the journal Towards Data Science. Please click here to access the article.
-</p>
-  </article>
-</div>
   
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/medium,/towardsdatascience,/peopleanalytics,/graphs,/neo4j,/machinelearning,/recommendersystems,/recommender/build-a-machine-learning-recommender/" rel="permalink">Build a Machine Learning Recommender
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">This article was published in the journal Towards Data Science. Please click here to access the article.
-</p>
-  </article>
 </div>
-  
 
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/medium,/towardsdatascience,/peopleanalytics,/graphs,/neo4j/build-your-own-blockchain-protocol/" rel="permalink">Build your own Blockchain Protocol
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">This article was published in the journal Towards Data Science. Please click here to access the article.
-</p>
-  </article>
-</div>
- 
-    </div>
-    <a href="#page-title" class="back-to-top">Back to top &uarr;</a>
-</section>
-
-<section id="2018" class="taxonomy__section">
-    <h2 class="archive__subtitle">2018</h2>
-    <div class="entries-list">
-         
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/edtech,/coding,/programming,/python,/computing,/computer-science/StableGroups/" rel="permalink">Implementation of the Stable Marriage Algorithm to find ‘Stable Groups’
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          13 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">In my previous post, I explained my implementation of the Stable Marriage Algorithm to find stable pairs. Taking this implementation one step further, I want...</p>
-  </article>
-</div>
-  
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/edtech,/coding,/programming,/python,/computing,/computer-science/stable-marriage/" rel="permalink">Implementation of the Stable Marriage Algorithm.
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          4 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">Ever been faced with the challenge of pairing people based on their individual preferences? I can think of numerous situations in which such a task might ari...</p>
-  </article>
-</div>
- 
-    </div>
-    <a href="#page-title" class="back-to-top">Back to top &uarr;</a>
-</section>
-
-<section id="2017" class="taxonomy__section">
-    <h2 class="archive__subtitle">2017</h2>
-    <div class="entries-list">
-         
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/kaggle/zillow-ensemble/" rel="permalink">Zillow’s Zestimate, and my ensemble of regressors for highly featured data prediction
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          8 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">“The Zillow Prize contest competition, sponsored by Zillow, Inc. (“Sponsor”) is open to all individuals over the age of 18 at the time of entry. The competit...</p>
-  </article>
-</div>
-  
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/kaggle/time-series-forecasting/" rel="permalink">Deep Learning Recurrent Neural Net for Time Series Forecasting
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          5 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">The Notebook described here supersedes my basic Recurrent Neural Net (RNN) for predicting multiple time series for the Wikipedia page forecasting competition...</p>
-  </article>
-</div>
- 
-    </div>
-    <a href="#page-title" class="back-to-top">Back to top &uarr;</a>
-</section>
-
-  </div>
-</div>
     </div>
 
     
@@ -1572,11 +1267,15 @@
     
       
         
-          <li><a href="https://github.com/jamesdhope" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+      
         
       
         
-          <li><a href="https://linkedin.com/in/jamesdometthope" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+      
+        
+      
+        
+      
         
       
     

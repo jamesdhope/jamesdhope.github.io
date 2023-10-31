@@ -1,7 +1,7 @@
 var store = [{
         "title": "Deep Learning Recurrent Neural Net for Time Series Forecasting",
-        "excerpt":"The Notebook described here supersedes my basic Recurrent Neural Net (RNN) for predicting multiple time series for the Wikipedia page forecasting competition. Instead, this RNN is constructed using the GRUCell rather than the BasicRNNCell which provides the model with persistence in the patterns observed over the series. The introductory paper...","categories": ["Kaggle"],
-        "tags": ["data science","notebook"],
+        "excerpt":"The Notebook described here supersedes my basic Recurrent Neural Net (RNN) for predicting multiple time series for the Wikipedia page forecasting competition. Instead, this RNN is constructed using the GRUCell rather than the BasicRNNCell which provides the model with persistence in the patterns observed over the series. The introductory paper...","categories": ["kaggle"],
+        "tags": ["data science","machine learning"],
         "url": "/kaggle/time-series-forecasting/",
         "teaser": null
       },{
@@ -35,16 +35,16 @@ var store = [{
         "url": "/medium,/towardsdatascience,/peopleanalytics,/graphs,/neo4j,/machinelearning,/recommendersystems,/recommender/build-a-machine-learning-recommender/",
         "teaser": null
       },{
-        "title": "Can your People Analytics do this?",
-        "excerpt":"This article was published in the journal Towards Data Science. Please click here to access the article.   ","categories": ["Medium,","TowardsDataScience,","People","Analytics"],
-        "tags": [],
-        "url": "/medium,/towardsdatascience,/people/analytics/can-your-people-analytics-do-this/",
-        "teaser": null
-      },{
         "title": "A New Era for People Analytics",
         "excerpt":"This article was published in the journal Towards Data Science. Please click here to access the article.  ","categories": ["Medium,","TowardsDataScience,","PeopleAnalytics,","Graphs,","Neo4j"],
         "tags": [],
         "url": "/medium,/towardsdatascience,/peopleanalytics,/graphs,/neo4j/a-new-era-for-people-analytics/",
+        "teaser": null
+      },{
+        "title": "Can your People Analytics do this?",
+        "excerpt":"This article was published in the journal Towards Data Science. Please click here to access the article.   ","categories": ["Medium,","TowardsDataScience,","People","Analytics"],
+        "tags": [],
+        "url": "/medium,/towardsdatascience,/people/analytics/can-your-people-analytics-do-this/",
         "teaser": null
       },{
         "title": "Top 10 architectural highlights for Digital Ocean Kubernetes",

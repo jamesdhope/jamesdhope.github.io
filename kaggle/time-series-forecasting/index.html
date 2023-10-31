@@ -34,7 +34,7 @@
 
 
 
-  <meta property="article:published_time" content="2017-08-02T20:46:34+01:00">
+  <meta property="article:published_time" content="2017-08-02T00:00:00+01:00">
 
 
 
@@ -56,8 +56,7 @@
     
       "@type": "Person",
       "name": "James Hope",
-      "url": "http://localhost:4000/",
-      "sameAs": ["https://twitter.com/","https://github.com/"]
+      "url": "http://localhost:4000/"
     
   }
 </script>
@@ -97,7 +96,7 @@
 
   </head>
 
-  <body class="layout--posts">
+  <body class="layout--single">
     <nav class="skip-links">
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
@@ -105,10 +104,6 @@
     <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
   </ul>
 </nav>
-
-    <!--[if lt IE 9]>
-<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
-<![endif]-->
 
     
 
@@ -121,7 +116,9 @@
           James Hope
           
         </a>
-        <ul class="visible-links"></ul>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/">Quick-Start Guide</a>
+            </li></ul>
         
         <button class="greedy-nav__toggle hidden" type="button">
           <span class="visually-hidden">Toggle menu</span>
@@ -136,6 +133,8 @@
 
     <div class="initial-content">
       
+
+
 
 
 
@@ -161,7 +160,7 @@
     </h3>
     
       <div class="author__bio p-note" itemprop="description">
-        <p>Solutions Architect, IBM Client Engineering, AI Engineer, GCP Professional Cloud Architect, GCP Professional Machine Learning Engineer. Views and opinions are my own.</p>
+        <p>Senior Solutions Architect @ IBM Client Engineering, AI Engineer, GCP Professional Cloud Architect, GCP Professional Machine Learning Engineer. Views and opinions are my own.</p>
 
       </div>
     
@@ -179,15 +178,15 @@
       
         
           
-            <li><a href="https://github.com/jamesdhope" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+            <li><a href="https://github.com/jamesdhope" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
           
         
           
-            <li><a href="https://linkedin.com/in/jamesdometthope" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+            <li><a href="https://linkedin.com/in/jamesdometthope" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
           
         
           
-            <li><a href="https://twitter.com/jamesdhope" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+            <li><a href="https://twitter.com/jamesdhope" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
           
         
       
@@ -250,16 +249,52 @@
     </ul>
   </div>
 </div>
+
   
   </div>
 
 
 
-  <div class="archive">
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Deep Learning Recurrent Neural Net for Time Series Forecasting">
+    <meta itemprop="description" content="The Notebook described here supersedes my basic Recurrent Neural Net (RNN) for predicting multiple time series for the Wikipedia page forecasting competition. Instead, this RNN is constructed using the GRUCell rather than the BasicRNNCell which provides the model with persistence in the patterns observed over the series.">
+    <meta itemprop="datePublished" content="2017-08-02T00:00:00+01:00">
     
-      <h1 id="page-title" class="page__title">Deep Learning Recurrent Neural Net for Time Series Forecasting</h1>
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/kaggle/time-series-forecasting/" class="u-url" itemprop="url">Deep Learning Recurrent Neural Net for Time Series Forecasting
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
     
-    <p>The Notebook described here supersedes my basic Recurrent Neural Net (RNN) for predicting multiple time series for the Wikipedia page forecasting competition. Instead, this RNN is constructed using the GRUCell rather than the BasicRNNCell which provides the model with persistence in the patterns observed over the series.</p>
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          5 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+        <p>The Notebook described here supersedes my basic Recurrent Neural Net (RNN) for predicting multiple time series for the Wikipedia page forecasting competition. Instead, this RNN is constructed using the GRUCell rather than the BasicRNNCell which provides the model with persistence in the patterns observed over the series.</p>
 
 <p>The introductory paper by Junyoung Chung, Caglar Gulcehre, KyungHyun Cho, Yoshua Bengio proposing a GRU architecture can be found here: <a href="https://arxiv.org/abs/1412.3555">https://arxiv.org/abs/1412.3555</a>.</p>
 
@@ -273,9 +308,9 @@
 
 <p><b>Anyway, let’s dive into the code</b>. First, we’ll need to import tensorflow and numpy.</p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
-<span class="kn">import</span> <span class="nn">numpy.random</span> <span class="k">as</span> <span class="n">rnd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="n">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
+<span class="kn">import</span> <span class="n">numpy.random</span> <span class="k">as</span> <span class="n">rnd</span>
+<span class="kn">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span></code></pre></figure>
 
 <p>Now, onto the construction phase. We’ll construct the RNN with 10 inputs (one for each Wiki page), 6 layers, 50 neurons per layer, and 39 time steps. The input X will have shape [-1, 39, 10]. The output y will have the same shape, and we’ll make use of tf.contrib.rnn.OutputProjectionWrapper to reduce the 39 * 10 outputs at each layer and the final layer to the 10 outputs we need. Using the OutputProjectionWrapper is computationally expensive and this will be something to come back to and improve. We’ll also make use of the Mean Square Error as the loss function.</p>
 
@@ -287,54 +322,54 @@
 
 <span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.001</span>
 
-<span class="n">X</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">float32</span><span class="p">,</span> <span class="p">[</span><span class="bp">None</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">,</span> <span class="n">n_inputs</span><span class="p">])</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="nf">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">float32</span><span class="p">,</span> <span class="p">[</span><span class="bp">None</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">,</span> <span class="n">n_inputs</span><span class="p">])</span>
 
 <span class="c1">#y has the same shape
-</span><span class="n">y</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">float32</span><span class="p">,</span> <span class="p">[</span><span class="bp">None</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">,</span> <span class="n">n_outputs</span><span class="p">])</span>
+</span><span class="n">y</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="nf">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">float32</span><span class="p">,</span> <span class="p">[</span><span class="bp">None</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">,</span> <span class="n">n_outputs</span><span class="p">])</span>
 
 <span class="c1">#create the cells and the layers of the network
-</span><span class="n">layers</span> <span class="o">=</span> <span class="p">[</span><span class="n">tf</span><span class="p">.</span><span class="n">contrib</span><span class="p">.</span><span class="n">rnn</span><span class="p">.</span><span class="n">OutputProjectionWrapper</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">contrib</span><span class="p">.</span><span class="n">rnn</span><span class="p">.</span><span class="n">GRUCell</span><span class="p">(</span><span class="n">num_units</span><span class="o">=</span><span class="n">n_neurons</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">relu</span><span class="p">),</span><span class="n">output_size</span><span class="o">=</span><span class="n">n_outputs</span><span class="p">)</span> <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_layers</span><span class="p">)]</span>
-<span class="n">multi_layer_cell</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">contrib</span><span class="p">.</span><span class="n">rnn</span><span class="p">.</span><span class="n">MultiRNNCell</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span> <span class="n">state_is_tuple</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="n">outputs</span><span class="p">,</span> <span class="n">states</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">dynamic_rnn</span><span class="p">(</span><span class="n">multi_layer_cell</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
+</span><span class="n">layers</span> <span class="o">=</span> <span class="p">[</span><span class="n">tf</span><span class="p">.</span><span class="n">contrib</span><span class="p">.</span><span class="n">rnn</span><span class="p">.</span><span class="nc">OutputProjectionWrapper</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">contrib</span><span class="p">.</span><span class="n">rnn</span><span class="p">.</span><span class="nc">GRUCell</span><span class="p">(</span><span class="n">num_units</span><span class="o">=</span><span class="n">n_neurons</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">relu</span><span class="p">),</span><span class="n">output_size</span><span class="o">=</span><span class="n">n_outputs</span><span class="p">)</span> <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">n_layers</span><span class="p">)]</span>
+<span class="n">multi_layer_cell</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">contrib</span><span class="p">.</span><span class="n">rnn</span><span class="p">.</span><span class="nc">MultiRNNCell</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span> <span class="n">state_is_tuple</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">outputs</span><span class="p">,</span> <span class="n">states</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="nf">dynamic_rnn</span><span class="p">(</span><span class="n">multi_layer_cell</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">outputs</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">y</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">outputs</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">y</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
 
 <span class="c1">#define the cost function and optimization
-</span><span class="n">loss</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">square</span><span class="p">(</span><span class="n">outputs</span> <span class="o">-</span> <span class="n">y</span><span class="p">))</span>
-<span class="n">optimizer</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">train</span><span class="p">.</span><span class="n">AdamOptimizer</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">)</span>
-<span class="n">training_op</span> <span class="o">=</span> <span class="n">optimizer</span><span class="p">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+</span><span class="n">loss</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="nf">reduce_mean</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="nf">square</span><span class="p">(</span><span class="n">outputs</span> <span class="o">-</span> <span class="n">y</span><span class="p">))</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">train</span><span class="p">.</span><span class="nc">AdamOptimizer</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">)</span>
+<span class="n">training_op</span> <span class="o">=</span> <span class="n">optimizer</span><span class="p">.</span><span class="nf">minimize</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
 
 <span class="c1">#Adds an op to initialize all variables in the model
-</span><span class="n">init</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">global_variables_initializer</span><span class="p">()</span></code></pre></figure>
+</span><span class="n">init</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="nf">global_variables_initializer</span><span class="p">()</span></code></pre></figure>
 
 <p>Next, we’ll load in the data for the first 10 Wikipedia pages. We’ll also need to strip off some rows from the time series data to reshape the data to the desired dimensions.</p>
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1">#Import training data
-</span><span class="kn">import</span> <span class="nn">csv</span>
-<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">genfromtxt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
-<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
-<span class="kn">import</span> <span class="nn">random</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">Imputer</span>
+</span><span class="kn">import</span> <span class="n">csv</span>
+<span class="kn">from</span> <span class="n">numpy</span> <span class="kn">import</span> <span class="n">genfromtxt</span>
+<span class="kn">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="n">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
+<span class="kn">import</span> <span class="n">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="n">random</span>
+<span class="kn">from</span> <span class="n">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">Imputer</span>
 
 <span class="c1">#read the csv into a dataframe
-</span><span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'../input/train_1.csv'</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">','</span><span class="p">,</span> <span class="n">error_bad_lines</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">warn_bad_lines</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</span><span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="p">.</span><span class="nf">read_csv</span><span class="p">(</span><span class="sh">'</span><span class="s">../input/train_1.csv</span><span class="sh">'</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="sh">'</span><span class="s">,</span><span class="sh">'</span><span class="p">,</span> <span class="n">error_bad_lines</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">warn_bad_lines</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
 <span class="c1">#clean the data
-</span><span class="n">df</span><span class="p">.</span><span class="n">drop</span><span class="p">([</span><span class="s">'Page'</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</span><span class="n">df</span><span class="p">.</span><span class="nf">drop</span><span class="p">([</span><span class="sh">'</span><span class="s">Page</span><span class="sh">'</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
 <span class="c1">#grab the relevant rows
-</span><span class="n">X_test</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">values</span><span class="p">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-<span class="n">rows</span> <span class="o">=</span> <span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span>
+</span><span class="n">X_test</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">values</span><span class="p">.</span><span class="nf">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="nf">print</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span>
 
 <span class="c1">#number of rows to read 
 </span><span class="n">rows</span> <span class="o">=</span> <span class="mi">10</span>
 
 <span class="c1">#fetch the rows
-</span><span class="n">X_test</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">values</span><span class="p">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</span><span class="n">X_test</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">values</span><span class="p">.</span><span class="nf">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 <span class="n">X_test</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">[:</span><span class="n">rows</span><span class="p">,</span><span class="mi">0</span><span class="p">:]</span>
 
 <span class="c1">#set the labelled data as the time step + 1
@@ -344,38 +379,38 @@
 </span><span class="n">X_test</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">[:,:</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span>
 <span class="n">Y_test</span> <span class="o">=</span> <span class="n">Y_test</span><span class="p">[:,:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
 
-<span class="k">for</span> <span class="n">iteration</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X_test</span><span class="p">)):</span>
-    <span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_test</span><span class="p">[</span><span class="n">iteration</span><span class="p">,:],</span> <span class="n">label</span><span class="o">=</span><span class="s">"page"</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">iteration</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">iteration</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">X_test</span><span class="p">)):</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">plot</span><span class="p">(</span><span class="n">X_test</span><span class="p">[</span><span class="n">iteration</span><span class="p">,:],</span> <span class="n">label</span><span class="o">=</span><span class="sh">"</span><span class="s">page</span><span class="sh">"</span><span class="o">+</span><span class="nf">str</span><span class="p">(</span><span class="n">iteration</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
 
-<span class="n">plt</span><span class="p">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">"Time"</span><span class="p">)</span>
-<span class="n">plt</span><span class="p">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"Value"</span><span class="p">)</span>
-<span class="n">plt</span><span class="p">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>    
+<span class="n">plt</span><span class="p">.</span><span class="nf">xlabel</span><span class="p">(</span><span class="sh">"</span><span class="s">Time</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">"</span><span class="s">Value</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>    
     
-<span class="n">Y_test</span> <span class="o">=</span> <span class="n">Y_test</span><span class="p">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">,</span> <span class="n">n_inputs</span><span class="p">))</span>
-<span class="n">X_test</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">,</span> <span class="n">n_inputs</span><span class="p">))</span></code></pre></figure>
+<span class="n">Y_test</span> <span class="o">=</span> <span class="n">Y_test</span><span class="p">.</span><span class="nf">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">,</span> <span class="n">n_inputs</span><span class="p">))</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">.</span><span class="nf">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">,</span> <span class="n">n_inputs</span><span class="p">))</span></code></pre></figure>
 
 <p>Now onto the training phase. We’ll train the model using batch gradient descent. We’ll also permute the batches (not the time instances) to avoid overfitting the model.</p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span>
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="n">numpy</span>
 <span class="n">n_epochs</span> <span class="o">=</span> <span class="mi">5000</span>
 <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">instances</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">saver</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">train</span><span class="p">.</span><span class="n">Saver</span><span class="p">()</span>
+<span class="n">saver</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">train</span><span class="p">.</span><span class="nc">Saver</span><span class="p">()</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s">"RNN construction"</span><span class="p">,</span> <span class="s">"n_layers"</span><span class="p">,</span> <span class="n">n_layers</span><span class="p">,</span> <span class="s">"n_neurons"</span><span class="p">,</span> <span class="n">n_neurons</span><span class="p">,</span> <span class="s">"n_inputs"</span><span class="p">,</span> <span class="n">n_inputs</span><span class="p">,</span> <span class="s">"n_outputs"</span><span class="p">,</span> <span class="n">n_outputs</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"training dataset"</span><span class="p">,</span> <span class="s">"shape"</span><span class="p">,</span> <span class="n">X_test</span><span class="p">.</span><span class="n">shape</span><span class="p">,</span> <span class="s">"instances"</span><span class="p">,</span> <span class="n">instances</span><span class="p">,</span> <span class="s">"batch_size"</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"training with"</span><span class="p">,</span> <span class="s">"n_epochs"</span><span class="p">,</span> <span class="n">n_epochs</span><span class="p">,</span> <span class="s">"iterations (instances // batch_size)"</span><span class="p">,</span> <span class="p">(</span><span class="n">instances</span><span class="o">//</span><span class="n">batch_size</span><span class="p">))</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">RNN construction</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">n_layers</span><span class="sh">"</span><span class="p">,</span> <span class="n">n_layers</span><span class="p">,</span> <span class="sh">"</span><span class="s">n_neurons</span><span class="sh">"</span><span class="p">,</span> <span class="n">n_neurons</span><span class="p">,</span> <span class="sh">"</span><span class="s">n_inputs</span><span class="sh">"</span><span class="p">,</span> <span class="n">n_inputs</span><span class="p">,</span> <span class="sh">"</span><span class="s">n_outputs</span><span class="sh">"</span><span class="p">,</span> <span class="n">n_outputs</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">training dataset</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">shape</span><span class="sh">"</span><span class="p">,</span> <span class="n">X_test</span><span class="p">.</span><span class="n">shape</span><span class="p">,</span> <span class="sh">"</span><span class="s">instances</span><span class="sh">"</span><span class="p">,</span> <span class="n">instances</span><span class="p">,</span> <span class="sh">"</span><span class="s">batch_size</span><span class="sh">"</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">training with</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">n_epochs</span><span class="sh">"</span><span class="p">,</span> <span class="n">n_epochs</span><span class="p">,</span> <span class="sh">"</span><span class="s">iterations (instances // batch_size)</span><span class="sh">"</span><span class="p">,</span> <span class="p">(</span><span class="n">instances</span><span class="o">//</span><span class="n">batch_size</span><span class="p">))</span>
 
 <span class="c1">#open a TensorFlow Session
-</span><span class="k">with</span> <span class="n">tf</span><span class="p">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">sess</span><span class="p">:</span>
-    <span class="n">init</span><span class="p">.</span><span class="n">run</span><span class="p">()</span>
+</span><span class="k">with</span> <span class="n">tf</span><span class="p">.</span><span class="nc">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">sess</span><span class="p">:</span>
+    <span class="n">init</span><span class="p">.</span><span class="nf">run</span><span class="p">()</span>
     
     <span class="c1">#Epoch is a single pass through the entire training set, followed by testing of the verification set.
-</span>    <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_epochs</span><span class="p">):</span>
+</span>    <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">n_epochs</span><span class="p">):</span>
     
         <span class="c1">#print("X_test",X_test)
-</span>        <span class="n">idxs</span> <span class="o">=</span> <span class="n">numpy</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">instances</span><span class="p">)</span> <span class="c1">#shuffled ordering
+</span>        <span class="n">idxs</span> <span class="o">=</span> <span class="n">numpy</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="nf">permutation</span><span class="p">(</span><span class="n">instances</span><span class="p">)</span> <span class="c1">#shuffled ordering
 </span>        <span class="c1">#print(idxs)
 </span>        <span class="c1">#print(idxs.shape)
 </span>        <span class="n">X_random</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">[</span><span class="n">idxs</span><span class="p">]</span>
@@ -384,7 +419,7 @@
         <span class="c1">#print('Y_random', Y_random)
 </span>    
         <span class="c1">#Number of batches, here we exhaust the training set
-</span>        <span class="k">for</span> <span class="n">iteration</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">instances</span> <span class="o">//</span> <span class="n">batch_size</span><span class="p">):</span>   
+</span>        <span class="k">for</span> <span class="n">iteration</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">instances</span> <span class="o">//</span> <span class="n">batch_size</span><span class="p">):</span>   
 
             <span class="c1">#get the next batch - we permute the examples in each batch
 </span>            <span class="c1">#X_batch, y_batch = next_batch(batch_size, n_steps)
@@ -394,22 +429,22 @@
             <span class="c1">#print("iteration", iteration, "X_batch", X_batch)
 </span>            <span class="c1">#print("iteration", iteration, "y_batch", y_batch)
 </span>            
-            <span class="n">X_batch</span> <span class="o">=</span> <span class="n">X_batch</span><span class="p">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">,</span> <span class="n">rows</span><span class="p">))</span>
-            <span class="n">y_batch</span> <span class="o">=</span> <span class="n">y_batch</span><span class="p">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">,</span> <span class="n">rows</span><span class="p">))</span>
+            <span class="n">X_batch</span> <span class="o">=</span> <span class="n">X_batch</span><span class="p">.</span><span class="nf">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">,</span> <span class="n">rows</span><span class="p">))</span>
+            <span class="n">y_batch</span> <span class="o">=</span> <span class="n">y_batch</span><span class="p">.</span><span class="nf">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">,</span> <span class="n">rows</span><span class="p">))</span>
         
             <span class="c1">#feed in the batch
-</span>            <span class="n">sess</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">training_op</span><span class="p">,</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">X</span><span class="p">:</span> <span class="n">X_batch</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">y_batch</span><span class="p">})</span>
+</span>            <span class="n">sess</span><span class="p">.</span><span class="nf">run</span><span class="p">(</span><span class="n">training_op</span><span class="p">,</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">X</span><span class="p">:</span> <span class="n">X_batch</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">y_batch</span><span class="p">})</span>
         
-            <span class="k">if</span> <span class="p">(</span><span class="n">epoch</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">iteration</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="nf">if </span><span class="p">(</span><span class="n">epoch</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">iteration</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
                 <span class="c1">#check contents of first example in each batch
 </span>                <span class="c1">#print("iteration", iteration, "X_batch", X_batch[0])
 </span>                <span class="c1">#print("iteration", iteration, "y_batch", y_batch[0])
-</span>                <span class="n">mse</span> <span class="o">=</span> <span class="n">loss</span><span class="p">.</span><span class="nb">eval</span><span class="p">(</span><span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">X</span><span class="p">:</span><span class="n">X_batch</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span><span class="n">y_batch</span><span class="p">})</span>
-                <span class="k">print</span><span class="p">(</span><span class="s">"epoch"</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span> <span class="s">"iteration"</span><span class="p">,</span> <span class="n">iteration</span><span class="p">,</span> <span class="s">"</span><span class="se">\t</span><span class="s">MSE:"</span><span class="p">,</span> <span class="n">mse</span><span class="p">)</span>
+</span>                <span class="n">mse</span> <span class="o">=</span> <span class="n">loss</span><span class="p">.</span><span class="nf">eval</span><span class="p">(</span><span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">X</span><span class="p">:</span><span class="n">X_batch</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span><span class="n">y_batch</span><span class="p">})</span>
+                <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">epoch</span><span class="sh">"</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span> <span class="sh">"</span><span class="s">iteration</span><span class="sh">"</span><span class="p">,</span> <span class="n">iteration</span><span class="p">,</span> <span class="sh">"</span><span class="se">\t</span><span class="s">MSE:</span><span class="sh">"</span><span class="p">,</span> <span class="n">mse</span><span class="p">)</span>
             
             <span class="c1">#print(epoch)
 </span>    
-    <span class="n">saver</span><span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="n">sess</span><span class="p">,</span> <span class="s">"./my_model"</span><span class="p">)</span> </code></pre></figure>
+    <span class="n">saver</span><span class="p">.</span><span class="nf">save</span><span class="p">(</span><span class="n">sess</span><span class="p">,</span> <span class="sh">"</span><span class="s">./my_model</span><span class="sh">"</span><span class="p">)</span> </code></pre></figure>
 
 <p>Note the Mean Square Error is not converging towards zero. The model is failing to make accurate predictions.</p>
 
@@ -419,53 +454,53 @@
 </span>
 <span class="n">max_iterations</span> <span class="o">=</span> <span class="mi">90</span> <span class="c1">#number of time steps to look forward
 </span>
-<span class="k">with</span> <span class="n">tf</span><span class="p">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">sess</span><span class="p">:</span>                        
-    <span class="n">saver</span><span class="p">.</span><span class="n">restore</span><span class="p">(</span><span class="n">sess</span><span class="p">,</span> <span class="s">"./my_model"</span><span class="p">)</span> 
+<span class="k">with</span> <span class="n">tf</span><span class="p">.</span><span class="nc">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">sess</span><span class="p">:</span>                        
+    <span class="n">saver</span><span class="p">.</span><span class="nf">restore</span><span class="p">(</span><span class="n">sess</span><span class="p">,</span> <span class="sh">"</span><span class="s">./my_model</span><span class="sh">"</span><span class="p">)</span> 
 
     <span class="n">sequence</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">n_steps</span><span class="p">]</span> <span class="o">*</span> <span class="n">rows</span>
-    <span class="k">for</span> <span class="n">iteration</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iterations</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">iteration</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">max_iterations</span><span class="p">):</span>
         <span class="c1">#print("iteration", iteration)
 </span>        
-        <span class="n">X_batch</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">sequence</span><span class="p">[</span><span class="o">-</span><span class="n">n_steps</span><span class="o">*</span><span class="n">rows</span><span class="p">:]).</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">n_steps</span><span class="p">,</span><span class="n">rows</span><span class="p">)</span>
+        <span class="n">X_batch</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="n">sequence</span><span class="p">[</span><span class="o">-</span><span class="n">n_steps</span><span class="o">*</span><span class="n">rows</span><span class="p">:]).</span><span class="nf">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">n_steps</span><span class="p">,</span><span class="n">rows</span><span class="p">)</span>
         <span class="c1">#print(X_batch)
 </span>        
-        <span class="n">y_pred</span> <span class="o">=</span> <span class="n">sess</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">X</span><span class="p">:</span> <span class="n">X_batch</span><span class="p">})</span>
+        <span class="n">y_pred</span> <span class="o">=</span> <span class="n">sess</span><span class="p">.</span><span class="nf">run</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">X</span><span class="p">:</span> <span class="n">X_batch</span><span class="p">})</span>
         <span class="c1">#print("Y", y_pred)
 </span>        <span class="c1">#print("numbers to be added", np.array(y_pred[0,n_steps-1]))
 </span>            
-        <span class="n">sequence</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">sequence</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">n_steps</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>      
+        <span class="n">sequence</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">sequence</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">n_steps</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>      
         <span class="c1">#print("sequence so far...", np.array(sequence))
 </span>        
     <span class="c1">#print("end sequence", np.array(sequence))
-</span>    <span class="n">sequence</span><span class="p">[</span><span class="n">numpy</span><span class="p">.</span><span class="n">where</span><span class="p">(</span><span class="n">sequence</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
+</span>    <span class="n">sequence</span><span class="p">[</span><span class="n">numpy</span><span class="p">.</span><span class="nf">where</span><span class="p">(</span><span class="n">sequence</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="c1">#print(sequence)
-</span>    <span class="n">sequence</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">sequence</span><span class="p">).</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">rows</span><span class="p">)</span>
+</span>    <span class="n">sequence</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="n">sequence</span><span class="p">).</span><span class="nf">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">rows</span><span class="p">)</span>
     <span class="c1">#print(sequence)</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">plt</span><span class="p">.</span><span class="nf">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
 
-<span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">plt</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
-<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">"Full iteration of prediction"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">"</span><span class="s">Full iteration of prediction</span><span class="sh">"</span><span class="p">)</span>
 
-<span class="k">for</span> <span class="n">iteration</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rows</span><span class="p">):</span>
-    <span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sequence</span><span class="p">[</span><span class="n">n_steps</span><span class="p">:,</span><span class="n">iteration</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="s">"page"</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">iteration</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">iteration</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">rows</span><span class="p">):</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">plot</span><span class="p">(</span><span class="n">sequence</span><span class="p">[</span><span class="n">n_steps</span><span class="p">:,</span><span class="n">iteration</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="sh">"</span><span class="s">page</span><span class="sh">"</span><span class="o">+</span><span class="nf">str</span><span class="p">(</span><span class="n">iteration</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
 
-<span class="n">plt</span><span class="p">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">"Time"</span><span class="p">)</span>
-<span class="n">plt</span><span class="p">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"Value"</span><span class="p">)</span>
-<span class="n">plt</span><span class="p">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">xlabel</span><span class="p">(</span><span class="sh">"</span><span class="s">Time</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">"</span><span class="s">Value</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">legend</span><span class="p">()</span>
 
-<span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">plt</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
-<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">"First 10 time steps in predicted sequence"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">figure</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sh">"</span><span class="s">First 10 time steps in predicted sequence</span><span class="sh">"</span><span class="p">)</span>
 
-<span class="k">for</span> <span class="n">iteration</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rows</span><span class="p">):</span>
-    <span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sequence</span><span class="p">[</span><span class="n">n_steps</span><span class="p">:</span><span class="n">n_steps</span><span class="o">+</span><span class="mi">10</span><span class="p">,</span><span class="n">iteration</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">iteration</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">rows</span><span class="p">):</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">plot</span><span class="p">(</span><span class="n">sequence</span><span class="p">[</span><span class="n">n_steps</span><span class="p">:</span><span class="n">n_steps</span><span class="o">+</span><span class="mi">10</span><span class="p">,</span><span class="n">iteration</span><span class="p">])</span>
 
-<span class="n">plt</span><span class="p">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">"Time"</span><span class="p">)</span>
-<span class="n">plt</span><span class="p">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"Value"</span><span class="p">)</span>
-<span class="n">plt</span><span class="p">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span></code></pre></figure>
+<span class="n">plt</span><span class="p">.</span><span class="nf">xlabel</span><span class="p">(</span><span class="sh">"</span><span class="s">Time</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">ylabel</span><span class="p">(</span><span class="sh">"</span><span class="s">Value</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span></code></pre></figure>
 
 <p><img src="\assets\wiki\forecast_1.jpg" />
 <img src="\assets\wiki\forecast_2.jpg" /></p>
@@ -474,56 +509,92 @@
 
 <p>The full notebook is available to fork on Kaggle here: <a href="https://www.kaggle.com/jamesdhope/wiki-competition-time-series-predictor-grucell">https://www.kaggle.com/jamesdhope/wiki-competition-time-series-predictor-grucell</a>.</p>
 
+        
+      </section>
 
-<ul class="taxonomy__index">
-     
-    <li>
-        <a href="#2023">
-            <strong>2023</strong> <span class="taxonomy__count">1</span>
-        </a>
-    </li>
-    
-    <li>
-        <a href="#2022">
-            <strong>2022</strong> <span class="taxonomy__count">1</span>
-        </a>
-    </li>
-    
-    <li>
-        <a href="#2021">
-            <strong>2021</strong> <span class="taxonomy__count">3</span>
-        </a>
-    </li>
-    
-    <li>
-        <a href="#2019">
-            <strong>2019</strong> <span class="taxonomy__count">4</span>
-        </a>
-    </li>
-    
-    <li>
-        <a href="#2018">
-            <strong>2018</strong> <span class="taxonomy__count">2</span>
-        </a>
-    </li>
-    
-    <li>
-        <a href="#2017">
-            <strong>2017</strong> <span class="taxonomy__count">2</span>
-        </a>
-    </li>
-    
-</ul>
+      <footer class="page__meta">
+        
+        
+  
+
 
   
-<section id="2023" class="taxonomy__section">
-    <h2 class="archive__subtitle">2023</h2>
-    <div class="entries-list">
-         
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#data-science" class="page__taxonomy-item p-category" rel="tag">data science</a><span class="sep">, </span>
+    
+      <a href="/tags/#machine-learning" class="page__taxonomy-item p-category" rel="tag">machine learning</a>
+    
+    </span>
+  </p>
 
 
 
-<div class="list__item">
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#kaggle" class="page__taxonomy-item p-category" rel="tag">kaggle</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2017-08-02T00:00:00+01:00">August 2, 2017</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Deep+Learning+Recurrent+Neural+Net+for+Time+Series+Forecasting%20http%3A%2F%2Flocalhost%3A4000%2Fkaggle%2Ftime-series-forecasting%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fkaggle%2Ftime-series-forecasting%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fkaggle%2Ftime-series-forecasting%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="#" class="pagination--pager disabled">Previous</a>
+    
+    
+      <a href="/kaggle/zillow-ensemble/" class="pagination--pager" title="Zillow’s Zestimate, and my ensemble of regressors for highly featured data prediction
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">You may also enjoy</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
@@ -557,19 +628,13 @@
 </p>
   </article>
 </div>
- 
-    </div>
-    <a href="#page-title" class="back-to-top">Back to top &uarr;</a>
-</section>
 
-<section id="2022" class="taxonomy__section">
-    <h2 class="archive__subtitle">2022</h2>
-    <div class="entries-list">
-         
+        
+          
 
 
 
-<div class="list__item">
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
@@ -603,19 +668,13 @@
 </p>
   </article>
 </div>
- 
-    </div>
-    <a href="#page-title" class="back-to-top">Back to top &uarr;</a>
-</section>
 
-<section id="2021" class="taxonomy__section">
-    <h2 class="archive__subtitle">2021</h2>
-    <div class="entries-list">
-         
+        
+          
 
 
 
-<div class="list__item">
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
@@ -648,11 +707,13 @@
     <p class="archive__item-excerpt" itemprop="description">Continuing with the theme of Kubernetes, I have recently built out a solution to inject environment variables into containerised applications from Hasicorp C...</p>
   </article>
 </div>
-  
+
+        
+          
 
 
 
-<div class="list__item">
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
@@ -685,374 +746,14 @@
     <p class="archive__item-excerpt" itemprop="description">If you’re managing a data engine inside a kubernetes cluster then implementing a backup and restore process can be challenging. A few months ago I developed ...</p>
   </article>
 </div>
-  
 
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/kubernetes,/digital/ocean,/solution/architecture/kubernetes-digital-ocean/" rel="permalink">Top 10 architectural highlights for Digital Ocean Kubernetes
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
         
-          5 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">Recently I’ve been developing a solution architecture for a boostrapped startup in Digital Ocean’s Kubernetes. Developing an understanding of the context, di...</p>
-  </article>
-</div>
- 
+      </div>
     </div>
-    <a href="#page-title" class="back-to-top">Back to top &uarr;</a>
-</section>
-
-<section id="2019" class="taxonomy__section">
-    <h2 class="archive__subtitle">2019</h2>
-    <div class="entries-list">
-         
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/medium,/towardsdatascience,/peopleanalytics,/graphs,/neo4j/a-new-era-for-people-analytics/" rel="permalink">A New Era for People Analytics
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">This article was published in the journal Towards Data Science. Please click here to access the article.
-</p>
-  </article>
-</div>
   
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/medium,/towardsdatascience,/people/analytics/can-your-people-analytics-do-this/" rel="permalink">Can your People Analytics do this?
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">This article was published in the journal Towards Data Science. Please click here to access the article.
-</p>
-  </article>
-</div>
   
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/medium,/towardsdatascience,/peopleanalytics,/graphs,/neo4j,/machinelearning,/recommendersystems,/recommender/build-a-machine-learning-recommender/" rel="permalink">Build a Machine Learning Recommender
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">This article was published in the journal Towards Data Science. Please click here to access the article.
-</p>
-  </article>
 </div>
-  
 
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/medium,/towardsdatascience,/peopleanalytics,/graphs,/neo4j/build-your-own-blockchain-protocol/" rel="permalink">Build your own Blockchain Protocol
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">This article was published in the journal Towards Data Science. Please click here to access the article.
-</p>
-  </article>
-</div>
- 
-    </div>
-    <a href="#page-title" class="back-to-top">Back to top &uarr;</a>
-</section>
-
-<section id="2018" class="taxonomy__section">
-    <h2 class="archive__subtitle">2018</h2>
-    <div class="entries-list">
-         
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/edtech,/coding,/programming,/python,/computing,/computer-science/StableGroups/" rel="permalink">Implementation of the Stable Marriage Algorithm to find ‘Stable Groups’
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          13 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">In my previous post, I explained my implementation of the Stable Marriage Algorithm to find stable pairs. Taking this implementation one step further, I want...</p>
-  </article>
-</div>
-  
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/edtech,/coding,/programming,/python,/computing,/computer-science/stable-marriage/" rel="permalink">Implementation of the Stable Marriage Algorithm.
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          3 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">Ever been faced with the challenge of pairing people based on their individual preferences? I can think of numerous situations in which such a task might ari...</p>
-  </article>
-</div>
- 
-    </div>
-    <a href="#page-title" class="back-to-top">Back to top &uarr;</a>
-</section>
-
-<section id="2017" class="taxonomy__section">
-    <h2 class="archive__subtitle">2017</h2>
-    <div class="entries-list">
-         
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/kaggle/zillow-ensemble/" rel="permalink">Zillow’s Zestimate, and my ensemble of regressors for highly featured data prediction
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          9 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">“The Zillow Prize contest competition, sponsored by Zillow, Inc. (“Sponsor”) is open to all individuals over the age of 18 at the time of entry. The competit...</p>
-  </article>
-</div>
-  
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/kaggle/time-series-forecasting/" rel="permalink">Deep Learning Recurrent Neural Net for Time Series Forecasting
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          5 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">The Notebook described here supersedes my basic Recurrent Neural Net (RNN) for predicting multiple time series for the Wikipedia page forecasting competition...</p>
-  </article>
-</div>
- 
-    </div>
-    <a href="#page-title" class="back-to-top">Back to top &uarr;</a>
-</section>
-
-  </div>
-</div>
     </div>
 
     
@@ -1071,11 +772,15 @@
     
       
         
-          <li><a href="https://github.com/jamesdhope" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+      
         
       
         
-          <li><a href="https://linkedin.com/in/jamesdometthope" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+      
+        
+      
+        
+      
         
       
     

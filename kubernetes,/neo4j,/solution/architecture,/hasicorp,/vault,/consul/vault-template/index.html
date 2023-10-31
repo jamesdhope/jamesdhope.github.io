@@ -34,7 +34,7 @@
 
 
 
-  <meta property="article:published_time" content="2021-11-10T19:46:34+00:00">
+  <meta property="article:published_time" content="2021-11-19T00:00:00+00:00">
 
 
 
@@ -56,8 +56,7 @@
     
       "@type": "Person",
       "name": "James Hope",
-      "url": "http://localhost:4000/",
-      "sameAs": ["https://twitter.com/","https://github.com/"]
+      "url": "http://localhost:4000/"
     
   }
 </script>
@@ -97,7 +96,7 @@
 
   </head>
 
-  <body class="layout--posts">
+  <body class="layout--single">
     <nav class="skip-links">
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
@@ -105,10 +104,6 @@
     <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
   </ul>
 </nav>
-
-    <!--[if lt IE 9]>
-<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
-<![endif]-->
 
     
 
@@ -121,7 +116,9 @@
           James Hope
           
         </a>
-        <ul class="visible-links"></ul>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/">Quick-Start Guide</a>
+            </li></ul>
         
         <button class="greedy-nav__toggle hidden" type="button">
           <span class="visually-hidden">Toggle menu</span>
@@ -136,6 +133,8 @@
 
     <div class="initial-content">
       
+
+
 
 
 
@@ -161,7 +160,7 @@
     </h3>
     
       <div class="author__bio p-note" itemprop="description">
-        <p>Solutions Architect, IBM Client Engineering, AI Engineer, GCP Professional Cloud Architect, GCP Professional Machine Learning Engineer. Views and opinions are my own.</p>
+        <p>Senior Solutions Architect @ IBM Client Engineering, AI Engineer, GCP Professional Cloud Architect, GCP Professional Machine Learning Engineer. Views and opinions are my own.</p>
 
       </div>
     
@@ -179,15 +178,15 @@
       
         
           
-            <li><a href="https://github.com/jamesdhope" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+            <li><a href="https://github.com/jamesdhope" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
           
         
           
-            <li><a href="https://linkedin.com/in/jamesdometthope" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+            <li><a href="https://linkedin.com/in/jamesdometthope" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
           
         
           
-            <li><a href="https://twitter.com/jamesdhope" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+            <li><a href="https://twitter.com/jamesdhope" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
           
         
       
@@ -250,16 +249,52 @@
     </ul>
   </div>
 </div>
+
   
   </div>
 
 
 
-  <div class="archive">
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Injecting Config as Environment Variables from Hasicorp’s Consul &amp; Vault">
+    <meta itemprop="description" content="Continuing with the theme of Kubernetes, I have recently built out a solution to inject environment variables into containerised applications from Hasicorp Consult and Vault Key Value (KV) engine, which might be considered as a first step in realising Hashicorp’s Service Mesh. Installing both Consul and Vault via helm with the KV Engine is fairly straightforward. Supplying these KV’s as environment variables to the containerised applications in Kubernetes, however, requires a bit more thought. Two different approaches are required to lift in values from Consul and Vault which makes things even more interesting. The approach I took was to write the KV’s to file before they are exposed as ENVs in the container, which is less than ideal. As a side note, it might be cleaner and simpler to manage config at the application layer by calling Consul and Vault’s HTTP API. That is another approach which I’m not going to talk about here.">
+    <meta itemprop="datePublished" content="2021-11-19T00:00:00+00:00">
     
-      <h1 id="page-title" class="page__title">Injecting Config as Environment Variables from Hasicorp's Consul & Vault</h1>
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/kubernetes,/neo4j,/solution/architecture,/hasicorp,/vault,/consul/vault-template/" class="u-url" itemprop="url">Injecting Config as Environment Variables from Hasicorp’s Consul &amp; Vault
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
     
-    <p>Continuing with the theme of Kubernetes, I have recently built out a solution to inject environment variables into containerised applications from Hasicorp Consult and Vault Key Value (KV) engine, which might be considered as a first step in realising Hashicorp’s Service Mesh. Installing both Consul and Vault via helm with the KV Engine is fairly straightforward. Supplying these KV’s as environment variables to the containerised applications in Kubernetes, however, requires a bit more thought. Two different approaches are required to lift in values from Consul and Vault which makes things even more interesting. The approach I took was to write the KV’s to file before they are exposed as ENVs in the container, which is less than ideal. As a side note, it might be cleaner and simpler to manage config at the application layer by calling Consul and Vault’s HTTP API. That is another approach which I’m not going to talk about here.</p>
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+        <p>Continuing with the theme of Kubernetes, I have recently built out a solution to inject environment variables into containerised applications from Hasicorp Consult and Vault Key Value (KV) engine, which might be considered as a first step in realising Hashicorp’s Service Mesh. Installing both Consul and Vault via helm with the KV Engine is fairly straightforward. Supplying these KV’s as environment variables to the containerised applications in Kubernetes, however, requires a bit more thought. Two different approaches are required to lift in values from Consul and Vault which makes things even more interesting. The approach I took was to write the KV’s to file before they are exposed as ENVs in the container, which is less than ideal. As a side note, it might be cleaner and simpler to manage config at the application layer by calling Consul and Vault’s HTTP API. That is another approach which I’m not going to talk about here.</p>
 
 <p>For the purposes of this explanation I’m supplying environment variables to an application called Hasura graphQL API. Config is held in Consul and Vault in their respective KV Engines.</p>
 
@@ -273,7 +308,7 @@ Source: https://www.pexels.com/</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>initContainers:
 - name: envconsul
         image: hashicorp/envconsul:alpine
-        
+        ## 
         command: ['sh','-c','envconsul -consul-addr=consul-consul-server.consul.svc.cluster.local:8500 -pristine -prefix staging/hasura env | sed "s/.*/export &amp;/" &gt; /consul/config/staging-hasura']
 - mountPath: /consul/config/
         name: consul
@@ -310,56 +345,88 @@ Source: https://www.pexels.com/</p>
 <p>Hasura deployment spec can be updated with a command statement: <code class="language-plaintext highlighter-rouge">command: ['sh', '-c', '. vault/secrets/staging-hasura &amp;&amp; . consul/config/staging-hasura &amp;&amp; graphql-engine serve']</code>. Using sh with the dot command to execute the bash scripts exposing the KV’s as environment variables in the main application container, and then launching into the application itself. If you take this approach, be aware that the Kubernetes command statement will take precedence over any entrypoint command used in the dockerfile. If you are utilising a third party image that utilises an entrypoint statement you may need to create a custom dockerfile to make this approach work.</p>
 
 
+        
+      </section>
 
-<ul class="taxonomy__index">
-     
-    <li>
-        <a href="#2023">
-            <strong>2023</strong> <span class="taxonomy__count">1</span>
-        </a>
-    </li>
-    
-    <li>
-        <a href="#2022">
-            <strong>2022</strong> <span class="taxonomy__count">1</span>
-        </a>
-    </li>
-    
-    <li>
-        <a href="#2021">
-            <strong>2021</strong> <span class="taxonomy__count">3</span>
-        </a>
-    </li>
-    
-    <li>
-        <a href="#2019">
-            <strong>2019</strong> <span class="taxonomy__count">4</span>
-        </a>
-    </li>
-    
-    <li>
-        <a href="#2018">
-            <strong>2018</strong> <span class="taxonomy__count">2</span>
-        </a>
-    </li>
-    
-    <li>
-        <a href="#2017">
-            <strong>2017</strong> <span class="taxonomy__count">2</span>
-        </a>
-    </li>
-    
-</ul>
+      <footer class="page__meta">
+        
+        
+
 
   
-<section id="2023" class="taxonomy__section">
-    <h2 class="archive__subtitle">2023</h2>
-    <div class="entries-list">
-         
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#architecture" class="page__taxonomy-item p-category" rel="tag">Architecture,</a><span class="sep">, </span>
+    
+      <a href="/categories/#consul" class="page__taxonomy-item p-category" rel="tag">Consul</a><span class="sep">, </span>
+    
+      <a href="/categories/#hasicorp" class="page__taxonomy-item p-category" rel="tag">Hasicorp,</a><span class="sep">, </span>
+    
+      <a href="/categories/#kubernetes" class="page__taxonomy-item p-category" rel="tag">Kubernetes,</a><span class="sep">, </span>
+    
+      <a href="/categories/#neo4j" class="page__taxonomy-item p-category" rel="tag">Neo4j,</a><span class="sep">, </span>
+    
+      <a href="/categories/#solution" class="page__taxonomy-item p-category" rel="tag">Solution</a><span class="sep">, </span>
+    
+      <a href="/categories/#vault" class="page__taxonomy-item p-category" rel="tag">Vault,</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2021-11-19T00:00:00+00:00">November 19, 2021</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Injecting+Config+as+Environment+Variables+from+Hasicorp%27s+Consul+%26+Vault%20http%3A%2F%2Flocalhost%3A4000%2Fkubernetes%2C%2Fneo4j%2C%2Fsolution%2Farchitecture%2C%2Fhasicorp%2C%2Fvault%2C%2Fconsul%2Fvault-template%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fkubernetes%2C%2Fneo4j%2C%2Fsolution%2Farchitecture%2C%2Fhasicorp%2C%2Fvault%2C%2Fconsul%2Fvault-template%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fkubernetes%2C%2Fneo4j%2C%2Fsolution%2Farchitecture%2C%2Fhasicorp%2C%2Fvault%2C%2Fconsul%2Fvault-template%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/kubernetes,/neo4j,/solution/architecture/neo4j-backup-restore/" class="pagination--pager" title="Backup and Restore Neo4j in a Casual Cluster
+">Previous</a>
+    
+    
+      <a href="/ibm/e&u/gas-system-of-the-future/" class="pagination--pager" title="Gas System of the Future, Digital Twin
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">You may also enjoy</h2>
+      <div class="grid__wrapper">
+        
+          
 
 
 
-<div class="list__item">
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
@@ -393,19 +460,13 @@ Source: https://www.pexels.com/</p>
 </p>
   </article>
 </div>
- 
-    </div>
-    <a href="#page-title" class="back-to-top">Back to top &uarr;</a>
-</section>
 
-<section id="2022" class="taxonomy__section">
-    <h2 class="archive__subtitle">2022</h2>
-    <div class="entries-list">
-         
+        
+          
 
 
 
-<div class="list__item">
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
@@ -439,56 +500,13 @@ Source: https://www.pexels.com/</p>
 </p>
   </article>
 </div>
- 
-    </div>
-    <a href="#page-title" class="back-to-top">Back to top &uarr;</a>
-</section>
 
-<section id="2021" class="taxonomy__section">
-    <h2 class="archive__subtitle">2021</h2>
-    <div class="entries-list">
-         
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/kubernetes,/neo4j,/solution/architecture,/hasicorp,/vault,/consul/vault-template/" rel="permalink">Injecting Config as Environment Variables from Hasicorp’s Consul &amp; Vault
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
         
-          2 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">Continuing with the theme of Kubernetes, I have recently built out a solution to inject environment variables into containerised applications from Hasicorp C...</p>
-  </article>
-</div>
-  
+          
 
 
 
-<div class="list__item">
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
@@ -521,11 +539,13 @@ Source: https://www.pexels.com/</p>
     <p class="archive__item-excerpt" itemprop="description">If you’re managing a data engine inside a kubernetes cluster then implementing a backup and restore process can be challenging. A few months ago I developed ...</p>
   </article>
 </div>
-  
+
+        
+          
 
 
 
-<div class="list__item">
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
@@ -558,337 +578,14 @@ Source: https://www.pexels.com/</p>
     <p class="archive__item-excerpt" itemprop="description">Recently I’ve been developing a solution architecture for a boostrapped startup in Digital Ocean’s Kubernetes. Developing an understanding of the context, di...</p>
   </article>
 </div>
- 
+
+        
+      </div>
     </div>
-    <a href="#page-title" class="back-to-top">Back to top &uarr;</a>
-</section>
-
-<section id="2019" class="taxonomy__section">
-    <h2 class="archive__subtitle">2019</h2>
-    <div class="entries-list">
-         
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/medium,/towardsdatascience,/peopleanalytics,/graphs,/neo4j/a-new-era-for-people-analytics/" rel="permalink">A New Era for People Analytics
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">This article was published in the journal Towards Data Science. Please click here to access the article.
-</p>
-  </article>
-</div>
   
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/medium,/towardsdatascience,/people/analytics/can-your-people-analytics-do-this/" rel="permalink">Can your People Analytics do this?
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">This article was published in the journal Towards Data Science. Please click here to access the article.
-</p>
-  </article>
-</div>
   
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/medium,/towardsdatascience,/peopleanalytics,/graphs,/neo4j,/machinelearning,/recommendersystems,/recommender/build-a-machine-learning-recommender/" rel="permalink">Build a Machine Learning Recommender
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">This article was published in the journal Towards Data Science. Please click here to access the article.
-</p>
-  </article>
 </div>
-  
 
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/medium,/towardsdatascience,/peopleanalytics,/graphs,/neo4j/build-your-own-blockchain-protocol/" rel="permalink">Build your own Blockchain Protocol
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">This article was published in the journal Towards Data Science. Please click here to access the article.
-</p>
-  </article>
-</div>
- 
-    </div>
-    <a href="#page-title" class="back-to-top">Back to top &uarr;</a>
-</section>
-
-<section id="2018" class="taxonomy__section">
-    <h2 class="archive__subtitle">2018</h2>
-    <div class="entries-list">
-         
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/edtech,/coding,/programming,/python,/computing,/computer-science/StableGroups/" rel="permalink">Implementation of the Stable Marriage Algorithm to find ‘Stable Groups’
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          13 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">In my previous post, I explained my implementation of the Stable Marriage Algorithm to find stable pairs. Taking this implementation one step further, I want...</p>
-  </article>
-</div>
-  
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/edtech,/coding,/programming,/python,/computing,/computer-science/stable-marriage/" rel="permalink">Implementation of the Stable Marriage Algorithm.
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          4 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">Ever been faced with the challenge of pairing people based on their individual preferences? I can think of numerous situations in which such a task might ari...</p>
-  </article>
-</div>
- 
-    </div>
-    <a href="#page-title" class="back-to-top">Back to top &uarr;</a>
-</section>
-
-<section id="2017" class="taxonomy__section">
-    <h2 class="archive__subtitle">2017</h2>
-    <div class="entries-list">
-         
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/kaggle/zillow-ensemble/" rel="permalink">Zillow’s Zestimate, and my ensemble of regressors for highly featured data prediction
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          8 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">“The Zillow Prize contest competition, sponsored by Zillow, Inc. (“Sponsor”) is open to all individuals over the age of 18 at the time of entry. The competit...</p>
-  </article>
-</div>
-  
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/kaggle/time-series-forecasting/" rel="permalink">Deep Learning Recurrent Neural Net for Time Series Forecasting
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          5 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">The Notebook described here supersedes my basic Recurrent Neural Net (RNN) for predicting multiple time series for the Wikipedia page forecasting competition...</p>
-  </article>
-</div>
- 
-    </div>
-    <a href="#page-title" class="back-to-top">Back to top &uarr;</a>
-</section>
-
-  </div>
-</div>
     </div>
 
     
@@ -907,11 +604,15 @@ Source: https://www.pexels.com/</p>
     
       
         
-          <li><a href="https://github.com/jamesdhope" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+      
         
       
         
-          <li><a href="https://linkedin.com/in/jamesdometthope" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+      
+        
+      
+        
+      
         
       
     
