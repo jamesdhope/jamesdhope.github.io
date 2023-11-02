@@ -76,4 +76,10 @@ var store = [{
         "tags": ["data science","generativeAI","llms","virtual assistants","graph","watsonx","ibm","architecture"],
         "url": "/generativeai/architecture/graph-driven-llm-assistant-virtual-assistant/",
         "teaser": null
+      },{
+        "title": "An LLM assisted approach to automating testing of a virtual assistant",
+        "excerpt":"Large Language Models (LLMs) can be used to automate testing of virtual assistants. One approach is to use the LLM to generate the queries and responses of the human user to automate the test of a journey, end to end. Here I share a conceptual data pipeline view of such...","categories": ["generativeAI","automation"],
+        "tags": ["llms","generativeAI","architecture"],
+        "url": "/generativeai/automation/llm-assisted-virtual-assistant-automated-testing/",
+        "teaser": null
       }]
