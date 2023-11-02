@@ -32,6 +32,18 @@
 
 
 
+  <meta name="twitter:site" content="@jamesdhope">
+  <meta name="twitter:title" content="Injecting Config as Environment Variables from Hasicorp’s Consul &amp; Vault">
+  <meta name="twitter:description" content="Continuing with the theme of Kubernetes, I have recently built out a solution to inject environment variables into containerised applications from Hasicorp Consult and Vault Key Value (KV) engine, which might be considered as a first step in realising Hashicorp’s Service Mesh. Installing both Consul and Vault via helm with the KV Engine is fairly straightforward. Supplying these KV’s as environment variables to the containerised applications in Kubernetes, however, requires a bit more thought. Two different approaches are required to lift in values from Consul and Vault which makes things even more interesting. The approach I took was to write the KV’s to file before they are exposed as ENVs in the container, which is less than ideal. As a side note, it might be cleaner and simpler to manage config at the application layer by calling Consul and Vault’s HTTP API. That is another approach which I’m not going to talk about here.">
+  <meta name="twitter:url" content="http://localhost:4000/kubernetes/vault-template-2/">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+  
+
+  
+
 
 
   <meta property="article:published_time" content="2021-11-19T00:00:00+00:00">
@@ -444,7 +456,7 @@ Source: https://www.pexels.com/</p>
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=Injecting+Config+as+Environment+Variables+from+Hasicorp%27s+Consul+%26+Vault%20http%3A%2F%2Flocalhost%3A4000%2Fkubernetes%2Fvault-template-2%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?via=jamesdhope&text=Injecting+Config+as+Environment+Variables+from+Hasicorp%27s+Consul+%26+Vault%20http%3A%2F%2Flocalhost%3A4000%2Fkubernetes%2Fvault-template-2%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
   <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fkubernetes%2Fvault-template-2%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
