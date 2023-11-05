@@ -84,7 +84,7 @@ var store = [{
         "teaser": null
       },{
         "title": "Extending a conversational assistant with RAG for conversational search across multiple user and user-group embeddings",
-        "excerpt":"Retrieval Augmented Generation (RAG), which utilises a LLM, makes it relatively straightfoward to surface information through a conversational assistant. This is potentially transformative for HR &amp; talent management and customer care use cases where information contained in policies, guidelines, handbooks and other unstructured natural language formats can be made accessible...","categories": ["generativeAI","conversationalAI"],
+        "excerpt":"Retrieval Augmented Generation (RAG), which utilises a LLM, makes it relatively straightfoward to surface information through a conversational assistant. This is potentially transformative for HR &amp; talent management and customer care use cases where information contained in policies, guidelines, handbooks and other unstructured natural language formats can be made more...","categories": ["generativeAI","conversationalAI"],
         "tags": ["llms","generativeAI","architecture","conversationalAI","watsonx","rag"],
         "url": "/generativeai/conversationalai/virtual-assistant-conversational-search/",
         "teaser": null
