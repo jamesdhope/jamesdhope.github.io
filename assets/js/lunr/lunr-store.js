@@ -88,10 +88,4 @@ var store = [{
         "tags": ["llms","generativeAI","architecture","conversationalAI","watsonx","rag"],
         "url": "/generativeai/conversationalai/virtual-assistant-conversational-search/",
         "teaser": null
-      },{
-        "title": "Contrastive Perplexity for context filtering and suppression to improve context relevance and reduce token count for in-context learning RAG applications",
-        "excerpt":"Contrastive perplexity has been proposed as an approach to reduce irrelevant context in the post retrieval stage of a RAG application as well as suppress context to reduce token count. Contrastive perplexity evaluates how well the model can distinguish between different embedded passages contained within the search results and the...","categories": ["generativeAI","conversationalAI"],
-        "tags": ["llms","generativeAI","architecture","conversationalAI","watsonx","rag"],
-        "url": "/generativeai/conversationalai/contrastive-perplexity-rag-filter/",
-        "teaser": null
       }]
