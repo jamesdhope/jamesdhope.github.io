@@ -61,6 +61,10 @@
 <lastmod>2023-11-04T00:00:00+00:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/generativeai/conversationalai/lora-fine-tuning/</loc>
+<lastmod>2023-12-01T00:00:00+00:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/drafts/2023-11-08-contrastive-perplexity-rag-filter/</loc>
 </url>
 <url>
@@ -77,5 +81,8 @@
 </url>
 <url>
 <loc>http://localhost:4000/page3/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/page4/</loc>
 </url>
 </urlset>

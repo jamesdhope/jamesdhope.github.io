@@ -88,4 +88,10 @@ var store = [{
         "tags": ["llms","generativeAI","architecture","conversationalAI","watsonx","rag"],
         "url": "/generativeai/conversationalai/virtual-assistant-conversational-search/",
         "teaser": null
+      },{
+        "title": "Supervised fine tuning of a large language model using quantized low rank adapters",
+        "excerpt":"Fine-tuning of a large language model (LLM) can be peformed using QLoRA (Quantized Low Rank Adapters) and PEFT (Parameter-Efficient Fine-Tuning) techniques. PEFT (Parameter-Efficient Fine-Tuning): PEFT is a technique for fine-tuning large language models with a small number of additional parameters, known as adapters, while freezing the original model parameters. It...","categories": ["generativeAI","conversationalAI"],
+        "tags": ["llms","generativeAI","architecture","fine tuning","watsonx"],
+        "url": "/generativeai/conversationalai/lora-fine-tuning/",
+        "teaser": null
       }]
