@@ -95,7 +95,7 @@ var store = [{
         "url": "/generativeai/conversationalai/lora-fine-tuning/",
         "teaser": null
       },{
-        "title": "Beyond declarative-only flows in virtual assistants with language models for single-turn and multi-turn reasoning",
+        "title": "Beyond declarative flows in virtual assistants with language models for single-turn and multi-turn reasoning",
         "excerpt":"Building user journeys as declarative trees within a virtual assistant requires assumptions to be made about the user query and the optimal path. This is exacerbated if there are many decision points and tree consists of many forks as assumptions about the path increase exponentially as the journey progresses further...","categories": ["generativeAI","conversationalAI"],
         "tags": ["llms","generativeAI","architecture","watsonx"],
         "url": "/generativeai/conversationalai/beyond-declarative-flows-in-virtual-assistants/",
