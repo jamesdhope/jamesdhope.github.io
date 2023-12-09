@@ -96,7 +96,7 @@ var store = [{
         "teaser": null
       },{
         "title": "Beyond declarative flows in virtual assistants with language models for single-turn and multi-turn reasoning",
-        "excerpt":"Building user journeys as declarative trees within a virtual assistant requires assumptions to be made about the user query and the optimal path. This is exacerbated if there are many decision points and the tree consists of many forks as the number of assumptions increases exponentially further down the tree....","categories": ["generativeAI","conversationalAI"],
+        "excerpt":"Building user journeys as declarative trees within a virtual assistant requires assumptions to be made about the user query and the optimal path. If there are many decision points and the tree consists of many forks the number of assumptions increases exponentially down the tree leading to inefficiencies and a...","categories": ["generativeAI","conversationalAI"],
         "tags": ["llms","generativeAI","architecture","watsonx"],
         "url": "/generativeai/conversationalai/beyond-declarative-flows-in-virtual-assistants/",
         "teaser": null
