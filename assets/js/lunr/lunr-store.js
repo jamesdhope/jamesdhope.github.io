@@ -100,4 +100,10 @@ var store = [{
         "tags": ["llms","generativeAI","architecture","watsonx"],
         "url": "/generativeai/conversationalai/beyond-declarative-flows-in-virtual-assistants/",
         "teaser": null
+      },{
+        "title": "Governing AI Guardrails with watsonx",
+        "excerpt":"Effective governance of AI enabled services and applications that utilise generative models requires a multi-layered approach of different classifiers that guardrail the inputs and outputs of generative models. These models, which are called synchronously by the application and drive application logic, and whether consumed via an API, abstracted away through...","categories": ["generativeAI","AI guardrails","AI governance"],
+        "tags": ["llms","generativeAI","architecture","multi-modal applications","watsonx"],
+        "url": "/generativeai/ai%20guardrails/ai%20governance/ai-gov-for-guardrails/",
+        "teaser": null
       }]
