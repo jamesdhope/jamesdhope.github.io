@@ -102,7 +102,7 @@ var store = [{
         "teaser": null
       },{
         "title": "Governance of AI enabled services and applications with AI Guardrails and watsonx",
-        "excerpt":"Effective governance of AI enabled services and applications that utilise generative models requires a multi-layered approach of different classifiers that guardrail the inputs and outputs of generative models. These models, which are called synchronously by the application and drive application logic, and whether consumed via an API, abstracted away through...","categories": ["generativeAI","AI guardrails","AI governance"],
+        "excerpt":"Effective governance of enterprise services and applications that utilise generative models requires a multi-layered approach of different classifiers that guardrail the inputs to and outputs from generative models. These models, which are called synchronously by the application and drive application logic and consumed via an API, abstracted away through an...","categories": ["generativeAI","AI guardrails","AI governance"],
         "tags": ["llms","generativeAI","architecture","multi-modal applications","watsonx"],
         "url": "/generativeai/ai%20guardrails/ai%20governance/ai-gov-for-guardrails/",
         "teaser": null
