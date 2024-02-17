@@ -106,4 +106,10 @@ var store = [{
         "tags": ["llms","generativeAI","architecture","multi-modal applications","watsonx"],
         "url": "/generativeai/ai%20guardrails/ai%20governance/ai-gov-for-guardrails/",
         "teaser": null
+      },{
+        "title": "Reconstructing user context to reduce the risk of policy misaligned generated content in LLM enabled conversational assistants",
+        "excerpt":"For conversatonal assistants, language models offer the potential benefit of being able to generate responses to the widest posisble range of queries that adhere to a policy, without the need for a premediated conversational design, which is inherently hard to design optimally for all queries. However, prompt engineering alone may...","categories": ["generativeAI","AI guardrails","AI governance"],
+        "tags": ["llms","generativeAI","architecture","watsonx assistant"],
+        "url": "/generativeai/ai%20guardrails/ai%20governance/language-model-assistants/",
+        "teaser": null
       }]
